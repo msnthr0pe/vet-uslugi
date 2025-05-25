@@ -1,0 +1,36 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.VetUslugi" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="materialButtonStyle">@style/Button</item>
+        <item name="android:textViewStyle">@style/TextView</item>
+        <item name="editTextStyle">@style/EditText</item>
+    </style>
+
+    <style name="Button" parent="Widget.Material3.Button">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.VetUslugi.Button</item>
+        <item name="backgroundTint">@android:color/white</item>
+        <item name="strokeColor">@color/blue</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="android:textColor">@color/blue</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="ShapeAppearance.VetUslugi.Button" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
+
+
+
+    <style name="TextView" parent="android:Widget.TextView">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="EditText" parent="android:Widget.EditText">
+        <item name="android:textColorHint">@color/gray</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:background">"@drawable/edittext_rounded_corners"</item>
+    </style>
+
+    <style name="Theme.VetUslugi" parent="Base.Theme.VetUslugi" />
+</resources>
