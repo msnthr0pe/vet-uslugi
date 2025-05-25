@@ -10,6 +10,16 @@
         android:name="com.vetuslugi.TitleFragment"
         android:label="Title"
         tools:layout="@layout/fragment_title">
+        <action
+            android:id="@+id/action_titleFragment_to_newsFragment"
+            app:destination="@id/newsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/newsFragment"
+        android:name="com.vetuslugi.NewsFragment"
+        android:label="Title"
+        tools:layout="@layout/fragment_news">
     </fragment>
 
 </navigation>
