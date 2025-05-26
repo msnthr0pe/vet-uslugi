@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/tvNameConcrete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="52dp"
+        android:text="Информация о"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvNameConcrete2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="приюте/питомнике"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/tvNameConcrete"
+        app:layout_constraintTop_toBottomOf="@+id/tvNameConcrete" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:orientation="vertical"
+        android:paddingStart="25dp"
+        android:paddingEnd="25dp"
+        app:layout_constraintEnd_toEndOf="@+id/tvNameConcrete2"
+        app:layout_constraintHorizontal_bias="0.653"
+        app:layout_constraintStart_toStartOf="@+id/tvNameConcrete2"
+        app:layout_constraintTop_toBottomOf="@+id/tvNameConcrete2">
+
+        <include
+            android:id="@+id/name_card"
+            layout="@layout/card_info" />
+
+        <include
+            android:id="@+id/address_card"
+            layout="@layout/card_info" />
+
+        <include
+            android:id="@+id/phone_card"
+            layout="@layout/card_info" />
+
+        <include
+            android:id="@+id/description_card"
+            layout="@layout/card_info" />
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

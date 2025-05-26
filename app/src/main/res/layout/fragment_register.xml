@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="52dp"
+        android:text="Регистрация"
+        android:textColor="@color/blue"
+        android:textSize="40dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/etNameRegister"
+        android:layout_width="334dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="48dp"
+        android:ems="10"
+        android:hint="Имя"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="@+id/textView11"
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+    <EditText
+        android:id="@+id/etSurnameRegister"
+        android:layout_width="334dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:hint="Фамилия"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="@+id/etNameRegister"
+        app:layout_constraintTop_toBottomOf="@+id/etNameRegister" />
+
+    <EditText
+        android:id="@+id/etPhoneRegister"
+        android:layout_width="334dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:hint="Номер телефона"
+        android:inputType="phone"
+        app:layout_constraintStart_toStartOf="@+id/etSurnameRegister"
+        app:layout_constraintTop_toBottomOf="@+id/etSurnameRegister" />
+
+    <EditText
+        android:id="@+id/etLoginRegister"
+        android:layout_width="334dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:hint="Логин"
+        android:inputType="textEmailAddress"
+        app:layout_constraintStart_toStartOf="@+id/etPhoneRegister"
+        app:layout_constraintTop_toBottomOf="@+id/etPhoneRegister" />
+
+    <EditText
+        android:id="@+id/etPasswordRegister"
+        android:layout_width="334dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:hint="Пароль"
+        android:inputType="textPassword"
+        app:layout_constraintStart_toStartOf="@+id/etLoginRegister"
+        app:layout_constraintTop_toBottomOf="@+id/etLoginRegister" />
+
+    <Button
+        android:id="@+id/btnContinueRegister"
+        android:layout_width="334dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="72dp"
+        android:text="Продолжить"
+        app:layout_constraintEnd_toEndOf="@+id/etPasswordRegister"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/etPasswordRegister"
+        app:layout_constraintTop_toBottomOf="@+id/etPasswordRegister" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
