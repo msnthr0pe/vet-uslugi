@@ -10,9 +10,10 @@
         android:name="com.vetuslugi.TitleFragment"
         android:label="Title"
         tools:layout="@layout/fragment_title">
+
         <action
-            android:id="@+id/action_titleFragment_to_newsFragment"
-            app:destination="@id/newsFragment" />
+            android:id="@+id/action_titleFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
 
     <fragment
@@ -120,6 +121,29 @@
         android:name="com.vetuslugi.InfoFragment"
         android:label="Title"
         tools:layout="@layout/fragment_info">
+    </fragment>
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.vetuslugi.LoginFragment"
+        android:label="Title"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_newsFragment"
+            app:destination="@id/newsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.vetuslugi.RegisterFragment"
+        android:label="Title"
+        tools:layout="@layout/fragment_register">
+        <action
+            android:id="@+id/action_registerFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
 
 </navigation>

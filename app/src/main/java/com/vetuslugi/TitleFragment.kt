@@ -28,7 +28,7 @@ class TitleFragment : Fragment() {
         _binding = FragmentTitleBinding.inflate(layoutInflater, container, false)
 
         binding.btnNext.setOnClickListener {
-            findNavController().navigate(R.id.action_titleFragment_to_newsFragment)
+            findNavController().navigate(R.id.action_titleFragment_to_loginFragment)
         }
 
         return binding.root
