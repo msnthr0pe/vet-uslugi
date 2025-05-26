@@ -8,12 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.vetuslugi.databinding.FragmentSheltersBinding
 import com.vetuslugi.databinding.FragmentTitleBinding
 import kotlinx.coroutines.launch
 
-class TitleFragment : Fragment() {
+class SheltersFragment : Fragment() {
 
-    private var _binding: FragmentTitleBinding? = null
+    private var _binding: FragmentSheltersBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,10 +26,14 @@ class TitleFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentTitleBinding.inflate(layoutInflater, container, false)
+        _binding = FragmentSheltersBinding.inflate(layoutInflater, container, false)
 
-        binding.btnNext.setOnClickListener {
-            findNavController().navigate(R.id.action_titleFragment_to_newsFragment)
+        binding.customBottomBar.iconNews.setOnClickListener {
+            findNavController().navigate(R.id.action_sheltersFragment_to_newsFragment)
+        }
+
+        binding.customBottomBar.iconNursery.setOnClickListener {
+            findNavController().navigate(R.id.action_sheltersFragment_to_nurseriesFragment)
         }
 
         return binding.root

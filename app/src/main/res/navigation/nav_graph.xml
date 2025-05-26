@@ -20,6 +20,38 @@
         android:name="com.vetuslugi.NewsFragment"
         android:label="Title"
         tools:layout="@layout/fragment_news">
+        <action
+            android:id="@+id/action_newsFragment_to_sheltersFragment"
+            app:destination="@id/sheltersFragment" />
+        <action
+            android:id="@+id/action_newsFragment_to_nurseriesFragment"
+            app:destination="@id/nurseriesFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/sheltersFragment"
+        android:name="com.vetuslugi.SheltersFragment"
+        android:label="Title"
+        tools:layout="@layout/fragment_shelters">
+        <action
+            android:id="@+id/action_sheltersFragment_to_newsFragment"
+            app:destination="@id/newsFragment" />
+        <action
+            android:id="@+id/action_sheltersFragment_to_nurseriesFragment"
+            app:destination="@id/nurseriesFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nurseriesFragment"
+        android:name="com.vetuslugi.NurseriesFragment"
+        android:label="Title"
+        tools:layout="@layout/fragment_nurseries">
+        <action
+            android:id="@+id/action_nurseriesFragment_to_sheltersFragment"
+            app:destination="@id/sheltersFragment" />
+        <action
+            android:id="@+id/action_nurseriesFragment_to_newsFragment"
+            app:destination="@id/newsFragment" />
     </fragment>
 
 </navigation>

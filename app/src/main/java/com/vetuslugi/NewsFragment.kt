@@ -13,8 +13,6 @@ class NewsFragment : Fragment() {
     private var _binding: FragmentNewsBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var btnNext: Button
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -24,8 +22,12 @@ class NewsFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         _binding = FragmentNewsBinding.inflate(layoutInflater, container, false)
 
-        btnNext.setOnClickListener {
-            findNavController().navigate(R.id.action_titleFragment_to_newsFragment)
+        binding.customBottomBar.iconShelter.setOnClickListener {
+            findNavController().navigate(R.id.action_newsFragment_to_sheltersFragment)
+        }
+
+        binding.customBottomBar.iconNursery.setOnClickListener {
+            findNavController().navigate(R.id.action_newsFragment_to_nurseriesFragment)
         }
 
         return binding.root
