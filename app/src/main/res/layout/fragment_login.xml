@@ -9,7 +9,7 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="140dp"
+        android:layout_marginTop="180dp"
         android:text="Добро\nпожаловать!"
         android:textColor="@color/blue"
         android:textSize="40dp"
@@ -20,10 +20,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/etLoginEmail"
+        android:id="@+id/et_login_login"
         android:layout_width="334dp"
         android:layout_height="55dp"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="76dp"
         android:hint="Логин"
         android:inputType="textEmailAddress"
         app:layout_constraintStart_toStartOf="@+id/textView4"
@@ -36,10 +36,10 @@
         android:layout_marginTop="16dp"
         android:hint="Пароль"
         android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="@+id/etLoginEmail"
+        app:layout_constraintEnd_toEndOf="@+id/et_login_login"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/etLoginEmail"
-        app:layout_constraintTop_toBottomOf="@+id/etLoginEmail" />
+        app:layout_constraintStart_toStartOf="@+id/et_login_login"
+        app:layout_constraintTop_toBottomOf="@+id/et_login_login" />
 
     <TextView
         android:id="@+id/textView6"
