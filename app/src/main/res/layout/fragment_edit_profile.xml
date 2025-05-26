@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="52dp"
+        android:text="Редактирование \nданных"
+        android:textSize="40dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/etNameEdit"
+        android:layout_width="334dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="36dp"
+        android:ems="10"
+        android:enabled="false"
+        android:hint="Имя"
+        android:inputType="text"
+        android:textColor="@color/blue"
+        app:layout_constraintStart_toStartOf="@+id/textView11"
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+    <EditText
+        android:id="@+id/etSurnameEdit"
+        android:layout_width="334dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:enabled="false"
+        android:hint="Фамилия"
+        android:inputType="text"
+        android:textColor="@color/blue"
+        app:layout_constraintStart_toStartOf="@+id/etNameEdit"
+        app:layout_constraintTop_toBottomOf="@+id/etNameEdit" />
+
+    <EditText
+        android:id="@+id/etConfirmationPassword"
+        android:layout_width="334dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="96dp"
+        android:ems="10"
+        android:enabled="false"
+        android:hint="Пароль для подтверждения"
+        android:inputType="phone"
+        android:textColor="@color/blue"
+        app:layout_constraintEnd_toEndOf="@+id/etPhoneEdit"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/etPhoneEdit"
+        app:layout_constraintTop_toBottomOf="@+id/etPhoneEdit" />
+
+    <Button
+        android:id="@+id/btnChangeData"
+        android:layout_width="334dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="16dp"
+        android:text="Изменить данные"
+        app:layout_constraintEnd_toEndOf="@+id/etConfirmationPassword"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/etConfirmationPassword"
+        app:layout_constraintTop_toBottomOf="@+id/etConfirmationPassword" />
+
+    <EditText
+        android:id="@+id/etPhoneEdit"
+        android:layout_width="334dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:enabled="false"
+        android:hint="Номер телефона"
+        android:inputType="phone"
+        android:textColor="@color/blue"
+        app:layout_constraintStart_toStartOf="@+id/etSurnameEdit"
+        app:layout_constraintTop_toBottomOf="@+id/etSurnameEdit" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

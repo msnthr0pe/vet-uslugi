@@ -36,6 +36,10 @@ class SheltersFragment : Fragment() {
             findNavController().navigate(R.id.action_sheltersFragment_to_nurseriesFragment)
         }
 
+        binding.customBottomBar.iconProfile.setOnClickListener {
+            findNavController().navigate(R.id.action_sheltersFragment_to_profileFragment)
+        }
+
         return binding.root
     }
 

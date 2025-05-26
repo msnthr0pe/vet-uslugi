@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="52dp"
+        android:text="Добавление\nместа"
+        android:textSize="40dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/etNameNewPlace"
+        android:layout_width="334dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:hint="Название"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="@+id/textView11"
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+    <EditText
+        android:id="@+id/etAddressNewPlace"
+        android:layout_width="334dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:hint="Адрес"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="@+id/etNameNewPlace"
+        app:layout_constraintTop_toBottomOf="@+id/etNameNewPlace" />
+
+    <EditText
+        android:id="@+id/etPhoneNewPlace"
+        android:layout_width="334dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:hint="Номер телефона"
+        android:inputType="phone"
+        app:layout_constraintStart_toStartOf="@+id/etAddressNewPlace"
+        app:layout_constraintTop_toBottomOf="@+id/etAddressNewPlace" />
+
+    <EditText
+        android:id="@+id/etDescNewPlace"
+        android:layout_width="334dp"
+        android:layout_height="125dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:hint="Описание"
+        android:inputType="textEmailAddress"
+        app:layout_constraintStart_toStartOf="@+id/etPhoneNewPlace"
+        app:layout_constraintTop_toBottomOf="@+id/etPhoneNewPlace" />
+
+    <Button
+        android:id="@+id/btnAddNewPlace"
+        android:layout_width="334dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="20dp"
+        android:text="Добавить место"
+        app:layout_constraintEnd_toEndOf="@+id/tvIsNursery"
+        app:layout_constraintHorizontal_bias="0.21"
+        app:layout_constraintStart_toStartOf="@+id/tvIsNursery"
+        app:layout_constraintTop_toBottomOf="@+id/tvIsNursery" />
+
+    <TextView
+        android:id="@+id/tvIsShelter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="12dp"
+        android:text="Приют"
+        android:textColor="@color/blue"
+        app:layout_constraintStart_toStartOf="@+id/etDescNewPlace"
+        app:layout_constraintTop_toBottomOf="@+id/etDescNewPlace" />
+
+    <CheckBox
+        android:id="@+id/cbShelter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvIsShelter"
+        app:layout_constraintEnd_toStartOf="@+id/tvIsShelter"
+        app:layout_constraintTop_toTopOf="@+id/tvIsShelter"
+        app:layout_constraintVertical_bias="0.476" />
+
+    <TextView
+        android:id="@+id/tvIsNursery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Питомник"
+        android:textColor="@color/blue"
+        app:layout_constraintEnd_toEndOf="@+id/tvIsShelter"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tvIsShelter"
+        app:layout_constraintTop_toBottomOf="@+id/tvIsShelter" />
+
+    <CheckBox
+        android:id="@+id/cbNursery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvIsNursery"
+        app:layout_constraintEnd_toStartOf="@+id/tvIsNursery"
+        app:layout_constraintTop_toTopOf="@+id/tvIsNursery"
+        app:layout_constraintVertical_bias="0.476" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

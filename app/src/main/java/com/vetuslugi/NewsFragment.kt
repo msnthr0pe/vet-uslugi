@@ -30,6 +30,10 @@ class NewsFragment : Fragment() {
             findNavController().navigate(R.id.action_newsFragment_to_nurseriesFragment)
         }
 
+        binding.customBottomBar.iconProfile.setOnClickListener {
+            findNavController().navigate(R.id.action_newsFragment_to_profileFragment)
+        }
+
         return binding.root
     }
 

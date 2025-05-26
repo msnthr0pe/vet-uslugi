@@ -26,6 +26,9 @@
         <action
             android:id="@+id/action_newsFragment_to_nurseriesFragment"
             app:destination="@id/nurseriesFragment" />
+        <action
+            android:id="@+id/action_newsFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
 
     <fragment
@@ -39,6 +42,9 @@
         <action
             android:id="@+id/action_sheltersFragment_to_nurseriesFragment"
             app:destination="@id/nurseriesFragment" />
+        <action
+            android:id="@+id/action_sheltersFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
 
     <fragment
@@ -52,6 +58,52 @@
         <action
             android:id="@+id/action_nurseriesFragment_to_newsFragment"
             app:destination="@id/newsFragment" />
+        <action
+            android:id="@+id/action_nurseriesFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addPlaceFragment"
+        android:name="com.vetuslugi.AddPlaceFragment"
+        android:label="Title"
+        tools:layout="@layout/fragment_add_place">
+    </fragment>
+
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.vetuslugi.EditProfileFragment"
+        android:label="Title"
+        tools:layout="@layout/fragment_edit_profile">
+    </fragment>
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.vetuslugi.ProfileFragment"
+        android:label="Title"
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_profileFragment_to_sheltersFragment"
+            app:destination="@id/sheltersFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_nurseriesFragment"
+            app:destination="@id/nurseriesFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_profileInfoFragment"
+            app:destination="@id/profileInfoFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_addPlaceFragment"
+            app:destination="@id/addPlaceFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/profileInfoFragment"
+        android:name="com.vetuslugi.ProfileInfoFragment"
+        android:label="Title"
+        tools:layout="@layout/fragment_profile_info">
+        <action
+            android:id="@+id/action_profileInfoFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
     </fragment>
 
 </navigation>

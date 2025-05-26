@@ -8,14 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.vetuslugi.databinding.FragmentNurseriesBinding
-import com.vetuslugi.databinding.FragmentSheltersBinding
+import com.vetuslugi.databinding.FragmentAddPlaceBinding
 import com.vetuslugi.databinding.FragmentTitleBinding
 import kotlinx.coroutines.launch
 
-class NurseriesFragment : Fragment() {
+class AddPlaceFragment : Fragment() {
 
-    private var _binding: FragmentNurseriesBinding? = null
+    private var _binding: FragmentAddPlaceBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,19 +26,9 @@ class NurseriesFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentNurseriesBinding.inflate(layoutInflater, container, false)
+        _binding = FragmentAddPlaceBinding.inflate(layoutInflater, container, false)
 
-        binding.customBottomBar.iconNews.setOnClickListener {
-            findNavController().navigate(R.id.action_nurseriesFragment_to_newsFragment)
-        }
 
-        binding.customBottomBar.iconShelter.setOnClickListener {
-            findNavController().navigate(R.id.action_nurseriesFragment_to_sheltersFragment)
-        }
-
-        binding.customBottomBar.iconProfile.setOnClickListener {
-            findNavController().navigate(R.id.action_nurseriesFragment_to_profileFragment)
-        }
 
         return binding.root
     }
