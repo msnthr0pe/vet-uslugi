@@ -53,6 +53,7 @@ class SheltersFragment : Fragment() {
                         putString("name", shelter.name)
                         putString("phone", shelter.phone)
                         putString("description", shelter.description)
+                        putString("owner", shelter.owner)
                         putString("place", "приюте")
                         putBoolean("editable", false)
                         apply()

@@ -53,6 +53,7 @@ class NurseriesFragment : Fragment() {
                         putString("name", nursery.name)
                         putString("phone", nursery.phone)
                         putString("description", nursery.description)
+                        putString("owner", nursery.owner)
                         putString("place", "питомнике")
                         putBoolean("editable", false)
                         apply()

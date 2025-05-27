@@ -98,16 +98,13 @@ class LoginFragment : Fragment() {
                             )
 
                             prefs.edit {
-                                putString("email", userDTO.login).commit()
+                                putString("login", userDTO.login).commit()
                                 putString("name", userDTO.name).commit()
                                 putString("surname", userDTO.surname).commit()
                                 putString("phone", userDTO.phone).commit()
                                 putString("password", userDTO.password).commit()
-                                putString("status", userDTO.role).commit()
+                                putString("role", userDTO.role).commit()
                             }
-                            val status = prefs.getString("status", "--")
-
-                            Log.e("PREFS", status!!)
 
                             findNavController().navigate(R.id.action_loginFragment_to_newsFragment)
                         } catch (e: Exception) {

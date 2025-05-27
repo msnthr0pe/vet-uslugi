@@ -107,6 +107,7 @@ class InfoFragment : Fragment() {
                                 name,
                                 phone,
                                 description,
+                                "-"
                             )
                         )
                         findNavController().navigate(R.id.action_infoFragment_to_sheltersFragment)
@@ -119,6 +120,7 @@ class InfoFragment : Fragment() {
                                 name,
                                 phone,
                                 description,
+                                "-"
                             )
                         )
                         findNavController().navigate(R.id.action_infoFragment_to_nurseriesFragment)
@@ -156,8 +158,13 @@ class InfoFragment : Fragment() {
             .create()
 
         btnSave.setOnClickListener {
-            obj.tvDescriptionCard.text = etInput.text.toString()
-            dialog.dismiss()
+            val input = etInput.text.toString()
+            if (input.isNotEmpty()) {
+                obj.tvDescriptionCard.text = input
+                dialog.dismiss()
+            } else {
+                Toast.makeText(activity, "Заполните поле", Toast.LENGTH_SHORT).show()
+            }
         }
 
         btnCancel.setOnClickListener {
