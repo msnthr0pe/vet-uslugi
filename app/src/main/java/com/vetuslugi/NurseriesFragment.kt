@@ -40,6 +40,13 @@ class NurseriesFragment : Fragment() {
         recyclerView = binding.nurseriesRecycler
         recyclerView.layoutManager = LinearLayoutManager(activity)
 
+        val fragmentPrefs = requireActivity().getSharedPreferences("fragment_prefs",
+            Context.MODE_PRIVATE)
+        fragmentPrefs.edit().apply {
+            putBoolean("fromProfile", false)
+            apply()
+        }
+
         lifecycleScope.launch {
             try {
                 val nurseries = withContext(Dispatchers.IO) {

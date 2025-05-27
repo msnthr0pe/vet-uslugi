@@ -83,7 +83,7 @@ class InfoFragment : Fragment() {
 
         btnSaveChanges = binding.btnSaveChanges
 
-        if (isEditable) {
+        if (!isEditable) {
             binding.nameCard.tvEditCard.visibility = View.GONE
             binding.phoneCard.tvEditCard.visibility = View.GONE
             binding.descriptionCard.tvEditCard.visibility = View.GONE
@@ -91,6 +91,9 @@ class InfoFragment : Fragment() {
         }
 
         btnSaveChanges.setOnClickListener {
+            val fragmentPrefs = requireActivity().getSharedPreferences("fragment_prefs",
+                Context.MODE_PRIVATE)
+
             name = binding.nameCard.tvDescriptionCard.text.toString()
             phone = binding.phoneCard.tvDescriptionCard.text.toString()
             description = binding.descriptionCard.tvDescriptionCard.text.toString()
@@ -110,8 +113,11 @@ class InfoFragment : Fragment() {
                                 "-"
                             )
                         )
-                        findNavController().navigate(R.id.action_infoFragment_to_sheltersFragment)
-                    }
+                        if (fragmentPrefs.getBoolean("fromProfile", false)) {
+                            findNavController().navigate(R.id.action_infoFragment_to_profileFragment)
+                        } else
+                            findNavController().navigate(R.id.action_infoFragment_to_sheltersFragment)
+                        }
 
                     if (place == "питомнике") {
                         ApiClient.authApi.updateNursery(
@@ -123,7 +129,10 @@ class InfoFragment : Fragment() {
                                 "-"
                             )
                         )
-                        findNavController().navigate(R.id.action_infoFragment_to_nurseriesFragment)
+                        if (fragmentPrefs.getBoolean("fromProfile", false)) {
+                            findNavController().navigate(R.id.action_infoFragment_to_profileFragment)
+                        } else
+                            findNavController().navigate(R.id.action_infoFragment_to_nurseriesFragment)
                     }
                 }
             } else {

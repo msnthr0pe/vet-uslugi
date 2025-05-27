@@ -46,4 +46,10 @@ interface AuthApi {
     @POST("updatenursery")
     suspend fun updateNursery(@Body request: PlaceDTO): AuthModels.InfoDTO
 
+    @POST("getshelterby")
+    suspend fun getShelterBy(@Body request: AuthModels.InfoDTO): List<PlaceDTO>
+
+    @POST("getnurseryby")
+    suspend fun getNurseryBy(@Body request: AuthModels.InfoDTO): List<PlaceDTO>
+
 }
