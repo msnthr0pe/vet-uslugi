@@ -12,6 +12,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="52dp"
         android:text="Редактирование \nданных"
+        android:textColor="@color/blue"
         android:textSize="40dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"

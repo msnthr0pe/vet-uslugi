@@ -30,6 +30,9 @@
         <action
             android:id="@+id/action_newsFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_newsFragment_to_addNewsFragment"
+            app:destination="@id/addNewsFragment" />
     </fragment>
 
     <fragment
@@ -144,6 +147,16 @@
         <action
             android:id="@+id/action_registerFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addNewsFragment"
+        android:name="com.vetuslugi.AddNewsFragment"
+        android:label="Title"
+        tools:layout="@layout/fragment_add_news">
+        <action
+            android:id="@+id/action_addNewsFragment_to_newsFragment"
+            app:destination="@id/newsFragment" />
     </fragment>
 
 </navigation>
