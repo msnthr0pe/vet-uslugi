@@ -128,6 +128,12 @@
         android:name="com.vetuslugi.InfoFragment"
         android:label="Title"
         tools:layout="@layout/fragment_info">
+        <action
+            android:id="@+id/action_infoFragment_to_nurseriesFragment"
+            app:destination="@id/nurseriesFragment" />
+        <action
+            android:id="@+id/action_infoFragment_to_sheltersFragment"
+            app:destination="@id/sheltersFragment" />
     </fragment>
 
     <fragment

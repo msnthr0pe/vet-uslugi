@@ -14,6 +14,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.FrameLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
@@ -25,6 +26,8 @@ import com.vetuslugi.databinding.FragmentInfoBinding
 import com.vetuslugi.databinding.FragmentLoginBinding
 import com.vetuslugi.databinding.FragmentProfileBinding
 import com.vetuslugi.databinding.FragmentTitleBinding
+import com.vetuslugi.ktor.ApiClient
+import com.vetuslugi.ktor.AuthModels
 import kotlinx.coroutines.launch
 
 class InfoFragment : Fragment() {
@@ -33,6 +36,7 @@ class InfoFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var tvPlaceTitle: TextView
+    private lateinit var btnSaveChanges: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,12 +60,13 @@ class InfoFragment : Fragment() {
         val prefs = requireActivity().getSharedPreferences("place_prefs",
             Context.MODE_PRIVATE)
         val address = prefs.getString("address", "не указано")
-        val name = prefs.getString("name", "не указано")
-        val phone = prefs.getString("phone", "не указано")
-        val description = prefs.getString("description", "не указано")
+        var name = prefs.getString("name", "не указано")
+        var phone = prefs.getString("phone", "не указано")
+        var description = prefs.getString("description", "не указано")
         val place = prefs.getString("place", "не указано")
         val isEditable = prefs.getBoolean("editable", false)
 
+        tvPlaceTitle.text = place
 
         binding.addressCard.tvCardTitle.text = "Адрес"
         binding.addressCard.tvDescriptionCard.text = address
@@ -76,10 +81,52 @@ class InfoFragment : Fragment() {
         binding.descriptionCard.tvCardTitle.text = "Описание"
         binding.descriptionCard.tvDescriptionCard.text = description
 
+        btnSaveChanges = binding.btnSaveChanges
+
         if (isEditable) {
             binding.nameCard.tvEditCard.visibility = View.GONE
             binding.phoneCard.tvEditCard.visibility = View.GONE
             binding.descriptionCard.tvEditCard.visibility = View.GONE
+            btnSaveChanges.visibility = View.GONE
+        }
+
+        btnSaveChanges.setOnClickListener {
+            name = binding.nameCard.tvDescriptionCard.text.toString()
+            phone = binding.phoneCard.tvDescriptionCard.text.toString()
+            description = binding.descriptionCard.tvDescriptionCard.text.toString()
+            if (
+                name.isNotEmpty() &&
+                phone.isNotEmpty() &&
+                description.isNotEmpty()
+                ) {
+                lifecycleScope.launch {
+                    if (place == "приюте") {
+                        ApiClient.authApi.updateShelter(
+                            AuthModels.PlaceDTO(
+                                address.toString(),
+                                name,
+                                phone,
+                                description,
+                            )
+                        )
+                        findNavController().navigate(R.id.action_infoFragment_to_sheltersFragment)
+                    }
+
+                    if (place == "питомнике") {
+                        ApiClient.authApi.updateNursery(
+                            AuthModels.PlaceDTO(
+                                address.toString(),
+                                name,
+                                phone,
+                                description,
+                            )
+                        )
+                        findNavController().navigate(R.id.action_infoFragment_to_nurseriesFragment)
+                    }
+                }
+            } else {
+                Toast.makeText(activity, "Заполните все поля", Toast.LENGTH_SHORT).show()
+            }
         }
 
         binding.nameCard.tvEditCard.setOnClickListener {
@@ -91,8 +138,6 @@ class InfoFragment : Fragment() {
         binding.descriptionCard.tvEditCard.setOnClickListener {
             showEditDialog(binding.descriptionCard)
         }
-
-        tvPlaceTitle.text = place
 
     }
 
