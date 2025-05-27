@@ -8,7 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.vetuslugi.R
 import com.vetuslugi.ktor.AuthModels
 
-class NurseriesAdapter(private val nurseries: List<AuthModels.PlaceDTO>) :
+class NurseriesAdapter(private val nurseries: List<AuthModels.PlaceDTO>,
+                       private val onItemClick: (AuthModels.PlaceDTO) -> Unit) :
     RecyclerView.Adapter<NurseriesAdapter.NurseriesViewHolder>() {
 
     inner class NurseriesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -16,6 +17,15 @@ class NurseriesAdapter(private val nurseries: List<AuthModels.PlaceDTO>) :
         val nameText: TextView = itemView.findViewById(R.id.nameNurseryText)
         val phoneText: TextView = itemView.findViewById(R.id.phoneNurseryInput)
         val descriptionText: TextView = itemView.findViewById(R.id.descriptionNurseryInput)
+
+        init {
+            itemView.setOnClickListener {
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    onItemClick(nurseries[position])
+                }
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NurseriesViewHolder {

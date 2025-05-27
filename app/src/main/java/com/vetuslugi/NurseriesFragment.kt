@@ -1,5 +1,6 @@
 package com.vetuslugi
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -44,7 +45,19 @@ class NurseriesFragment : Fragment() {
                 val nurseries = withContext(Dispatchers.IO) {
                     ApiClient.authApi.getNurseries()
                 }
-                requestAdapter = NurseriesAdapter(nurseries)
+                requestAdapter = NurseriesAdapter(nurseries) {nursery ->
+                    val prefs = requireActivity().getSharedPreferences("place_prefs",
+                        Context.MODE_PRIVATE)
+                    prefs.edit().apply {
+                        putString("address", nursery.address)
+                        putString("name", nursery.name)
+                        putString("phone", nursery.phone)
+                        putString("description", nursery.description)
+                        putString("place", "питомнике")
+                        apply()
+                    }
+                    findNavController().navigate(R.id.action_nurseriesFragment_to_infoFragment)
+                }
                 recyclerView.adapter = requestAdapter
 
             } catch (e: Exception) {

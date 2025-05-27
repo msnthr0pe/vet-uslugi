@@ -8,7 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.vetuslugi.R
 import com.vetuslugi.ktor.AuthModels
 
-class SheltersAdapter(private val shelters: List<AuthModels.PlaceDTO>) :
+class SheltersAdapter(private val shelters: List<AuthModels.PlaceDTO>,
+                      private val onItemClick: (AuthModels.PlaceDTO) -> Unit) :
     RecyclerView.Adapter<SheltersAdapter.SheltersViewHolder>() {
 
     inner class SheltersViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -16,6 +17,15 @@ class SheltersAdapter(private val shelters: List<AuthModels.PlaceDTO>) :
         val nameText: TextView = itemView.findViewById(R.id.nameShelterText)
         val phoneText: TextView = itemView.findViewById(R.id.phoneShelterInput)
         val descriptionText: TextView = itemView.findViewById(R.id.descriptionShelterInput)
+
+        init {
+            itemView.setOnClickListener {
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    onItemClick(shelters[position])
+                }
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SheltersViewHolder {

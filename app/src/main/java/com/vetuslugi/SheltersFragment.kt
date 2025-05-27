@@ -1,5 +1,6 @@
 package com.vetuslugi
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -44,7 +45,19 @@ class SheltersFragment : Fragment() {
                 val shelters = withContext(Dispatchers.IO) {
                     ApiClient.authApi.getShelters()
                 }
-                requestAdapter = SheltersAdapter(shelters)
+                requestAdapter = SheltersAdapter(shelters) {shelter ->
+                    val prefs = requireActivity().getSharedPreferences("place_prefs",
+                        Context.MODE_PRIVATE)
+                    prefs.edit().apply {
+                        putString("address", shelter.address)
+                        putString("name", shelter.name)
+                        putString("phone", shelter.phone)
+                        putString("description", shelter.description)
+                        putString("place", "приюте")
+                        apply()
+                    }
+                    findNavController().navigate(R.id.action_sheltersFragment_to_infoFragment)
+                }
                 recyclerView.adapter = requestAdapter
 
             } catch (e: Exception) {
