@@ -34,6 +34,13 @@ class AuthModels {
         val description: String
     )
 
+    data class SheltersDTO (
+        val address: String,
+        val name: String,
+        val phone: String,
+        val description: String,
+    )
+
     @Serializable
     data class ClientByDTO(
         val name: String,

@@ -33,4 +33,7 @@ interface AuthApi {
     @POST("addnews")
     fun addNews(@Body news: NewsDTO): Call<AuthModels.AuthResponse>
 
+    @GET("getshelters")
+    suspend fun getShelters(): List<AuthModels.SheltersDTO>
+
 }

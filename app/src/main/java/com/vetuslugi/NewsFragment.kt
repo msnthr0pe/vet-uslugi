@@ -26,9 +26,6 @@ class NewsFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var requestAdapter: NewsAdapter
 
-    private lateinit var tvSearchClients: TextView
-    private lateinit var btnAdd: ImageButton
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

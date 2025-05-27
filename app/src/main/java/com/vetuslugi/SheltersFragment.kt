@@ -8,14 +8,22 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.vetuslugi.adapters.SheltersAdapter
 import com.vetuslugi.databinding.FragmentSheltersBinding
-import com.vetuslugi.databinding.FragmentTitleBinding
+import com.vetuslugi.ktor.ApiClient
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class SheltersFragment : Fragment() {
 
     private var _binding: FragmentSheltersBinding? = null
     private val binding get() = _binding!!
+
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var requestAdapter: SheltersAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +35,22 @@ class SheltersFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentSheltersBinding.inflate(layoutInflater, container, false)
+
+        recyclerView = binding.sheltersRecycler
+        recyclerView.layoutManager = LinearLayoutManager(activity)
+
+        lifecycleScope.launch {
+            try {
+                val shelters = withContext(Dispatchers.IO) {
+                    ApiClient.authApi.getShelters()
+                }
+                requestAdapter = SheltersAdapter(shelters)
+                recyclerView.adapter = requestAdapter
+
+            } catch (e: Exception) {
+                Log.e("MYCLIENT", "Ошибка: ${e.message}")
+            }
+        }
 
         binding.customBottomBar.iconNews.setOnClickListener {
             findNavController().navigate(R.id.action_sheltersFragment_to_newsFragment)
