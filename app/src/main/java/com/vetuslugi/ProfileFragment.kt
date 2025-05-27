@@ -30,6 +30,15 @@ class ProfileFragment : Fragment() {
     ): View {
         _binding = FragmentProfileBinding.inflate(layoutInflater, container, false)
 
+        binding.customBottomBar4.iconNews.setOnClickListener {
+            findNavController().navigate(R.id.action_profileFragment_to_newsFragment)
+        }
+        binding.customBottomBar4.iconShelter.setOnClickListener {
+            findNavController().navigate(R.id.action_profileFragment_to_sheltersFragment)
+        }
+        binding.customBottomBar4.iconNursery.setOnClickListener {
+            findNavController().navigate(R.id.action_profileFragment_to_nurseriesFragment)
+        }
 
 
         return binding.root

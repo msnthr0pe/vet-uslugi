@@ -34,7 +34,7 @@ class AuthModels {
         val description: String
     )
 
-    data class SheltersDTO (
+    data class PlaceDTO (
         val address: String,
         val name: String,
         val phone: String,

@@ -107,6 +107,10 @@
         <action
             android:id="@+id/action_profileFragment_to_infoFragment"
             app:destination="@id/infoFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_newsFragment"
+            app:destination="@id/newsFragment" />
+
     </fragment>
 
     <fragment

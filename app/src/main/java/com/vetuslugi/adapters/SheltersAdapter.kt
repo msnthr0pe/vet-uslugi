@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.vetuslugi.R
 import com.vetuslugi.ktor.AuthModels
 
-class SheltersAdapter(private val shelters: List<AuthModels.SheltersDTO>) :
+class SheltersAdapter(private val shelters: List<AuthModels.PlaceDTO>) :
     RecyclerView.Adapter<SheltersAdapter.SheltersViewHolder>() {
 
     inner class SheltersViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
