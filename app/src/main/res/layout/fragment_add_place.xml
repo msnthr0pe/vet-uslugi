@@ -57,6 +57,7 @@
         android:layout_height="125dp"
         android:layout_marginTop="12dp"
         android:ems="10"
+        android:gravity="start"
         android:hint="Описание"
         android:inputType="textEmailAddress"
         app:layout_constraintStart_toStartOf="@+id/etPhoneNewPlace"

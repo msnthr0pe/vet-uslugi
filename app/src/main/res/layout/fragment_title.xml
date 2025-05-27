@@ -25,7 +25,7 @@
         android:layout_marginTop="100dp"
         android:gravity="center"
         android:text="Клиент-серверное приложение\n для питомников\n и приютов животных"
-        android:textStyle="bold"
+        android:textColor="@color/blue"
         app:layout_constraintEnd_toEndOf="@+id/imageView"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="@+id/imageView"

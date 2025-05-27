@@ -20,10 +20,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/et_login_login"
+        android:id="@+id/etLoginLogin"
         android:layout_width="334dp"
         android:layout_height="55dp"
         android:layout_marginTop="76dp"
+        android:text="admin"
         android:hint="Логин"
         android:inputType="textEmailAddress"
         app:layout_constraintStart_toStartOf="@+id/textView4"
@@ -34,12 +35,13 @@
         android:layout_width="334dp"
         android:layout_height="55dp"
         android:layout_marginTop="16dp"
+        android:text="admin"
         android:hint="Пароль"
         android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="@+id/et_login_login"
+        app:layout_constraintEnd_toEndOf="@+id/etLoginLogin"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/et_login_login"
-        app:layout_constraintTop_toBottomOf="@+id/et_login_login" />
+        app:layout_constraintStart_toStartOf="@+id/etLoginLogin"
+        app:layout_constraintTop_toBottomOf="@+id/etLoginLogin" />
 
     <TextView
         android:id="@+id/textView6"

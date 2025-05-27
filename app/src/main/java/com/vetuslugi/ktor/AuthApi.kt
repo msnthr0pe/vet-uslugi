@@ -1,6 +1,8 @@
 package com.vetuslugi.ktor
 
 import com.vetuslugi.ktor.AuthModels.LoginDTO
+import com.vetuslugi.ktor.AuthModels.NewsDTO
+import com.vetuslugi.ktor.AuthModels.RegisterRequest
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -23,6 +25,12 @@ interface AuthApi {
     suspend fun getClientBy(@Body request: AuthModels.ClientByDTO): List<AuthModels.ClientRequest>
 
     @POST("getuser")
-    suspend fun getUser(@Body email: LoginDTO): AuthModels.RegisterRequest
+    suspend fun getUser(@Body email: LoginDTO): RegisterRequest
+
+    @GET("getnews")
+    suspend fun getNews(): List<NewsDTO>
+
+    @POST("addnews")
+    fun addNews(@Body news: NewsDTO): Call<AuthModels.AuthResponse>
 
 }

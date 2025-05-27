@@ -12,12 +12,12 @@ class AuthModels {
     )
 
     data class RegisterRequest(
-        val email: String,
+        val login: String,
         val password: String,
         val name: String,
         val surname: String,
         val phone: String,
-        val status: String
+        val role: String
         )
 
     data class ClientRequest(
@@ -27,6 +27,11 @@ class AuthModels {
         val email: String,
         val time: String,
         val description: String,
+    )
+
+    data class NewsDTO (
+        val title: String,
+        val description: String
     )
 
     @Serializable

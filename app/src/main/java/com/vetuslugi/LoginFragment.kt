@@ -98,12 +98,12 @@ class LoginFragment : Fragment() {
                             )
 
                             prefs.edit {
-                                putString("email", userDTO.email).commit()
+                                putString("email", userDTO.login).commit()
                                 putString("name", userDTO.name).commit()
                                 putString("surname", userDTO.surname).commit()
                                 putString("phone", userDTO.phone).commit()
                                 putString("password", userDTO.password).commit()
-                                putString("status", userDTO.status).commit()
+                                putString("status", userDTO.role).commit()
                             }
                             val status = prefs.getString("status", "--")
 
