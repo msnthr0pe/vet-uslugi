@@ -2,6 +2,7 @@ package com.vetuslugi.ktor
 
 import com.vetuslugi.ktor.AuthModels.LoginDTO
 import com.vetuslugi.ktor.AuthModels.NewsDTO
+import com.vetuslugi.ktor.AuthModels.PlaceDTO
 import com.vetuslugi.ktor.AuthModels.RegisterRequest
 import retrofit2.Call
 import retrofit2.http.Body
@@ -34,9 +35,15 @@ interface AuthApi {
     fun addNews(@Body news: NewsDTO): Call<AuthModels.AuthResponse>
 
     @GET("getshelters")
-    suspend fun getShelters(): List<AuthModels.PlaceDTO>
+    suspend fun getShelters(): List<PlaceDTO>
 
     @GET("getnurseries")
-    suspend fun getNurseries(): List<AuthModels.PlaceDTO>
+    suspend fun getNurseries(): List<PlaceDTO>
+
+    @POST("updateshelter")
+    suspend fun updateShelter(@Body request: PlaceDTO): AuthModels.InfoDTO
+
+    @POST("updatenursery")
+    suspend fun updateNursery(@Body request: PlaceDTO): AuthModels.InfoDTO
 
 }

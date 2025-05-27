@@ -54,6 +54,7 @@ class NurseriesFragment : Fragment() {
                         putString("phone", nursery.phone)
                         putString("description", nursery.description)
                         putString("place", "питомнике")
+                        putBoolean("editable", false)
                         apply()
                     }
                     findNavController().navigate(R.id.action_nurseriesFragment_to_infoFragment)

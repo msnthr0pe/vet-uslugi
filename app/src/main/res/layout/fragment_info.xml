@@ -41,11 +41,11 @@
         app:layout_constraintTop_toBottomOf="@+id/tvPlaceTitle">
 
         <include
-            android:id="@+id/name_card"
+            android:id="@+id/address_card"
             layout="@layout/card_info" />
 
         <include
-            android:id="@+id/address_card"
+            android:id="@+id/name_card"
             layout="@layout/card_info" />
 
         <include

@@ -48,6 +48,9 @@ class AuthModels {
         val mode: String
     )
 
+    @Serializable
+    data class InfoDTO (val info: String)
+
     data class AuthResponse(
         val token: String
     )

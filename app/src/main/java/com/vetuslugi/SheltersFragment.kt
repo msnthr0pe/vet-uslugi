@@ -54,6 +54,7 @@ class SheltersFragment : Fragment() {
                         putString("phone", shelter.phone)
                         putString("description", shelter.description)
                         putString("place", "приюте")
+                        putBoolean("editable", false)
                         apply()
                     }
                     findNavController().navigate(R.id.action_sheltersFragment_to_infoFragment)
