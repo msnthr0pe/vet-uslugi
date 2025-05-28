@@ -67,7 +67,7 @@ class ProfileInfoFragment : Fragment() {
         }
 
         binding.btnLogOut.setOnClickListener {
-            findNavController().navigate(R.id.action_profileInfoFragment_to_loginFragment)
+            findNavController().navigate(R.id.action_profileInfoFragment_to_titleFragment)
         }
 
         binding.customBottomBar.iconNews.setOnClickListener {

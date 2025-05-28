@@ -139,6 +139,9 @@
         <action
             android:id="@+id/action_profileInfoFragment_to_nurseriesFragment"
             app:destination="@id/nurseriesFragment" />
+        <action
+            android:id="@+id/action_profileInfoFragment_to_titleFragment"
+            app:destination="@id/titleFragment" />
     </fragment>
 
     <fragment

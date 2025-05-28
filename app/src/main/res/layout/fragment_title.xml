@@ -38,6 +38,7 @@
         android:layout_marginTop="72dp"
         android:checked="false"
         android:text="Тёмная тема"
+        android:textSize="20sp"
         android:textColor="@color/blue"
         app:thumbTint="@color/blue"
         app:layout_constraintEnd_toEndOf="@+id/textView"
