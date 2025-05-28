@@ -28,7 +28,7 @@ class RegisterFragment : Fragment() {
     lateinit var etLogin: EditText
     lateinit var etPassword: EditText
     lateinit var btnContinue: Button
-    lateinit var cbIsAdministrator: CheckBox
+    lateinit var cbIsBreeder: CheckBox
     lateinit var role: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,7 +48,17 @@ class RegisterFragment : Fragment() {
         etLogin = binding.etLoginRegister
         etPassword = binding.etPasswordRegister
         btnContinue = binding.btnContinueRegister
-        role = "admin"
+        cbIsBreeder = binding.cbIsBreeder
+        role = "user"
+
+        cbIsBreeder.setOnCheckedChangeListener { _, isBreeder ->
+            role = if (isBreeder) {
+                "breeder"
+            } else {
+                "user"
+            }
+        }
+
 
         btnContinue.setOnClickListener {
             val name = etName.text.toString()

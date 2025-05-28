@@ -85,7 +85,7 @@
         app:layout_constraintStart_toStartOf="@+id/etDescNewPlace"
         app:layout_constraintTop_toBottomOf="@+id/etDescNewPlace" />
 
-    <CheckBox
+    <androidx.appcompat.widget.AppCompatCheckBox
         android:id="@+id/cbShelter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -107,7 +107,7 @@
         app:layout_constraintStart_toStartOf="@+id/tvIsShelter"
         app:layout_constraintTop_toBottomOf="@+id/tvIsShelter" />
 
-    <CheckBox
+    <androidx.appcompat.widget.AppCompatCheckBox
         android:id="@+id/cbNursery"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

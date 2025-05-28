@@ -22,7 +22,7 @@
         android:id="@+id/etNameRegister"
         android:layout_width="334dp"
         android:layout_height="55dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="84dp"
         android:ems="10"
         android:hint="Имя"
         android:inputType="text"
@@ -77,11 +77,32 @@
         android:id="@+id/btnContinueRegister"
         android:layout_width="334dp"
         android:layout_height="55dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="24dp"
         android:text="Продолжить"
-        app:layout_constraintEnd_toEndOf="@+id/etPasswordRegister"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Вы заводчик?"
+        android:textColor="@color/blue"
         app:layout_constraintStart_toStartOf="@+id/etPasswordRegister"
         app:layout_constraintTop_toBottomOf="@+id/etPasswordRegister" />
+
+    <androidx.appcompat.widget.AppCompatCheckBox
+        android:id="@+id/cbIsBreeder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="Да"
+        android:textColor="@color/blue"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView5"
+        app:layout_constraintStart_toEndOf="@+id/textView5"
+        app:layout_constraintTop_toTopOf="@+id/textView5"
+        app:layout_constraintVertical_bias="0.5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
