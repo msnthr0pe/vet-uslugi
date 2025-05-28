@@ -1,7 +1,42 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+<resources>
     <style name="Base.Theme.VetUslugi" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="materialButtonStyle">@style/Button</item>
+        <item name="android:textViewStyle">@style/TextView</item>
+        <item name="editTextStyle">@style/EditText</item>
+        <item name="checkboxStyle">@style/BlueCheckBoxStyle</item>
+
+        <item name="android:background">@color/black</item>
+        <item name="colorPrimary">@color/white</item>
+
     </style>
+    <style name="BlueCheckBoxStyle" parent="Widget.AppCompat.CompoundButton.CheckBox">
+        <item name="android:buttonTint">@color/checkbox_blue_tint</item>
+    </style>
+
+    <style name="Button" parent="Widget.Material3.Button">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.VetUslugi.Button</item>
+        <item name="backgroundTint">@android:color/black</item>
+        <item name="strokeColor">@color/blue</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="android:textColor">@color/blue</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="ShapeAppearance.VetUslugi.Button" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
+
+    <style name="TextView" parent="android:Widget.TextView">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="EditText" parent="android:Widget.EditText">
+        <item name="android:textColorHint">@color/light_blue</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/blue</item>
+        <item name="android:background">"@drawable/rounded_corners"</item>
+    </style>
+
 </resources>

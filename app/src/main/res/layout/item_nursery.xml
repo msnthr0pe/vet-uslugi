@@ -5,7 +5,9 @@
     android:layout_margin="8dp"
     app:cardCornerRadius="16dp"
     app:cardElevation="4dp"
-    android:backgroundTint="@android:color/white">
+    app:strokeColor="@color/blue"
+    app:strokeWidth="2dp"
+    android:backgroundTint="?android:attr/background">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -33,6 +35,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Название питомника"
+                android:textColor="?android:attr/colorPrimary"
                 android:textSize="16sp"
                 android:textStyle="bold" />
             <LinearLayout
@@ -40,6 +43,7 @@
                 android:layout_height="wrap_content">
                 <TextView
                     android:id="@+id/addressText"
+                    android:textColor="?android:attr/colorPrimary"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Адрес:"
@@ -50,6 +54,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="default"
+                    android:textColor="?android:attr/colorPrimary"
                     android:textSize="14sp"
                     android:layout_marginTop="4dp"
                     android:layout_marginStart="5dp"/>
@@ -64,6 +69,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Телефон"
+                    android:textColor="?android:attr/colorPrimary"
                     android:textSize="14sp"
                     android:layout_marginTop="2dp" />
 
@@ -72,6 +78,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="default"
+                    android:textColor="?android:attr/colorPrimary"
                     android:textSize="14sp"
                     android:layout_marginTop="2dp"
                     android:layout_marginStart="5dp"/>
@@ -85,6 +92,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Описание"
+                    android:textColor="?android:attr/colorPrimary"
                     android:textSize="13sp"
                     android:layout_marginTop="2dp" />
                 <TextView
@@ -92,6 +100,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="default"
+                    android:textColor="?android:attr/colorPrimary"
                     android:textSize="13sp"
                     android:layout_marginTop="2dp"
                     android:layout_marginStart="5dp"/>

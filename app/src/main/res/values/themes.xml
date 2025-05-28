@@ -6,6 +6,8 @@
         <item name="editTextStyle">@style/EditText</item>
         <item name="checkboxStyle">@style/BlueCheckBoxStyle</item>
 
+        <item name="android:background">@color/white</item>
+        <item name="colorPrimary">@color/black</item>
     </style>
 
     <style name="BlueCheckBoxStyle" parent="Widget.AppCompat.CompoundButton.CheckBox">

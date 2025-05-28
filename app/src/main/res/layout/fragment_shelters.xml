@@ -13,6 +13,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="52dp"
         android:text="Приюты"
+        android:textColor="?android:attr/colorPrimary"
         android:textSize="40sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
