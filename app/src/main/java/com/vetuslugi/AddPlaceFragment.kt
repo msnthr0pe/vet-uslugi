@@ -85,7 +85,7 @@ class AddPlaceFragment : Fragment() {
                 description.isNotEmpty()
             ) {
                 if (shelterPressed || nurseryPressed) {
-
+                    binding.progressBar.visibility = View.VISIBLE
                     if (shelterPressed) {
                         addPlace(
                             AuthModels.PlaceDTO(
@@ -107,6 +107,7 @@ class AddPlaceFragment : Fragment() {
                             ), false
                         )
                     }
+                    binding.progressBar.visibility = View.GONE
                 } else {
                     Toast.makeText(activity, "Выберите тип места", Toast.LENGTH_SHORT).show()
                 }

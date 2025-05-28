@@ -74,6 +74,7 @@ class RegisterFragment : Fragment() {
                 login.isNotEmpty() &&
                 password.isNotEmpty()
             ) {
+                binding.progressBar.visibility = View.VISIBLE
                 registerNewUser(name, surname, phone, login, password)
             } else {
                 Toast.makeText(activity, "Заполните все поля", Toast.LENGTH_SHORT).show()
@@ -98,6 +99,7 @@ class RegisterFragment : Fragment() {
                 call: Call<AuthModels.AuthResponse>,
                 response: Response<AuthModels.AuthResponse>
             ) {
+                binding.progressBar.visibility = View.GONE
                 if (response.isSuccessful) {
                     Toast.makeText(requireContext(), "Учётная запись создана", Toast.LENGTH_SHORT).show()
                     findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
@@ -108,6 +110,7 @@ class RegisterFragment : Fragment() {
 
             override fun onFailure(call: Call<AuthModels.AuthResponse>, t: Throwable) {
                 Toast.makeText(requireContext(), "Ошибка сети: ${t.message}", Toast.LENGTH_SHORT).show()
+                binding.progressBar.visibility = View.GONE
             }
         })
     }

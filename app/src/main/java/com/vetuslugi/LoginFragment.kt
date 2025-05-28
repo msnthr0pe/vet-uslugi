@@ -55,6 +55,7 @@ class LoginFragment : Fragment() {
             val login = etLogin.text.toString()
             val password = etPassword.text.toString()
             if (login.isNotEmpty() && password.isNotEmpty()) {
+                binding.progressBar.visibility = View.VISIBLE
                 loginUser(login, password)
             } else {
                 Toast.makeText(activity, "Заполните все поля", Toast.LENGTH_SHORT).show()
@@ -76,7 +77,6 @@ class LoginFragment : Fragment() {
                 response: Response<AuthModels.AuthResponse>
             ) {
                 if (response.isSuccessful) {
-
                     var userDTO = AuthModels.UserDTO(
                         "-",
                         "-",
@@ -85,7 +85,6 @@ class LoginFragment : Fragment() {
                         "-",
                         "-"
                     )
-
                     lifecycleScope.launch {
                         try {
                             userDTO = withContext(Dispatchers.IO) {
@@ -105,7 +104,7 @@ class LoginFragment : Fragment() {
                                 putString("password", userDTO.password).commit()
                                 putString("role", userDTO.role).commit()
                             }
-
+                            binding.progressBar.visibility = View.GONE
                             findNavController().navigate(R.id.action_loginFragment_to_newsFragment)
                         } catch (e: Exception) {
                             Log.e("MYCLIENT", "Ошибка: ${e.message}")
@@ -113,12 +112,14 @@ class LoginFragment : Fragment() {
                     }
                 } else {
                     Toast.makeText(requireContext(), "Ошибка входа", Toast.LENGTH_SHORT).show()
+                    binding.progressBar.visibility = View.GONE
                 }
             }
 
             override fun onFailure(call: Call<AuthModels.AuthResponse>, t: Throwable) {
                 Toast.makeText(requireContext(), "Ошибка сети: ${t.message}", Toast.LENGTH_SHORT)
                     .show()
+                binding.progressBar.visibility = View.GONE
             }
         })
     }

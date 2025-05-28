@@ -103,6 +103,7 @@ class InfoFragment : Fragment() {
                 description.isNotEmpty()
                 ) {
                 lifecycleScope.launch {
+                    binding.progressBar.visibility = View.VISIBLE
                     if (place == "приюте") {
                         ApiClient.authApi.updateShelter(
                             AuthModels.PlaceDTO(
@@ -113,6 +114,7 @@ class InfoFragment : Fragment() {
                                 "-"
                             )
                         )
+                        binding.progressBar.visibility = View.GONE
                         if (fragmentPrefs.getBoolean("fromProfile", false)) {
                             findNavController().navigate(R.id.action_infoFragment_to_profileFragment)
                         } else
@@ -129,6 +131,7 @@ class InfoFragment : Fragment() {
                                 "-"
                             )
                         )
+                        binding.progressBar.visibility = View.GONE
                         if (fragmentPrefs.getBoolean("fromProfile", false)) {
                             findNavController().navigate(R.id.action_infoFragment_to_profileFragment)
                         } else

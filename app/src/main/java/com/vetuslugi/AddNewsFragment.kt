@@ -47,6 +47,7 @@ class AddNewsFragment : Fragment() {
                 title.isNotEmpty() &&
                 description.isNotEmpty()
             ) {
+                binding.progressBar.visibility = View.VISIBLE
                 postNews(title, description)
             } else {
                 Toast.makeText(activity, "Заполните все поля", Toast.LENGTH_SHORT).show()
@@ -71,6 +72,7 @@ class AddNewsFragment : Fragment() {
                 call: Call<AuthModels.AuthResponse>,
                 response: Response<AuthModels.AuthResponse>
             ) {
+                binding.progressBar.visibility = View.GONE
                 if (response.isSuccessful) {
                     Toast.makeText(requireContext(), "Запись добавлена", Toast.LENGTH_SHORT).show()
                     findNavController().navigate(R.id.action_addNewsFragment_to_newsFragment)
@@ -81,6 +83,7 @@ class AddNewsFragment : Fragment() {
 
             override fun onFailure(call: Call<AuthModels.AuthResponse>, t: Throwable) {
                 Toast.makeText(requireContext(), "Ошибка сети: ${t.message}", Toast.LENGTH_SHORT).show()
+                binding.progressBar.visibility = View.GONE
             }
         })
     }

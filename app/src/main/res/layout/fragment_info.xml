@@ -1,73 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
 
-
-    <TextView
-        android:id="@+id/tvInfoTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="52dp"
-        android:text="Информация о"
-        android:textSize="40sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tvPlaceTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="приюте/питомнике"
-        android:textSize="40sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/tvInfoTitle"
-        app:layout_constraintTop_toBottomOf="@+id/tvInfoTitle" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
-        android:orientation="vertical"
-        android:paddingStart="25dp"
-        android:paddingEnd="25dp"
-        app:layout_constraintEnd_toEndOf="@+id/tvPlaceTitle"
-        app:layout_constraintHorizontal_bias="0.653"
-        app:layout_constraintStart_toStartOf="@+id/tvPlaceTitle"
-        app:layout_constraintTop_toBottomOf="@+id/tvPlaceTitle">
+        android:layout_height="match_parent">
 
-        <include
-            android:id="@+id/address_card"
-            layout="@layout/card_info" />
+        <TextView
+            android:id="@+id/tvInfoTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="52dp"
+            android:text="Информация о"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <include
-            android:id="@+id/name_card"
-            layout="@layout/card_info" />
+        <TextView
+            android:id="@+id/tvPlaceTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="приюте/питомнике"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/tvInfoTitle"
+            app:layout_constraintTop_toBottomOf="@+id/tvInfoTitle" />
 
-        <include
-            android:id="@+id/phone_card"
-            layout="@layout/card_info" />
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="56dp"
+            android:orientation="vertical"
+            android:paddingStart="25dp"
+            android:paddingEnd="25dp"
+            app:layout_constraintEnd_toEndOf="@+id/tvPlaceTitle"
+            app:layout_constraintHorizontal_bias="0.653"
+            app:layout_constraintStart_toStartOf="@+id/tvPlaceTitle"
+            app:layout_constraintTop_toBottomOf="@+id/tvPlaceTitle">
 
-        <include
-            android:id="@+id/description_card"
-            layout="@layout/card_info" />
+            <include
+                android:id="@+id/address_card"
+                layout="@layout/card_info" />
 
-    </LinearLayout>
+            <include
+                android:id="@+id/name_card"
+                layout="@layout/card_info" />
 
-    <Button
-        android:id="@+id/btnSaveChanges"
+            <include
+                android:id="@+id/phone_card"
+                layout="@layout/card_info" />
+
+            <include
+                android:id="@+id/description_card"
+                layout="@layout/card_info" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnSaveChanges"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Сохранить изменения"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Сохранить изменения"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_gravity="center"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/blue"
+        android:visibility="gone" />
+</FrameLayout>

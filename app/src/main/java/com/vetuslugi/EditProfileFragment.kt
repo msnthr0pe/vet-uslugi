@@ -70,6 +70,7 @@ class EditProfileFragment : Fragment() {
                 ) {
 
                 if (password.toString() == correctPassword) {
+                    binding.progressBar.visibility = View.VISIBLE
                     lifecycleScope.launch {
                         editUserInfo(UserDTO(
                             login = login.toString(),
@@ -79,14 +80,6 @@ class EditProfileFragment : Fragment() {
                             password = password.toString(),
                             role = role.toString(),
                         ))
-                    }
-                    prefs.edit {
-                        putString("login", login).commit()
-                        putString("name", name.toString()).commit()
-                        putString("surname", surname.toString()).commit()
-                        putString("phone", phone.toString()).commit()
-                        putString("password", password.toString()).commit()
-                        putString("role", role).commit()
                     }
                 } else {
                     Toast.makeText(activity, "Неверный пароль", Toast.LENGTH_SHORT).show()
@@ -104,6 +97,16 @@ class EditProfileFragment : Fragment() {
             userDTO
         )
         Toast.makeText(activity, "Информация обновлена", Toast.LENGTH_SHORT).show()
+        val prefs = requireContext().getSharedPreferences("credentials", Context.MODE_PRIVATE)
+        prefs.edit {
+            putString("login", userDTO.login).commit()
+            putString("name", userDTO.name).commit()
+            putString("surname", userDTO.surname).commit()
+            putString("phone", userDTO.phone).commit()
+            putString("password", userDTO.password).commit()
+            putString("role", userDTO.role).commit()
+        }
+        binding.progressBar.visibility = View.GONE
         findNavController().navigate(R.id.action_editProfileFragment_to_profileInfoFragment)
     }
 
