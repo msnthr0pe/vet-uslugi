@@ -82,5 +82,6 @@
         android:layout_gravity="center"
         android:indeterminate="true"
         android:indeterminateTint="@color/blue"
-        android:visibility="gone" />
+        android:visibility="gone"
+        android:background="@android:color/transparent" />
 </FrameLayout>

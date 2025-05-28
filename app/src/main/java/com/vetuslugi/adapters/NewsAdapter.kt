@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.vetuslugi.R
 import com.vetuslugi.ktor.AuthModels
 
-class NewsAdapter(private val news: List<AuthModels.NewsDTO>) :
+class NewsAdapter(private var news: List<AuthModels.NewsDTO>) :
     RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
 
     inner class NewsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -30,4 +30,8 @@ class NewsAdapter(private val news: List<AuthModels.NewsDTO>) :
 
     override fun getItemCount(): Int = news.size
 
+    fun updateList(newList: List<AuthModels.NewsDTO>) {
+        news = newList
+        notifyDataSetChanged()
+    }
 }

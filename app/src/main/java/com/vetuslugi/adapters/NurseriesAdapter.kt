@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.vetuslugi.R
 import com.vetuslugi.ktor.AuthModels
 
-class NurseriesAdapter(private val nurseries: List<AuthModels.PlaceDTO>,
+class NurseriesAdapter(private var nurseries: List<AuthModels.PlaceDTO>,
                        private val onItemClick: (AuthModels.PlaceDTO) -> Unit) :
     RecyclerView.Adapter<NurseriesAdapter.NurseriesViewHolder>() {
 
@@ -43,5 +43,10 @@ class NurseriesAdapter(private val nurseries: List<AuthModels.PlaceDTO>,
     }
 
     override fun getItemCount(): Int = nurseries.size
+
+    fun updateList(newList: List<AuthModels.PlaceDTO>) {
+        nurseries = newList
+        notifyDataSetChanged()
+    }
 
 }

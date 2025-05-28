@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.vetuslugi.R
 import com.vetuslugi.ktor.AuthModels
 
-class SheltersAdapter(private val shelters: List<AuthModels.PlaceDTO>,
+class SheltersAdapter(private var shelters: List<AuthModels.PlaceDTO>,
                       private val onItemClick: (AuthModels.PlaceDTO) -> Unit) :
     RecyclerView.Adapter<SheltersAdapter.SheltersViewHolder>() {
 
@@ -43,5 +43,10 @@ class SheltersAdapter(private val shelters: List<AuthModels.PlaceDTO>,
     }
 
     override fun getItemCount(): Int = shelters.size
+
+    fun updateList(newList: List<AuthModels.PlaceDTO>) {
+        shelters = newList
+        notifyDataSetChanged()
+    }
 
 }

@@ -23,7 +23,7 @@
         android:id="@+id/sheltersRecycler"
         android:layout_width="400dp"
         android:layout_height="550dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="96dp"
         app:layout_constraintEnd_toEndOf="@+id/shelters"
         app:layout_constraintHorizontal_bias="0.112"
         app:layout_constraintStart_toStartOf="@+id/shelters"
@@ -39,5 +39,14 @@
         android:layout_alignParentBottom="true"
         app:layout_constraintBottom_toBottomOf="parent" />
 
+    <EditText
+        android:id="@+id/etSearch"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="20dp"
+        android:hint="Поиск"
+        app:layout_constraintStart_toStartOf="@+id/shelters"
+        app:layout_constraintTop_toBottomOf="@+id/shelters" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

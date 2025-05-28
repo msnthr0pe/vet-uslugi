@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
+
     <item android:state_pressed="true" android:state_focused="true">
         <shape>
-            <solid android:color="@color/light_gray"/>
+            <solid android:color="?android:attr/background"/>
+            <stroke android:width="2dp" android:color="@color/blue" />
             <corners android:radius="25dp" />
             <padding
                 android:left="12dp"
@@ -14,7 +16,8 @@
 
     <item android:state_focused="true">
         <shape>
-            <solid android:color="@color/light_gray"/>
+            <solid android:color="?android:attr/background"/>
+            <stroke android:width="2dp" android:color="@color/blue" />
             <corners android:radius="25dp" />
             <padding
                 android:left="12dp"
@@ -26,7 +29,8 @@
 
     <item>
         <shape>
-            <solid android:color="@color/light_gray"/>
+            <solid android:color="?android:attr/background"/>
+            <stroke android:width="2dp" android:color="@color/blue" />
             <corners android:radius="25dp" />
             <padding
                 android:left="12dp"
