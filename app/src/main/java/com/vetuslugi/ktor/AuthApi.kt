@@ -4,6 +4,7 @@ import com.vetuslugi.ktor.AuthModels.LoginDTO
 import com.vetuslugi.ktor.AuthModels.NewsDTO
 import com.vetuslugi.ktor.AuthModels.PlaceDTO
 import com.vetuslugi.ktor.AuthModels.UserDTO
+import com.vetuslugi.ktor.AuthModels.AuthResponse
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -14,16 +15,7 @@ interface AuthApi {
     fun login(@Body request: AuthModels.LoginRequest): Call<AuthModels.AuthResponse>
 
     @POST("register")
-    fun register(@Body request: AuthModels.UserDTO): Call<AuthModels.AuthResponse>
-
-    @POST("addclient")
-    fun addClient(@Body request: AuthModels.ClientRequest): Call<AuthModels.AuthResponse>
-
-    @GET("getclients")
-    suspend fun getClients(): List<AuthModels.ClientRequest>
-
-    @POST("getclientby")
-    suspend fun getClientBy(@Body request: AuthModels.ClientByDTO): List<AuthModels.ClientRequest>
+    fun register(@Body request: UserDTO): Call<AuthResponse>
 
     @POST("getuser")
     suspend fun getUser(@Body email: LoginDTO): UserDTO
@@ -32,7 +24,7 @@ interface AuthApi {
     suspend fun getNews(): List<NewsDTO>
 
     @POST("addnews")
-    fun addNews(@Body news: NewsDTO): Call<AuthModels.AuthResponse>
+    fun addNews(@Body news: NewsDTO): Call<AuthResponse>
 
     @GET("getshelters")
     suspend fun getShelters(): List<PlaceDTO>
@@ -53,12 +45,12 @@ interface AuthApi {
     suspend fun getNurseryBy(@Body request: AuthModels.InfoDTO): List<PlaceDTO>
 
     @POST("addshelter")
-    fun addShelter(@Body news: PlaceDTO): Call<AuthModels.AuthResponse>
+    fun addShelter(@Body news: PlaceDTO): Call<AuthResponse>
 
     @POST("addnursery")
-    fun addNursery(@Body news: PlaceDTO): Call<AuthModels.AuthResponse>
+    fun addNursery(@Body news: PlaceDTO): Call<AuthResponse>
 
     @POST("updateuser")
-    suspend fun updateUser(@Body request: UserDTO): AuthModels.AuthResponse
+    suspend fun updateUser(@Body request: UserDTO): AuthResponse
 
 }

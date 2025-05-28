@@ -21,15 +21,6 @@ class AuthModels {
         val role: String
         )
 
-    data class ClientRequest(
-        val date: String,
-        val phone: String,
-        val name: String,
-        val email: String,
-        val time: String,
-        val description: String,
-    )
-
     data class NewsDTO (
         val title: String,
         val description: String
@@ -43,12 +34,6 @@ class AuthModels {
         val owner: String,
     )
 
-    @Serializable
-    data class ClientByDTO(
-        val name: String,
-        val date: String,
-        val mode: String
-    )
 
     @Serializable
     data class InfoDTO (val info: String)
