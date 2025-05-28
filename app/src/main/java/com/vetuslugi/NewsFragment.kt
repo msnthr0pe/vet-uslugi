@@ -1,5 +1,6 @@
 package com.vetuslugi
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -65,6 +66,14 @@ class NewsFragment : Fragment() {
 
         binding.customBottomBar.iconProfile.setOnClickListener {
             findNavController().navigate(R.id.action_newsFragment_to_profileFragment)
+        }
+
+        val prefs = requireContext().getSharedPreferences(
+            "credentials",
+            Context.MODE_PRIVATE
+        )
+        if (prefs.getString("role", "-") != "admin") {
+            binding.btnAdd.visibility = View.GONE
         }
 
         return binding.root

@@ -42,6 +42,14 @@ class ProfileFragment : Fragment() {
     ): View {
         _binding = FragmentProfileBinding.inflate(layoutInflater, container, false)
 
+        val rolePrefs = requireContext().getSharedPreferences(
+            "credentials",
+            Context.MODE_PRIVATE
+        )
+        if (rolePrefs.getString("role", "-") == "user") {
+            findNavController().navigate(R.id.action_profileFragment_to_profileInfoFragment)
+        }
+
         binding.customBottomBar4.iconNews.setOnClickListener {
             findNavController().navigate(R.id.action_profileFragment_to_newsFragment)
         }
