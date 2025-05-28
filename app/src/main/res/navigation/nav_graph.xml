@@ -78,6 +78,9 @@
         android:name="com.vetuslugi.AddPlaceFragment"
         android:label="Title"
         tools:layout="@layout/fragment_add_place">
+        <action
+            android:id="@+id/action_addPlaceFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
 
     <fragment
@@ -85,6 +88,9 @@
         android:name="com.vetuslugi.EditProfileFragment"
         android:label="Title"
         tools:layout="@layout/fragment_edit_profile">
+        <action
+            android:id="@+id/action_editProfileFragment_to_profileInfoFragment"
+            app:destination="@id/profileInfoFragment" />
     </fragment>
 
     <fragment
@@ -121,6 +127,9 @@
         <action
             android:id="@+id/action_profileInfoFragment_to_editProfileFragment"
             app:destination="@id/editProfileFragment" />
+        <action
+            android:id="@+id/action_profileInfoFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
 
     <fragment

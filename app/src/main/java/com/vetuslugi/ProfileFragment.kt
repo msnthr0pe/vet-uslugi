@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -51,6 +52,14 @@ class ProfileFragment : Fragment() {
             findNavController().navigate(R.id.action_profileFragment_to_nurseriesFragment)
         }
 
+        binding.tvGetInfo.setOnClickListener {
+            findNavController().navigate(R.id.action_profileFragment_to_profileInfoFragment)
+        }
+
+        binding.btnAddPlace.setOnClickListener {
+            findNavController().navigate(R.id.action_profileFragment_to_addPlaceFragment)
+        }
+
         val fragmentPrefs = requireActivity().getSharedPreferences("fragment_prefs",
             Context.MODE_PRIVATE)
         fragmentPrefs.edit().apply {
@@ -66,6 +75,11 @@ class ProfileFragment : Fragment() {
         val prefs = requireActivity().getSharedPreferences("credentials",
             Context.MODE_PRIVATE)
         val login = prefs.getString("login", "не указано")
+        val name = prefs.getString("name", "не указано")
+        val surname = prefs.getString("surname", "не указано")
+
+        binding.tvNameUser.text = name
+        binding.tvSurnameUser.text = surname
 
         lifecycleScope.launch {
             try {
