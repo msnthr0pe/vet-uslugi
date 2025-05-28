@@ -77,7 +77,7 @@ class LoginFragment : Fragment() {
             ) {
                 if (response.isSuccessful) {
 
-                    var userDTO = AuthModels.RegisterRequest(
+                    var userDTO = AuthModels.UserDTO(
                         "-",
                         "-",
                         "-",

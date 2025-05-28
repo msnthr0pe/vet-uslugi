@@ -11,7 +11,8 @@ class AuthModels {
         val password: String
     )
 
-    data class RegisterRequest(
+    @Serializable
+    data class UserDTO (
         val login: String,
         val password: String,
         val name: String,

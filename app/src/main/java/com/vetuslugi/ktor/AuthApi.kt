@@ -3,7 +3,7 @@ package com.vetuslugi.ktor
 import com.vetuslugi.ktor.AuthModels.LoginDTO
 import com.vetuslugi.ktor.AuthModels.NewsDTO
 import com.vetuslugi.ktor.AuthModels.PlaceDTO
-import com.vetuslugi.ktor.AuthModels.RegisterRequest
+import com.vetuslugi.ktor.AuthModels.UserDTO
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -14,7 +14,7 @@ interface AuthApi {
     fun login(@Body request: AuthModels.LoginRequest): Call<AuthModels.AuthResponse>
 
     @POST("register")
-    fun register(@Body request: AuthModels.RegisterRequest): Call<AuthModels.AuthResponse>
+    fun register(@Body request: AuthModels.UserDTO): Call<AuthModels.AuthResponse>
 
     @POST("addclient")
     fun addClient(@Body request: AuthModels.ClientRequest): Call<AuthModels.AuthResponse>
@@ -26,7 +26,7 @@ interface AuthApi {
     suspend fun getClientBy(@Body request: AuthModels.ClientByDTO): List<AuthModels.ClientRequest>
 
     @POST("getuser")
-    suspend fun getUser(@Body email: LoginDTO): RegisterRequest
+    suspend fun getUser(@Body email: LoginDTO): UserDTO
 
     @GET("getnews")
     suspend fun getNews(): List<NewsDTO>
@@ -57,5 +57,8 @@ interface AuthApi {
 
     @POST("addnursery")
     fun addNursery(@Body news: PlaceDTO): Call<AuthModels.AuthResponse>
+
+    @POST("updateuser")
+    suspend fun updateUser(@Body request: UserDTO): AuthModels.AuthResponse
 
 }

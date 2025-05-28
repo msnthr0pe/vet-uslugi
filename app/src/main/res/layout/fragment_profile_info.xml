@@ -58,28 +58,28 @@
         app:layout_constraintTop_toBottomOf="@+id/etSurname" />
 
     <EditText
-        android:id="@+id/etEmail"
+        android:id="@+id/etLogin"
         android:layout_width="334dp"
         android:layout_height="55dp"
         android:layout_marginTop="12dp"
         android:ems="10"
         android:enabled="false"
-        android:text="Email"
+        android:text="Логин"
         android:textColor="@color/blue"
         android:inputType="textEmailAddress"
         app:layout_constraintStart_toStartOf="@+id/etPhone"
         app:layout_constraintTop_toBottomOf="@+id/etPhone" />
 
     <Button
-        android:id="@+id/btnChangePassword"
+        android:id="@+id/btnEditInformation"
         android:layout_width="334dp"
         android:layout_height="55dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="100dp"
         android:text="Редактировать информацию"
-        app:layout_constraintEnd_toEndOf="@+id/etEmail"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/etEmail"
-        app:layout_constraintTop_toBottomOf="@+id/etEmail" />
+        app:layout_constraintEnd_toEndOf="@+id/etLogin"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/etLogin"
+        app:layout_constraintTop_toBottomOf="@+id/etLogin" />
 
     <TextView
         android:id="@+id/role"
@@ -87,15 +87,17 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="9dp"
         android:text="Роль:"
-        app:layout_constraintStart_toStartOf="@+id/etEmail"
-        app:layout_constraintTop_toBottomOf="@+id/etEmail" />
+        android:textColor="@color/blue"
+        app:layout_constraintStart_toStartOf="@+id/etLogin"
+        app:layout_constraintTop_toBottomOf="@+id/etLogin" />
 
     <TextView
-        android:id="@+id/tvStatus"
+        android:id="@+id/tvRole"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="status"
+        android:text="role"
+        android:textColor="@color/blue"
         app:layout_constraintBottom_toBottomOf="@+id/role"
         app:layout_constraintStart_toEndOf="@+id/role"
         app:layout_constraintTop_toTopOf="@+id/role"
@@ -105,12 +107,20 @@
         android:id="@+id/btnLogOut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="172dp"
         android:text="Выйти"
-        android:textStyle="bold"
         android:textColor="@color/red"
-        app:layout_constraintEnd_toEndOf="@+id/btnChangePassword"
-        app:layout_constraintStart_toStartOf="@+id/btnChangePassword"
-        app:layout_constraintTop_toBottomOf="@+id/btnChangePassword" />
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/btnEditInformation"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="@+id/btnEditInformation"
+        app:layout_constraintTop_toBottomOf="@+id/btnEditInformation" />
 
+    <include
+        android:id="@+id/customBottomBar"
+        layout="@layout/nav_bar4"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        app:layout_constraintBottom_toBottomOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

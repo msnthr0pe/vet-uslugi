@@ -130,6 +130,15 @@
         <action
             android:id="@+id/action_profileInfoFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_profileInfoFragment_to_sheltersFragment"
+            app:destination="@id/sheltersFragment" />
+        <action
+            android:id="@+id/action_profileInfoFragment_to_newsFragment"
+            app:destination="@id/newsFragment" />
+        <action
+            android:id="@+id/action_profileInfoFragment_to_nurseriesFragment"
+            app:destination="@id/nurseriesFragment" />
     </fragment>
 
     <fragment

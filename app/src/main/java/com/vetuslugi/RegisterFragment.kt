@@ -80,7 +80,7 @@ class RegisterFragment : Fragment() {
         login: String,
         password: String
     ) {
-        val call = ApiClient.authApi.register(AuthModels.RegisterRequest(
+        val call = ApiClient.authApi.register(AuthModels.UserDTO(
             login, password, name, surname, phone, role)
         )
         call.enqueue(object : Callback<AuthModels.AuthResponse> {
