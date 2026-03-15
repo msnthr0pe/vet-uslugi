@@ -5,31 +5,80 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-
     <TextView
         android:id="@+id/shelters"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="52dp"
-        android:text="Приюты"
+        android:text="Места"
         android:textColor="?android:attr/colorPrimary"
         android:textSize="40sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+
+    <EditText
+        android:id="@+id/etSearch"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="10dp"
+        android:hint="Поиск"
+        app:layout_constraintStart_toStartOf="@+id/shelters"
+        app:layout_constraintTop_toBottomOf="@+id/shelters" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/sheltersRecycler"
         android:layout_width="400dp"
-        android:layout_height="550dp"
-        android:layout_marginTop="96dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/filterLayout"
         app:layout_constraintEnd_toEndOf="@+id/shelters"
         app:layout_constraintHorizontal_bias="0.112"
         app:layout_constraintStart_toStartOf="@+id/shelters"
-        app:layout_constraintTop_toBottomOf="@+id/shelters"
+        app:layout_constraintTop_toBottomOf="@+id/etSearch"
         tools:itemCount="4"
         tools:listitem="@layout/item_shelter" />
+
+    <LinearLayout
+        android:id="@+id/filterLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="70dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <Button
+            android:id="@+id/btnFilterShelters"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_margin="6dp"
+            android:layout_weight="1"
+            android:text="Приюты"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/btnFilterNurseries"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_margin="6dp"
+            android:layout_weight="1"
+            android:text="Питомники"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/btnFilterClub"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_margin="6dp"
+            android:layout_weight="1"
+            android:text="Клубы"
+            android:textSize="14sp" />
+
+    </LinearLayout>
 
     <include
         android:id="@+id/customBottomBar"
@@ -38,15 +87,5 @@
         android:layout_height="70dp"
         android:layout_alignParentBottom="true"
         app:layout_constraintBottom_toBottomOf="parent" />
-
-    <EditText
-        android:id="@+id/etSearch"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_marginHorizontal="15dp"
-        android:layout_marginTop="20dp"
-        android:hint="Поиск"
-        app:layout_constraintStart_toStartOf="@+id/shelters"
-        app:layout_constraintTop_toBottomOf="@+id/shelters" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -33,6 +33,9 @@
         <action
             android:id="@+id/action_newsFragment_to_addNewsFragment"
             app:destination="@id/addNewsFragment" />
+        <action
+            android:id="@+id/action_newsFragment_to_recommendationsFragment"
+            app:destination="@id/recommendationsFragment" />
     </fragment>
 
     <fragment
@@ -52,6 +55,9 @@
         <action
             android:id="@+id/action_sheltersFragment_to_infoFragment"
             app:destination="@id/infoFragment" />
+        <action
+            android:id="@+id/action_sheltersFragment_to_recommendationsFragment"
+            app:destination="@id/recommendationsFragment" />
     </fragment>
 
     <fragment
@@ -71,6 +77,9 @@
         <action
             android:id="@+id/action_nurseriesFragment_to_infoFragment"
             app:destination="@id/infoFragment" />
+        <action
+            android:id="@+id/action_nurseriesFragment_to_recommendationsFragment"
+            app:destination="@id/recommendationsFragment" />
     </fragment>
 
     <fragment
@@ -116,6 +125,9 @@
         <action
             android:id="@+id/action_profileFragment_to_newsFragment"
             app:destination="@id/newsFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_recommendationsFragment"
+            app:destination="@id/recommendationsFragment" />
 
     </fragment>
 
@@ -142,6 +154,9 @@
         <action
             android:id="@+id/action_profileInfoFragment_to_titleFragment"
             app:destination="@id/titleFragment" />
+        <action
+            android:id="@+id/action_profileInfoFragment_to_recommendationsFragment"
+            app:destination="@id/recommendationsFragment" />
     </fragment>
 
     <fragment
@@ -191,6 +206,30 @@
         <action
             android:id="@+id/action_addNewsFragment_to_newsFragment"
             app:destination="@id/newsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/recommendationsFragment"
+        android:label="Title"
+        tools:layout="@layout/fragment_recommendations">
+    </fragment>
+
+    <fragment
+        android:id="@+id/animalCardFragment"
+        android:label="Title"
+        tools:layout="@layout/fragment_animal_card">
+    </fragment>
+
+    <fragment
+        android:id="@+id/animalsFragment"
+        android:label="Title"
+        tools:layout="@layout/fragment_animals">
+    </fragment>
+
+    <fragment
+        android:id="@+id/addAnimalFragment"
+        android:label="Title"
+        tools:layout="@layout/fragment_add_animal">
     </fragment>
 
 </navigation>

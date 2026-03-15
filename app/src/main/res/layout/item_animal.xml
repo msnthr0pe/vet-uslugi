@@ -1,0 +1,107 @@
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="4dp"
+    app:strokeColor="@color/blue"
+    app:strokeWidth="2dp"
+    android:backgroundTint="?android:attr/background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="12dp">
+
+        <ImageView
+            android:id="@+id/animalImage"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:scaleType="centerCrop"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/nursery"
+            android:clipToOutline="true" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/animalName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Кличка"
+                android:textColor="?android:attr/colorPrimary"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Порода:"
+                    android:textColor="?android:attr/colorPrimary"
+                    android:textSize="14sp"
+                    android:layout_marginTop="4dp" />
+                <TextView
+                    android:id="@+id/animalBreed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="4dp"
+                    android:text="default"
+                    android:textColor="?android:attr/colorPrimary"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Возраст:"
+                    android:textColor="?android:attr/colorPrimary"
+                    android:textSize="14sp"
+                    android:layout_marginTop="2dp" />
+                <TextView
+                    android:id="@+id/animalAge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="default"
+                    android:textColor="?android:attr/colorPrimary"
+                    android:textSize="14sp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginStart="5dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Описание:"
+                    android:textColor="?android:attr/colorPrimary"
+                    android:textSize="13sp"
+                    android:layout_marginTop="2dp" />
+                <TextView
+                    android:id="@+id/animalDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="default"
+                    android:textColor="?android:attr/colorPrimary"
+                    android:textSize="13sp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginStart="5dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>
