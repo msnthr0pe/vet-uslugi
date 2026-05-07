@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.vetuslugi.R
-import com.vetuslugi.ktor.AuthModels
+import com.vetuslugi.domain.model.News
 
-class NewsAdapter(private var news: List<AuthModels.NewsDTO>) :
+class NewsAdapter(private var news: List<News>) :
     RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
 
     inner class NewsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -17,8 +17,7 @@ class NewsAdapter(private var news: List<AuthModels.NewsDTO>) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_news, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_news, parent, false)
         return NewsViewHolder(view)
     }
 
@@ -30,7 +29,7 @@ class NewsAdapter(private var news: List<AuthModels.NewsDTO>) :
 
     override fun getItemCount(): Int = news.size
 
-    fun updateList(newList: List<AuthModels.NewsDTO>) {
+    fun updateList(newList: List<News>) {
         news = newList
         notifyDataSetChanged()
     }

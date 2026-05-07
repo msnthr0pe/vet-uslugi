@@ -5,17 +5,16 @@ import com.vetuslugi.ktor.AuthModels.NewsDTO
 import com.vetuslugi.ktor.AuthModels.PlaceDTO
 import com.vetuslugi.ktor.AuthModels.UserDTO
 import com.vetuslugi.ktor.AuthModels.AuthResponse
-import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface AuthApi {
     @POST("login")
-    fun login(@Body request: AuthModels.LoginRequest): Call<AuthModels.AuthResponse>
+    suspend fun login(@Body request: AuthModels.LoginRequest): AuthResponse
 
     @POST("register")
-    fun register(@Body request: UserDTO): Call<AuthResponse>
+    suspend fun register(@Body request: UserDTO): AuthResponse
 
     @POST("getuser")
     suspend fun getUser(@Body email: LoginDTO): UserDTO
@@ -24,7 +23,7 @@ interface AuthApi {
     suspend fun getNews(): List<NewsDTO>
 
     @POST("addnews")
-    fun addNews(@Body news: NewsDTO): Call<AuthResponse>
+    suspend fun addNews(@Body news: NewsDTO): AuthResponse
 
     @GET("getshelters")
     suspend fun getShelters(): List<PlaceDTO>
@@ -45,12 +44,11 @@ interface AuthApi {
     suspend fun getNurseryBy(@Body request: AuthModels.InfoDTO): List<PlaceDTO>
 
     @POST("addshelter")
-    fun addShelter(@Body news: PlaceDTO): Call<AuthResponse>
+    suspend fun addShelter(@Body news: PlaceDTO): AuthResponse
 
     @POST("addnursery")
-    fun addNursery(@Body news: PlaceDTO): Call<AuthResponse>
+    suspend fun addNursery(@Body news: PlaceDTO): AuthResponse
 
     @POST("updateuser")
     suspend fun updateUser(@Body request: UserDTO): AuthResponse
-
 }

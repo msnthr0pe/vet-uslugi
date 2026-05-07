@@ -6,11 +6,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.vetuslugi.R
-import com.vetuslugi.ktor.AuthModels
+import com.vetuslugi.domain.model.Place
 
-class NurseriesAdapter(private var nurseries: List<AuthModels.PlaceDTO>,
-                       private val onItemClick: (AuthModels.PlaceDTO) -> Unit) :
-    RecyclerView.Adapter<NurseriesAdapter.NurseriesViewHolder>() {
+class NurseriesAdapter(
+    private var nurseries: List<Place>,
+    private val onItemClick: (Place) -> Unit
+) : RecyclerView.Adapter<NurseriesAdapter.NurseriesViewHolder>() {
 
     inner class NurseriesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val addressText: TextView = itemView.findViewById(R.id.addressNurseryInput)
@@ -21,16 +22,13 @@ class NurseriesAdapter(private var nurseries: List<AuthModels.PlaceDTO>,
         init {
             itemView.setOnClickListener {
                 val position = adapterPosition
-                if (position != RecyclerView.NO_POSITION) {
-                    onItemClick(nurseries[position])
-                }
+                if (position != RecyclerView.NO_POSITION) onItemClick(nurseries[position])
             }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NurseriesViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_nursery, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_nursery, parent, false)
         return NurseriesViewHolder(view)
     }
 
@@ -44,9 +42,8 @@ class NurseriesAdapter(private var nurseries: List<AuthModels.PlaceDTO>,
 
     override fun getItemCount(): Int = nurseries.size
 
-    fun updateList(newList: List<AuthModels.PlaceDTO>) {
+    fun updateList(newList: List<Place>) {
         nurseries = newList
         notifyDataSetChanged()
     }
-
 }

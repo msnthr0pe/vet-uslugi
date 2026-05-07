@@ -1,21 +1,16 @@
 package com.vetuslugi
 
-import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
-import androidx.core.content.edit
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.vetuslugi.databinding.FragmentEditProfileBinding
-import com.vetuslugi.ktor.ApiClient
-import com.vetuslugi.ktor.AuthModels
-import com.vetuslugi.ktor.AuthModels.UserDTO
+import com.vetuslugi.presentation.viewmodel.EditProfileViewModel
 import kotlinx.coroutines.launch
 
 class EditProfileFragment : Fragment() {
@@ -23,95 +18,58 @@ class EditProfileFragment : Fragment() {
     private var _binding: FragmentEditProfileBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var etNameEdit: EditText
-    private lateinit var etSurnameEdit: EditText
-    private lateinit var etPhoneEdit: EditText
-    private lateinit var etPasswordConfirmation: EditText
-    private lateinit var btnChangeData: Button
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
+    private val viewModel: EditProfileViewModel by viewModels {
+        (requireActivity().application as VetUslugiApp).container.editProfileViewModelFactory
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentEditProfileBinding.inflate(layoutInflater, container, false)
+        _binding = FragmentEditProfileBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-        etNameEdit = binding.etNameEdit
-        etSurnameEdit = binding.etSurnameEdit
-        etPhoneEdit = binding.etPhoneEdit
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        etPasswordConfirmation = binding.etConfirmationPassword
-        btnChangeData = binding.btnChangeData
+        val user = viewModel.getCurrentUser()
+        binding.etNameEdit.setText(user?.name)
+        binding.etSurnameEdit.setText(user?.surname)
+        binding.etPhoneEdit.setText(user?.phone)
 
-        val prefs = requireContext().getSharedPreferences("credentials", Context.MODE_PRIVATE)
-        etNameEdit.setText(prefs.getString("name", "-"))
-        etSurnameEdit.setText(prefs.getString("surname", "-"))
-        etPhoneEdit.setText(prefs.getString("phone", "-"))
+        binding.btnChangeData.setOnClickListener {
+            val name = binding.etNameEdit.text.toString()
+            val surname = binding.etSurnameEdit.text.toString()
+            val phone = binding.etPhoneEdit.text.toString()
+            val password = binding.etConfirmationPassword.text.toString()
 
-        btnChangeData.setOnClickListener {
-            val name = etNameEdit.text
-            val surname = etSurnameEdit.text
-            val phone = etPhoneEdit.text
-            val password = etPasswordConfirmation.text
-            val login = prefs.getString("login", "-")
-            val role = prefs.getString("role", "-")
-
-            val correctPassword = prefs.getString("password", "-")
-            if (
-                name.isNotEmpty() &&
-                surname.isNotEmpty() &&
-                phone.isNotEmpty() &&
-                password.isNotEmpty()
-                ) {
-
-                if (password.toString() == correctPassword) {
-                    binding.progressBar.visibility = View.VISIBLE
-                    lifecycleScope.launch {
-                        editUserInfo(UserDTO(
-                            login = login.toString(),
-                            name = name.toString(),
-                            surname = surname.toString(),
-                            phone = phone.toString(),
-                            password = password.toString(),
-                            role = role.toString(),
-                        ))
-                    }
-                } else {
-                    Toast.makeText(activity, "Неверный пароль", Toast.LENGTH_SHORT).show()
-                }
-
+            if (name.isNotEmpty() && surname.isNotEmpty() && phone.isNotEmpty() && password.isNotEmpty()) {
+                viewModel.updateUser(name, surname, phone, password)
             } else {
                 Toast.makeText(activity, "Заполните все поля", Toast.LENGTH_SHORT).show()
             }
         }
-        return binding.root
-    }
 
-    private suspend fun editUserInfo(userDTO: UserDTO) {
-        ApiClient.authApi.updateUser(
-            userDTO
-        )
-        Toast.makeText(activity, "Информация обновлена", Toast.LENGTH_SHORT).show()
-        val prefs = requireContext().getSharedPreferences("credentials", Context.MODE_PRIVATE)
-        prefs.edit {
-            putString("login", userDTO.login).commit()
-            putString("name", userDTO.name).commit()
-            putString("surname", userDTO.surname).commit()
-            putString("phone", userDTO.phone).commit()
-            putString("password", userDTO.password).commit()
-            putString("role", userDTO.role).commit()
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.uiState.collect { state ->
+                when (state) {
+                    is EditProfileViewModel.UiState.Loading -> binding.progressBar.visibility = View.VISIBLE
+                    is EditProfileViewModel.UiState.Success -> {
+                        binding.progressBar.visibility = View.GONE
+                        Toast.makeText(requireContext(), "Информация обновлена", Toast.LENGTH_SHORT).show()
+                        viewModel.resetState()
+                        findNavController().navigate(R.id.action_editProfileFragment_to_profileInfoFragment)
+                    }
+                    is EditProfileViewModel.UiState.Error -> {
+                        binding.progressBar.visibility = View.GONE
+                        Toast.makeText(requireContext(), state.message, Toast.LENGTH_SHORT).show()
+                        viewModel.resetState()
+                    }
+                    else -> binding.progressBar.visibility = View.GONE
+                }
+            }
         }
-        binding.progressBar.visibility = View.GONE
-        findNavController().navigate(R.id.action_editProfileFragment_to_profileInfoFragment)
-    }
-
-    companion object {
-
     }
 
     override fun onDestroyView() {

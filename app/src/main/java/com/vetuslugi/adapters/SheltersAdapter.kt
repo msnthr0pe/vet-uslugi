@@ -6,11 +6,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.vetuslugi.R
-import com.vetuslugi.ktor.AuthModels
+import com.vetuslugi.domain.model.Place
 
-class SheltersAdapter(private var shelters: List<AuthModels.PlaceDTO>,
-                      private val onItemClick: (AuthModels.PlaceDTO) -> Unit) :
-    RecyclerView.Adapter<SheltersAdapter.SheltersViewHolder>() {
+class SheltersAdapter(
+    private var shelters: List<Place>,
+    private val onItemClick: (Place) -> Unit
+) : RecyclerView.Adapter<SheltersAdapter.SheltersViewHolder>() {
 
     inner class SheltersViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val addressText: TextView = itemView.findViewById(R.id.addressShelterInput)
@@ -21,16 +22,13 @@ class SheltersAdapter(private var shelters: List<AuthModels.PlaceDTO>,
         init {
             itemView.setOnClickListener {
                 val position = adapterPosition
-                if (position != RecyclerView.NO_POSITION) {
-                    onItemClick(shelters[position])
-                }
+                if (position != RecyclerView.NO_POSITION) onItemClick(shelters[position])
             }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SheltersViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_shelter, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_shelter, parent, false)
         return SheltersViewHolder(view)
     }
 
@@ -44,9 +42,8 @@ class SheltersAdapter(private var shelters: List<AuthModels.PlaceDTO>,
 
     override fun getItemCount(): Int = shelters.size
 
-    fun updateList(newList: List<AuthModels.PlaceDTO>) {
+    fun updateList(newList: List<Place>) {
         shelters = newList
         notifyDataSetChanged()
     }
-
 }
