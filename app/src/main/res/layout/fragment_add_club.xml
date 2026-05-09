@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tvAddClubTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="52dp"
+        android:text="Добавить\nклуб"
+        android:textColor="@color/blue"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/etClubName"
+        android:layout_width="334dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="32dp"
+        android:hint="Название"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="@+id/tvAddClubTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvAddClubTitle" />
+
+    <EditText
+        android:id="@+id/etClubAddress"
+        android:layout_width="334dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="12dp"
+        android:hint="Адрес"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="@+id/etClubName"
+        app:layout_constraintTop_toBottomOf="@+id/etClubName" />
+
+    <EditText
+        android:id="@+id/etClubPhone"
+        android:layout_width="334dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="12dp"
+        android:hint="Контактный телефон"
+        android:inputType="phone"
+        app:layout_constraintStart_toStartOf="@+id/etClubAddress"
+        app:layout_constraintTop_toBottomOf="@+id/etClubAddress" />
+
+    <EditText
+        android:id="@+id/etClubDescription"
+        android:layout_width="334dp"
+        android:layout_height="125dp"
+        android:layout_marginTop="12dp"
+        android:gravity="start|top"
+        android:hint="Описание"
+        android:inputType="textMultiLine"
+        app:layout_constraintStart_toStartOf="@+id/etClubPhone"
+        app:layout_constraintTop_toBottomOf="@+id/etClubPhone" />
+
+    <Button
+        android:id="@+id/btnCreateClub"
+        android:layout_width="334dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="24dp"
+        android:text="Создать клуб"
+        app:layout_constraintStart_toStartOf="@+id/etClubDescription"
+        app:layout_constraintTop_toBottomOf="@+id/etClubDescription" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/blue"
+        android:visibility="gone"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

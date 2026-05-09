@@ -29,6 +29,7 @@ class PlacesFragment : Fragment() {
     private lateinit var sheltersAdapter: SheltersAdapter
     private lateinit var nurseriesAdapter: NurseriesAdapter
     private lateinit var clubsAdapter: ClubsAdapter
+    private var isAdmin = false
 
     private val viewModel: PlacesViewModel by viewModels {
         (requireActivity().application as VetUslugiApp).container.placesViewModelFactory
@@ -66,6 +67,12 @@ class PlacesFragment : Fragment() {
         }
         binding.clubsRecycler.layoutManager = LinearLayoutManager(activity)
         binding.clubsRecycler.adapter = clubsAdapter
+
+        isAdmin = (requireActivity().application as VetUslugiApp).container.userSession.getRole() == "admin"
+
+        binding.btnAddClub.setOnClickListener {
+            findNavController().navigate(R.id.action_placesFragment_to_addClubFragment)
+        }
 
         binding.chipGroup.setOnCheckedStateChangeListener { _, checkedIds ->
             when {
@@ -113,6 +120,8 @@ class PlacesFragment : Fragment() {
         binding.sheltersRecycler.visibility = if (tab == Tab.SHELTERS) View.VISIBLE else View.GONE
         binding.nurseriesRecycler.visibility = if (tab == Tab.NURSERIES) View.VISIBLE else View.GONE
         binding.clubsRecycler.visibility = if (tab == Tab.CLUBS) View.VISIBLE else View.GONE
+        binding.btnAddClub.visibility =
+            if (tab == Tab.CLUBS && isAdmin) View.VISIBLE else View.GONE
     }
 
     override fun onDestroyView() {

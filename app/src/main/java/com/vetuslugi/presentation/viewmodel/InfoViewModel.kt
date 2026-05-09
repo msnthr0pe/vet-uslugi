@@ -3,6 +3,7 @@ package com.vetuslugi.presentation.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.vetuslugi.domain.model.Place
+import com.vetuslugi.domain.usecase.place.GetClubsUseCase
 import com.vetuslugi.domain.usecase.place.UpdateClubUseCase
 import com.vetuslugi.domain.usecase.place.UpdateNurseryUseCase
 import com.vetuslugi.domain.usecase.place.UpdateShelterUseCase
@@ -14,7 +15,8 @@ import kotlinx.coroutines.launch
 class InfoViewModel(
     private val updateShelterUseCase: UpdateShelterUseCase,
     private val updateNurseryUseCase: UpdateNurseryUseCase,
-    private val updateClubUseCase: UpdateClubUseCase
+    private val updateClubUseCase: UpdateClubUseCase,
+    private val getClubsUseCase: GetClubsUseCase
 ) : ViewModel() {
 
     sealed class UiState {
@@ -26,6 +28,15 @@ class InfoViewModel(
 
     private val _uiState = MutableStateFlow<UiState>(UiState.Idle)
     val uiState: StateFlow<UiState> = _uiState
+
+    private val _clubs = MutableStateFlow<List<Place>>(emptyList())
+    val clubs: StateFlow<List<Place>> = _clubs
+
+    init {
+        viewModelScope.launch {
+            getClubsUseCase().onSuccess { _clubs.value = it }
+        }
+    }
 
     fun updatePlace(place: Place, type: PlaceType, fromProfile: Boolean) {
         viewModelScope.launch {

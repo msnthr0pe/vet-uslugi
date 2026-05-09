@@ -4,12 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.vetuslugi.databinding.FragmentAddPlaceBinding
+import com.vetuslugi.domain.model.Place
 import com.vetuslugi.presentation.viewmodel.AddPlaceViewModel
 import kotlinx.coroutines.launch
 
@@ -24,6 +26,7 @@ class AddPlaceFragment : Fragment() {
 
     private var shelterSelected = false
     private var nurserySelected = false
+    private var clubsList: List<Place> = emptyList()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,29 +39,48 @@ class AddPlaceFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.cbShelter.setOnCheckedChangeListener { _, isPressed ->
-            shelterSelected = isPressed
-            if (isPressed) binding.cbNursery.isChecked = false
+        binding.cbShelter.setOnCheckedChangeListener { _, isChecked ->
+            shelterSelected = isChecked
+            if (isChecked) binding.cbNursery.isChecked = false
         }
-        binding.cbNursery.setOnCheckedChangeListener { _, isPressed ->
-            nurserySelected = isPressed
-            if (isPressed) binding.cbShelter.isChecked = false
+        binding.cbNursery.setOnCheckedChangeListener { _, isChecked ->
+            nurserySelected = isChecked
+            if (isChecked) binding.cbShelter.isChecked = false
         }
 
         binding.btnAddNewPlace.setOnClickListener {
-            val name = binding.etNameNewPlace.text.toString()
-            val address = binding.etAddressNewPlace.text.toString()
-            val phone = binding.etPhoneNewPlace.text.toString()
-            val description = binding.etDescNewPlace.text.toString()
+            val name = binding.etNameNewPlace.text.toString().trim()
+            val address = binding.etAddressNewPlace.text.toString().trim()
+            val phone = binding.etPhoneNewPlace.text.toString().trim()
+            val description = binding.etDescNewPlace.text.toString().trim()
 
-            if (name.isNotEmpty() && address.isNotEmpty() && phone.isNotEmpty() && description.isNotEmpty()) {
-                if (shelterSelected || nurserySelected) {
-                    viewModel.addPlace(name, address, phone, description, shelterSelected)
-                } else {
-                    Toast.makeText(activity, "Выберите тип места", Toast.LENGTH_SHORT).show()
-                }
-            } else {
+            if (name.isEmpty() || address.isEmpty() || phone.isEmpty() || description.isEmpty()) {
                 Toast.makeText(activity, "Заполните все поля", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            if (!shelterSelected && !nurserySelected) {
+                Toast.makeText(activity, "Выберите тип места", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            val selectedPos = binding.spinnerClub.selectedItemPosition
+            val clubAddress = if (selectedPos == 0 || clubsList.isEmpty()) null
+                              else clubsList[selectedPos - 1].address
+
+            viewModel.addPlace(name, address, phone, description, shelterSelected, clubAddress)
+        }
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.clubs.collect { clubs ->
+                clubsList = clubs
+                val items = listOf("Без клуба") + clubs.map { it.name }
+                val adapter = ArrayAdapter(
+                    requireContext(),
+                    android.R.layout.simple_spinner_item,
+                    items
+                )
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                binding.spinnerClub.adapter = adapter
             }
         }
 

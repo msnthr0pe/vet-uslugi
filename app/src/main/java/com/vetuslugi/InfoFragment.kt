@@ -60,6 +60,11 @@ class InfoFragment : Fragment() {
         binding.descriptionCard.tvCardTitle.text = "Описание"
         binding.descriptionCard.tvDescriptionCard.text = place.description
 
+        // Club card — hidden until clubs are loaded
+        binding.clubCard.root.visibility = View.GONE
+        binding.clubCard.tvCardTitle.text = "Клуб"
+        binding.clubCard.tvEditCard.visibility = View.GONE
+
         if (!selection.editable) {
             binding.nameCard.tvEditCard.visibility = View.GONE
             binding.phoneCard.tvEditCard.visibility = View.GONE
@@ -80,6 +85,19 @@ class InfoFragment : Fragment() {
                 viewModel.updatePlace(updated, selection.type, selection.fromProfile)
             } else {
                 Toast.makeText(activity, "Заполните все поля", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        // Resolve and show club name when clubs are loaded
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.clubs.collect { clubs ->
+                if (place.clubAddress != null) {
+                    val clubName = clubs.find { it.address == place.clubAddress }?.name
+                    if (clubName != null) {
+                        binding.clubCard.tvDescriptionCard.text = clubName
+                        binding.clubCard.root.visibility = View.VISIBLE
+                    }
+                }
             }
         }
 

@@ -6,6 +6,7 @@ import com.vetuslugi.data.local.UserSession
 import com.vetuslugi.domain.model.Place
 import com.vetuslugi.domain.usecase.place.AddNurseryUseCase
 import com.vetuslugi.domain.usecase.place.AddShelterUseCase
+import com.vetuslugi.domain.usecase.place.GetClubsUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -13,6 +14,7 @@ import kotlinx.coroutines.launch
 class AddPlaceViewModel(
     private val addShelterUseCase: AddShelterUseCase,
     private val addNurseryUseCase: AddNurseryUseCase,
+    private val getClubsUseCase: GetClubsUseCase,
     private val userSession: UserSession
 ) : ViewModel() {
 
@@ -26,9 +28,25 @@ class AddPlaceViewModel(
     private val _uiState = MutableStateFlow<UiState>(UiState.Idle)
     val uiState: StateFlow<UiState> = _uiState
 
-    fun addPlace(name: String, address: String, phone: String, description: String, isShelter: Boolean) {
+    private val _clubs = MutableStateFlow<List<Place>>(emptyList())
+    val clubs: StateFlow<List<Place>> = _clubs
+
+    init {
+        viewModelScope.launch {
+            getClubsUseCase().onSuccess { _clubs.value = it }
+        }
+    }
+
+    fun addPlace(
+        name: String,
+        address: String,
+        phone: String,
+        description: String,
+        isShelter: Boolean,
+        clubAddress: String?
+    ) {
         val owner = userSession.getLogin() ?: return
-        val place = Place(address, name, phone, description, owner)
+        val place = Place(address, name, phone, description, owner, clubAddress)
         viewModelScope.launch {
             _uiState.value = UiState.Loading
             val result = if (isShelter) addShelterUseCase(place) else addNurseryUseCase(place)

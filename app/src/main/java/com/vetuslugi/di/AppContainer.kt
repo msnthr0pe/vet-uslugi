@@ -30,6 +30,7 @@ import com.vetuslugi.domain.usecase.place.UpdateClubUseCase
 import com.vetuslugi.domain.usecase.place.UpdateNurseryUseCase
 import com.vetuslugi.domain.usecase.place.UpdateShelterUseCase
 import com.vetuslugi.ktor.ApiClient
+import com.vetuslugi.presentation.viewmodel.AddClubViewModel
 import com.vetuslugi.presentation.viewmodel.AddNewsViewModel
 import com.vetuslugi.presentation.viewmodel.AddPlaceViewModel
 import com.vetuslugi.presentation.viewmodel.EditProfileViewModel
@@ -102,12 +103,15 @@ class AppContainer(context: Context) {
         EditProfileViewModel(updateUserUseCase, userSession)
     }
     val infoViewModelFactory = ViewModelFactory {
-        InfoViewModel(updateShelterUseCase, updateNurseryUseCase, updateClubUseCase)
+        InfoViewModel(updateShelterUseCase, updateNurseryUseCase, updateClubUseCase, getClubsUseCase)
     }
     val addNewsViewModelFactory = ViewModelFactory {
         AddNewsViewModel(addNewsUseCase)
     }
     val addPlaceViewModelFactory = ViewModelFactory {
-        AddPlaceViewModel(addShelterUseCase, addNurseryUseCase, userSession)
+        AddPlaceViewModel(addShelterUseCase, addNurseryUseCase, getClubsUseCase, userSession)
+    }
+    val addClubViewModelFactory = ViewModelFactory {
+        AddClubViewModel(addClubUseCase, userSession)
     }
 }

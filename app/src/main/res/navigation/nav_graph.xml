@@ -46,6 +46,9 @@
         <action
             android:id="@+id/action_placesFragment_to_infoFragment"
             app:destination="@id/infoFragment" />
+        <action
+            android:id="@+id/action_placesFragment_to_addClubFragment"
+            app:destination="@id/addClubFragment" />
     </fragment>
 
     <fragment
@@ -200,6 +203,16 @@
         <action
             android:id="@+id/action_addNewsFragment_to_newsFragment"
             app:destination="@id/newsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addClubFragment"
+        android:name="com.vetuslugi.AddClubFragment"
+        android:label="Title"
+        tools:layout="@layout/fragment_add_club">
+        <action
+            android:id="@+id/action_addClubFragment_to_placesFragment"
+            app:destination="@id/placesFragment" />
     </fragment>
 
 </navigation>
