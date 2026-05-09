@@ -120,7 +120,7 @@
         android:id="@+id/customBottomBar"
         layout="@layout/nav_bar4"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="72dp"
         android:layout_alignParentBottom="true"
         app:layout_constraintBottom_toBottomOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

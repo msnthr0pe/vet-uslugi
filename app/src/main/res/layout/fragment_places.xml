@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!-- Title -->
     <TextView
         android:id="@+id/tvPlacesTitle"
         android:layout_width="wrap_content"
@@ -18,86 +19,121 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Tab chips -->
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/chipGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         app:singleSelection="true"
+        app:selectionRequired="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvPlacesTitle">
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chipShelters"
+            style="@style/Widget.Material3.Chip.Filter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Приюты"
             android:checkable="true"
             android:checked="true"
-            style="@style/Widget.Material3.Chip.Filter" />
+            android:text="Приюты"
+            android:textColor="@color/chip_text_color"
+            app:chipBackgroundColor="@color/chip_background_color"
+            app:chipStrokeColor="@color/blue"
+            app:chipStrokeWidth="1.5dp"
+            app:checkedIconVisible="false"
+            app:chipCornerRadius="20dp" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chipNurseries"
+            style="@style/Widget.Material3.Chip.Filter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Питомники"
             android:checkable="true"
-            style="@style/Widget.Material3.Chip.Filter" />
+            android:text="Питомники"
+            android:textColor="@color/chip_text_color"
+            app:chipBackgroundColor="@color/chip_background_color"
+            app:chipStrokeColor="@color/blue"
+            app:chipStrokeWidth="1.5dp"
+            app:checkedIconVisible="false"
+            app:chipCornerRadius="20dp" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chipClubs"
+            style="@style/Widget.Material3.Chip.Filter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Клубы"
             android:checkable="true"
-            style="@style/Widget.Material3.Chip.Filter" />
+            android:text="Клубы"
+            android:textColor="@color/chip_text_color"
+            app:chipBackgroundColor="@color/chip_background_color"
+            app:chipStrokeColor="@color/blue"
+            app:chipStrokeWidth="1.5dp"
+            app:checkedIconVisible="false"
+            app:chipCornerRadius="20dp" />
 
     </com.google.android.material.chip.ChipGroup>
 
+    <!-- Search bar -->
     <EditText
         android:id="@+id/etSearch"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_marginHorizontal="15dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="0dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="12dp"
         android:hint="Поиск"
-        app:layout_constraintStart_toStartOf="parent"
+        android:inputType="text"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/chipGroup" />
 
+    <!-- Shelters list -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/sheltersRecycler"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="4dp"
-        app:layout_constraintTop_toBottomOf="@+id/etSearch"
+        android:layout_marginTop="8dp"
+        android:clipToPadding="false"
+        android:paddingBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/customBottomBar"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/etSearch" />
 
+    <!-- Nurseries list -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/nurseriesRecycler"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="8dp"
+        android:clipToPadding="false"
+        android:paddingBottom="8dp"
         android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@+id/etSearch"
         app:layout_constraintBottom_toTopOf="@+id/customBottomBar"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/etSearch" />
 
+    <!-- Clubs list -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/clubsRecycler"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="8dp"
+        android:clipToPadding="false"
+        android:paddingBottom="8dp"
         android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@+id/etSearch"
         app:layout_constraintBottom_toTopOf="@+id/customBottomBar"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/etSearch" />
 
+    <!-- Loading spinner -->
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyleLarge"
@@ -111,11 +147,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etSearch" />
 
+    <!-- Bottom navigation -->
     <include
         android:id="@+id/customBottomBar"
         layout="@layout/nav_bar2"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="72dp"
         app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

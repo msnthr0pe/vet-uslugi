@@ -3,53 +3,84 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/customBottomBar"
     android:layout_width="match_parent"
-    android:layout_height="64dp"
+    android:layout_height="72dp"
     android:orientation="horizontal"
-    android:background="@color/light_gray"
+    android:background="?android:attr/background"
     android:gravity="center"
     android:weightSum="3"
     android:elevation="8dp">
 
+    <!-- NEWS — selected -->
     <LinearLayout
         android:id="@+id/nav_news"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp">
         <ImageView
             android:id="@+id/icon_news"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
             android:src="@drawable/newsselected" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:text="Новости"
+            android:textSize="11sp"
+            android:textColor="@color/icon_blue"
+            android:textStyle="bold" />
     </LinearLayout>
 
+    <!-- PLACES — unselected -->
     <LinearLayout
         android:id="@+id/nav_places"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp">
         <ImageView
             android:id="@+id/icon_places"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
             android:src="@drawable/places" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:text="Места"
+            android:textSize="11sp"
+            android:textColor="@color/icon_gray" />
     </LinearLayout>
 
+    <!-- PROFILE — unselected -->
     <LinearLayout
         android:id="@+id/nav_profile"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp">
         <ImageView
             android:id="@+id/icon_profile"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
             android:src="@drawable/profile" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:text="Профиль"
+            android:textSize="11sp"
+            android:textColor="@color/icon_gray" />
     </LinearLayout>
 
 </LinearLayout>
