@@ -7,8 +7,8 @@ import com.vetuslugi.ktor.AuthModels
 
 class PlaceRepositoryImpl(private val api: AuthApi) : PlaceRepository {
 
-    private fun Place.toDto() = AuthModels.PlaceDTO(address, name, phone, description, owner)
-    private fun AuthModels.PlaceDTO.toDomain() = Place(address, name, phone, description, owner)
+    private fun Place.toDto() = AuthModels.PlaceDTO(address, name, phone, description, owner, clubAddress)
+    private fun AuthModels.PlaceDTO.toDomain() = Place(address, name, phone, description, owner, clubAddress)
 
     override suspend fun getShelters(): Result<List<Place>> =
         runCatching { api.getShelters().map { it.toDomain() } }

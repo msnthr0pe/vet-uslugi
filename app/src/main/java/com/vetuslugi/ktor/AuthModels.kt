@@ -26,12 +26,13 @@ class AuthModels {
         val description: String
     )
 
-    data class PlaceDTO (
+    data class PlaceDTO(
         val address: String,
         val name: String,
         val phone: String,
         val description: String,
         val owner: String,
+        val clubAddress: String? = null
     )
 
 

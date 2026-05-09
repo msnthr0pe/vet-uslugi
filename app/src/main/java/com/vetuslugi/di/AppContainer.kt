@@ -4,7 +4,7 @@ import android.content.Context
 import com.vetuslugi.data.local.SearchHistoryManager
 import com.vetuslugi.data.local.UserSession
 import com.vetuslugi.data.repository.AuthRepositoryImpl
-import com.vetuslugi.data.repository.MockClubRepository
+import com.vetuslugi.data.repository.ClubRepositoryImpl
 import com.vetuslugi.data.repository.NewsRepositoryImpl
 import com.vetuslugi.data.repository.PlaceRepositoryImpl
 import com.vetuslugi.domain.repository.AuthRepository
@@ -53,8 +53,7 @@ class AppContainer(context: Context) {
     private val authRepository: AuthRepository = AuthRepositoryImpl(api)
     private val newsRepository: NewsRepository = NewsRepositoryImpl(api)
     private val placeRepository: PlaceRepository = PlaceRepositoryImpl(api)
-    // TODO: replace with ClubRepositoryImpl(api) when server support is ready
-    private val clubRepository: ClubRepository = MockClubRepository()
+    private val clubRepository: ClubRepository = ClubRepositoryImpl(api)
 
     private val loginUseCase = LoginUseCase(authRepository)
     private val getUserUseCase = GetUserUseCase(authRepository)

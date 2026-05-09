@@ -76,7 +76,7 @@ class InfoFragment : Fragment() {
             val phone = binding.phoneCard.tvDescriptionCard.text.toString()
             val description = binding.descriptionCard.tvDescriptionCard.text.toString()
             if (name.isNotEmpty() && phone.isNotEmpty() && description.isNotEmpty()) {
-                val updated = Place(place.address, name, phone, description, "-")
+                val updated = Place(place.address, name, phone, description, place.owner, place.clubAddress)
                 viewModel.updatePlace(updated, selection.type, selection.fromProfile)
             } else {
                 Toast.makeText(activity, "Заполните все поля", Toast.LENGTH_SHORT).show()

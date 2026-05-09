@@ -7,8 +7,8 @@ import com.vetuslugi.ktor.AuthModels
 
 class ClubRepositoryImpl(private val api: AuthApi) : ClubRepository {
 
-    private fun Place.toDto() = AuthModels.PlaceDTO(address, name, phone, description, owner)
-    private fun AuthModels.PlaceDTO.toDomain() = Place(address, name, phone, description, owner)
+    private fun Place.toDto() = AuthModels.PlaceDTO(address, name, phone, description, owner, clubAddress)
+    private fun AuthModels.PlaceDTO.toDomain() = Place(address, name, phone, description, owner, clubAddress)
 
     override suspend fun getClubs(): Result<List<Place>> =
         runCatching { api.getClubs().map { it.toDomain() } }

@@ -5,5 +5,6 @@ data class Place(
     val name: String,
     val phone: String,
     val description: String,
-    val owner: String
+    val owner: String,
+    val clubAddress: String? = null
 )
