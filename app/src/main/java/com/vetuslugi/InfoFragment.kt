@@ -19,7 +19,6 @@ import com.vetuslugi.databinding.FragmentInfoBinding
 import com.vetuslugi.domain.model.Place
 import com.vetuslugi.presentation.viewmodel.InfoViewModel
 import com.vetuslugi.presentation.viewmodel.SharedPlaceViewModel
-import com.vetuslugi.presentation.viewmodel.SharedPlaceViewModel.PlaceType
 import kotlinx.coroutines.launch
 
 class InfoFragment : Fragment() {
@@ -93,9 +92,8 @@ class InfoFragment : Fragment() {
                         viewModel.resetState()
                         if (state.fromProfile) {
                             findNavController().navigate(R.id.action_infoFragment_to_profileFragment)
-                        } else when (selection.type) {
-                            PlaceType.SHELTER -> findNavController().navigate(R.id.action_infoFragment_to_sheltersFragment)
-                            PlaceType.NURSERY -> findNavController().navigate(R.id.action_infoFragment_to_nurseriesFragment)
+                        } else {
+                            findNavController().navigate(R.id.action_infoFragment_to_placesFragment)
                         }
                     }
                     is InfoViewModel.UiState.Error -> {

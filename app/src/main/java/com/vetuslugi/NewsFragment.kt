@@ -100,11 +100,8 @@ class NewsFragment : Fragment() {
         val role = (requireActivity().application as VetUslugiApp).container.userSession.getRole()
         if (role != "admin") binding.btnAdd.visibility = View.GONE
 
-        binding.customBottomBar.iconShelter.setOnClickListener {
-            findNavController().navigate(R.id.action_newsFragment_to_sheltersFragment)
-        }
-        binding.customBottomBar.iconNursery.setOnClickListener {
-            findNavController().navigate(R.id.action_newsFragment_to_nurseriesFragment)
+        binding.customBottomBar.iconPlaces.setOnClickListener {
+            findNavController().navigate(R.id.action_newsFragment_to_placesFragment)
         }
         binding.customBottomBar.iconProfile.setOnClickListener {
             findNavController().navigate(R.id.action_newsFragment_to_profileFragment)

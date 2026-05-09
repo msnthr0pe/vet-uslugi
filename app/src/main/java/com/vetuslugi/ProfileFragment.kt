@@ -75,11 +75,8 @@ class ProfileFragment : Fragment() {
         binding.customBottomBar4.iconNews.setOnClickListener {
             findNavController().navigate(R.id.action_profileFragment_to_newsFragment)
         }
-        binding.customBottomBar4.iconShelter.setOnClickListener {
-            findNavController().navigate(R.id.action_profileFragment_to_sheltersFragment)
-        }
-        binding.customBottomBar4.iconNursery.setOnClickListener {
-            findNavController().navigate(R.id.action_profileFragment_to_nurseriesFragment)
+        binding.customBottomBar4.iconPlaces.setOnClickListener {
+            findNavController().navigate(R.id.action_profileFragment_to_placesFragment)
         }
 
         viewModel.loadPlaces()

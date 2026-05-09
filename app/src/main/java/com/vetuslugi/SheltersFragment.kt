@@ -55,8 +55,8 @@ class SheltersFragment : Fragment() {
         binding.customBottomBar.iconNews.setOnClickListener {
             findNavController().navigate(R.id.action_sheltersFragment_to_newsFragment)
         }
-        binding.customBottomBar.iconNursery.setOnClickListener {
-            findNavController().navigate(R.id.action_sheltersFragment_to_nurseriesFragment)
+        binding.customBottomBar.iconPlaces.setOnClickListener {
+            findNavController().navigate(R.id.action_sheltersFragment_to_placesFragment)
         }
         binding.customBottomBar.iconProfile.setOnClickListener {
             findNavController().navigate(R.id.action_sheltersFragment_to_profileFragment)

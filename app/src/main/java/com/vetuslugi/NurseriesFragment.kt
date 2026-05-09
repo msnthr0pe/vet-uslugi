@@ -55,8 +55,8 @@ class NurseriesFragment : Fragment() {
         binding.customBottomBar.iconNews.setOnClickListener {
             findNavController().navigate(R.id.action_nurseriesFragment_to_newsFragment)
         }
-        binding.customBottomBar.iconShelter.setOnClickListener {
-            findNavController().navigate(R.id.action_nurseriesFragment_to_sheltersFragment)
+        binding.customBottomBar.iconPlaces.setOnClickListener {
+            findNavController().navigate(R.id.action_nurseriesFragment_to_placesFragment)
         }
         binding.customBottomBar.iconProfile.setOnClickListener {
             findNavController().navigate(R.id.action_nurseriesFragment_to_profileFragment)

@@ -51,4 +51,16 @@ interface AuthApi {
 
     @POST("updateuser")
     suspend fun updateUser(@Body request: UserDTO): AuthResponse
+
+    @GET("getclubs")
+    suspend fun getClubs(): List<PlaceDTO>
+
+    @POST("addclub")
+    suspend fun addClub(@Body place: PlaceDTO): AuthResponse
+
+    @POST("updateclub")
+    suspend fun updateClub(@Body place: PlaceDTO): AuthModels.InfoDTO
+
+    @POST("getclubby")
+    suspend fun getClubBy(@Body request: AuthModels.InfoDTO): List<PlaceDTO>
 }

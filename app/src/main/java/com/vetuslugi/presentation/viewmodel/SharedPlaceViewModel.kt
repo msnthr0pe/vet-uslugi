@@ -9,7 +9,8 @@ class SharedPlaceViewModel : ViewModel() {
 
     enum class PlaceType(val label: String) {
         SHELTER("приюте"),
-        NURSERY("питомнике")
+        NURSERY("питомнике"),
+        CLUB("клубе")
     }
 
     data class PlaceSelection(

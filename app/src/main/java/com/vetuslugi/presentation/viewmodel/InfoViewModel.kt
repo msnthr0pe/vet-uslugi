@@ -3,6 +3,7 @@ package com.vetuslugi.presentation.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.vetuslugi.domain.model.Place
+import com.vetuslugi.domain.usecase.place.UpdateClubUseCase
 import com.vetuslugi.domain.usecase.place.UpdateNurseryUseCase
 import com.vetuslugi.domain.usecase.place.UpdateShelterUseCase
 import com.vetuslugi.presentation.viewmodel.SharedPlaceViewModel.PlaceType
@@ -12,7 +13,8 @@ import kotlinx.coroutines.launch
 
 class InfoViewModel(
     private val updateShelterUseCase: UpdateShelterUseCase,
-    private val updateNurseryUseCase: UpdateNurseryUseCase
+    private val updateNurseryUseCase: UpdateNurseryUseCase,
+    private val updateClubUseCase: UpdateClubUseCase
 ) : ViewModel() {
 
     sealed class UiState {
@@ -31,6 +33,7 @@ class InfoViewModel(
             val result = when (type) {
                 PlaceType.SHELTER -> updateShelterUseCase(place)
                 PlaceType.NURSERY -> updateNurseryUseCase(place)
+                PlaceType.CLUB -> updateClubUseCase(place)
             }
             result
                 .onSuccess { _uiState.value = UiState.Success(fromProfile) }

@@ -4,9 +4,11 @@ import android.content.Context
 import com.vetuslugi.data.local.SearchHistoryManager
 import com.vetuslugi.data.local.UserSession
 import com.vetuslugi.data.repository.AuthRepositoryImpl
+import com.vetuslugi.data.repository.MockClubRepository
 import com.vetuslugi.data.repository.NewsRepositoryImpl
 import com.vetuslugi.data.repository.PlaceRepositoryImpl
 import com.vetuslugi.domain.repository.AuthRepository
+import com.vetuslugi.domain.repository.ClubRepository
 import com.vetuslugi.domain.repository.NewsRepository
 import com.vetuslugi.domain.repository.PlaceRepository
 import com.vetuslugi.domain.usecase.auth.GetUserUseCase
@@ -15,12 +17,16 @@ import com.vetuslugi.domain.usecase.auth.RegisterUseCase
 import com.vetuslugi.domain.usecase.auth.UpdateUserUseCase
 import com.vetuslugi.domain.usecase.news.AddNewsUseCase
 import com.vetuslugi.domain.usecase.news.GetNewsUseCase
+import com.vetuslugi.domain.usecase.place.AddClubUseCase
 import com.vetuslugi.domain.usecase.place.AddNurseryUseCase
 import com.vetuslugi.domain.usecase.place.AddShelterUseCase
+import com.vetuslugi.domain.usecase.place.GetClubsByOwnerUseCase
+import com.vetuslugi.domain.usecase.place.GetClubsUseCase
 import com.vetuslugi.domain.usecase.place.GetNurseriesByOwnerUseCase
 import com.vetuslugi.domain.usecase.place.GetNurseriesUseCase
 import com.vetuslugi.domain.usecase.place.GetSheltersByOwnerUseCase
 import com.vetuslugi.domain.usecase.place.GetSheltersUseCase
+import com.vetuslugi.domain.usecase.place.UpdateClubUseCase
 import com.vetuslugi.domain.usecase.place.UpdateNurseryUseCase
 import com.vetuslugi.domain.usecase.place.UpdateShelterUseCase
 import com.vetuslugi.ktor.ApiClient
@@ -31,6 +37,7 @@ import com.vetuslugi.presentation.viewmodel.InfoViewModel
 import com.vetuslugi.presentation.viewmodel.LoginViewModel
 import com.vetuslugi.presentation.viewmodel.NewsViewModel
 import com.vetuslugi.presentation.viewmodel.NurseriesViewModel
+import com.vetuslugi.presentation.viewmodel.PlacesViewModel
 import com.vetuslugi.presentation.viewmodel.ProfileInfoViewModel
 import com.vetuslugi.presentation.viewmodel.ProfileViewModel
 import com.vetuslugi.presentation.viewmodel.RegisterViewModel
@@ -46,6 +53,8 @@ class AppContainer(context: Context) {
     private val authRepository: AuthRepository = AuthRepositoryImpl(api)
     private val newsRepository: NewsRepository = NewsRepositoryImpl(api)
     private val placeRepository: PlaceRepository = PlaceRepositoryImpl(api)
+    // TODO: replace with ClubRepositoryImpl(api) when server support is ready
+    private val clubRepository: ClubRepository = MockClubRepository()
 
     private val loginUseCase = LoginUseCase(authRepository)
     private val getUserUseCase = GetUserUseCase(authRepository)
@@ -61,6 +70,10 @@ class AppContainer(context: Context) {
     private val addNurseryUseCase = AddNurseryUseCase(placeRepository)
     private val updateShelterUseCase = UpdateShelterUseCase(placeRepository)
     private val updateNurseryUseCase = UpdateNurseryUseCase(placeRepository)
+    private val getClubsUseCase = GetClubsUseCase(clubRepository)
+    private val getClubsByOwnerUseCase = GetClubsByOwnerUseCase(clubRepository)
+    private val addClubUseCase = AddClubUseCase(clubRepository)
+    private val updateClubUseCase = UpdateClubUseCase(clubRepository)
 
     val loginViewModelFactory = ViewModelFactory {
         LoginViewModel(loginUseCase, getUserUseCase, userSession)
@@ -77,6 +90,9 @@ class AppContainer(context: Context) {
     val nurseriesViewModelFactory = ViewModelFactory {
         NurseriesViewModel(getNurseriesUseCase)
     }
+    val placesViewModelFactory = ViewModelFactory {
+        PlacesViewModel(getSheltersUseCase, getNurseriesUseCase, getClubsUseCase)
+    }
     val profileViewModelFactory = ViewModelFactory {
         ProfileViewModel(getSheltersByOwnerUseCase, getNurseriesByOwnerUseCase, userSession)
     }
@@ -87,7 +103,7 @@ class AppContainer(context: Context) {
         EditProfileViewModel(updateUserUseCase, userSession)
     }
     val infoViewModelFactory = ViewModelFactory {
-        InfoViewModel(updateShelterUseCase, updateNurseryUseCase)
+        InfoViewModel(updateShelterUseCase, updateNurseryUseCase, updateClubUseCase)
     }
     val addNewsViewModelFactory = ViewModelFactory {
         AddNewsViewModel(addNewsUseCase)

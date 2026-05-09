@@ -22,17 +22,30 @@
         android:label="Title"
         tools:layout="@layout/fragment_news">
         <action
-            android:id="@+id/action_newsFragment_to_sheltersFragment"
-            app:destination="@id/sheltersFragment" />
-        <action
-            android:id="@+id/action_newsFragment_to_nurseriesFragment"
-            app:destination="@id/nurseriesFragment" />
+            android:id="@+id/action_newsFragment_to_placesFragment"
+            app:destination="@id/placesFragment" />
         <action
             android:id="@+id/action_newsFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
         <action
             android:id="@+id/action_newsFragment_to_addNewsFragment"
             app:destination="@id/addNewsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/placesFragment"
+        android:name="com.vetuslugi.PlacesFragment"
+        android:label="Title"
+        tools:layout="@layout/fragment_places">
+        <action
+            android:id="@+id/action_placesFragment_to_newsFragment"
+            app:destination="@id/newsFragment" />
+        <action
+            android:id="@+id/action_placesFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_placesFragment_to_infoFragment"
+            app:destination="@id/infoFragment" />
     </fragment>
 
     <fragment
@@ -43,6 +56,9 @@
         <action
             android:id="@+id/action_sheltersFragment_to_newsFragment"
             app:destination="@id/newsFragment" />
+        <action
+            android:id="@+id/action_sheltersFragment_to_placesFragment"
+            app:destination="@id/placesFragment" />
         <action
             android:id="@+id/action_sheltersFragment_to_nurseriesFragment"
             app:destination="@id/nurseriesFragment" />
@@ -62,6 +78,9 @@
         <action
             android:id="@+id/action_nurseriesFragment_to_sheltersFragment"
             app:destination="@id/sheltersFragment" />
+        <action
+            android:id="@+id/action_nurseriesFragment_to_placesFragment"
+            app:destination="@id/placesFragment" />
         <action
             android:id="@+id/action_nurseriesFragment_to_newsFragment"
             app:destination="@id/newsFragment" />
@@ -99,11 +118,8 @@
         android:label="Title"
         tools:layout="@layout/fragment_profile">
         <action
-            android:id="@+id/action_profileFragment_to_sheltersFragment"
-            app:destination="@id/sheltersFragment" />
-        <action
-            android:id="@+id/action_profileFragment_to_nurseriesFragment"
-            app:destination="@id/nurseriesFragment" />
+            android:id="@+id/action_profileFragment_to_placesFragment"
+            app:destination="@id/placesFragment" />
         <action
             android:id="@+id/action_profileFragment_to_profileInfoFragment"
             app:destination="@id/profileInfoFragment" />
@@ -116,7 +132,6 @@
         <action
             android:id="@+id/action_profileFragment_to_newsFragment"
             app:destination="@id/newsFragment" />
-
     </fragment>
 
     <fragment
@@ -131,14 +146,11 @@
             android:id="@+id/action_profileInfoFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
         <action
-            android:id="@+id/action_profileInfoFragment_to_sheltersFragment"
-            app:destination="@id/sheltersFragment" />
+            android:id="@+id/action_profileInfoFragment_to_placesFragment"
+            app:destination="@id/placesFragment" />
         <action
             android:id="@+id/action_profileInfoFragment_to_newsFragment"
             app:destination="@id/newsFragment" />
-        <action
-            android:id="@+id/action_profileInfoFragment_to_nurseriesFragment"
-            app:destination="@id/nurseriesFragment" />
         <action
             android:id="@+id/action_profileInfoFragment_to_titleFragment"
             app:destination="@id/titleFragment" />
@@ -150,11 +162,8 @@
         android:label="Title"
         tools:layout="@layout/fragment_info">
         <action
-            android:id="@+id/action_infoFragment_to_nurseriesFragment"
-            app:destination="@id/nurseriesFragment" />
-        <action
-            android:id="@+id/action_infoFragment_to_sheltersFragment"
-            app:destination="@id/sheltersFragment" />
+            android:id="@+id/action_infoFragment_to_placesFragment"
+            app:destination="@id/placesFragment" />
         <action
             android:id="@+id/action_infoFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
