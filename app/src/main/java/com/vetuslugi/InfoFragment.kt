@@ -18,6 +18,7 @@ import com.vetuslugi.databinding.CardInfoBinding
 import com.vetuslugi.databinding.FragmentInfoBinding
 import com.vetuslugi.domain.model.Place
 import com.vetuslugi.presentation.viewmodel.InfoViewModel
+import com.vetuslugi.presentation.viewmodel.SharedAnimalViewModel
 import com.vetuslugi.presentation.viewmodel.SharedPlaceViewModel
 import kotlinx.coroutines.launch
 
@@ -27,6 +28,7 @@ class InfoFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val sharedPlaceViewModel: SharedPlaceViewModel by activityViewModels()
+    private val sharedAnimalViewModel: SharedAnimalViewModel by activityViewModels()
     private val viewModel: InfoViewModel by viewModels {
         (requireActivity().application as VetUslugiApp).container.infoViewModelFactory
     }
@@ -70,6 +72,19 @@ class InfoFragment : Fragment() {
             binding.phoneCard.tvEditCard.visibility = View.GONE
             binding.descriptionCard.tvEditCard.visibility = View.GONE
             binding.btnSaveChanges.visibility = View.GONE
+        }
+
+        if (selection.type == SharedPlaceViewModel.PlaceType.SHELTER ||
+            selection.type == SharedPlaceViewModel.PlaceType.NURSERY) {
+            binding.btnViewAnimals.visibility = View.VISIBLE
+            binding.btnViewAnimals.setOnClickListener {
+                sharedAnimalViewModel.setContext(
+                    placeAddress = place.address,
+                    isNursery = selection.type == SharedPlaceViewModel.PlaceType.NURSERY,
+                    editable = selection.editable
+                )
+                findNavController().navigate(R.id.action_infoFragment_to_animalsFragment)
+            }
         }
 
         binding.nameCard.tvEditCard.setOnClickListener { showEditDialog(binding.nameCard) }

@@ -170,7 +170,35 @@
         <action
             android:id="@+id/action_infoFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_infoFragment_to_animalsFragment"
+            app:destination="@id/animalsFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/animalsFragment"
+        android:name="com.vetuslugi.AnimalsFragment"
+        android:label="Title"
+        tools:layout="@layout/fragment_animals">
+        <action
+            android:id="@+id/action_animalsFragment_to_animalInfoFragment"
+            app:destination="@id/animalInfoFragment" />
+        <action
+            android:id="@+id/action_animalsFragment_to_addAnimalFragment"
+            app:destination="@id/addAnimalFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/animalInfoFragment"
+        android:name="com.vetuslugi.AnimalInfoFragment"
+        android:label="Title"
+        tools:layout="@layout/fragment_animal_info" />
+
+    <fragment
+        android:id="@+id/addAnimalFragment"
+        android:name="com.vetuslugi.AddAnimalFragment"
+        android:label="Title"
+        tools:layout="@layout/fragment_add_animal" />
 
     <fragment
         android:id="@+id/loginFragment"

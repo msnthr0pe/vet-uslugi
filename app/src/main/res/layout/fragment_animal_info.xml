@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_height="match_parent"
-    android:layout_width="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -14,28 +14,17 @@
             android:paddingBottom="32dp">
 
             <TextView
-                android:id="@+id/tvInfoTitle"
+                android:id="@+id/tvAnimalInfoTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="52dp"
-                android:text="Информация о"
+                android:text="О животном"
                 android:textColor="?android:attr/colorPrimary"
                 android:textSize="40sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tvPlaceTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="приюте/питомнике"
-                android:textColor="?android:attr/colorPrimary"
-                android:textSize="40sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/tvInfoTitle"
-                app:layout_constraintTop_toBottomOf="@+id/tvInfoTitle" />
 
             <LinearLayout
                 android:id="@+id/linearLayout"
@@ -46,50 +35,52 @@
                 android:paddingStart="20dp"
                 android:paddingEnd="20dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvPlaceTitle">
+                app:layout_constraintTop_toBottomOf="@+id/tvAnimalInfoTitle">
 
                 <include
-                    android:id="@+id/address_card"
+                    android:id="@+id/nickname_card"
                     layout="@layout/card_info" />
 
                 <include
-                    android:id="@+id/club_card"
+                    android:id="@+id/species_card"
                     layout="@layout/card_info" />
 
                 <include
-                    android:id="@+id/name_card"
+                    android:id="@+id/breed_card"
                     layout="@layout/card_info" />
 
                 <include
-                    android:id="@+id/phone_card"
+                    android:id="@+id/age_card"
                     layout="@layout/card_info" />
 
                 <include
-                    android:id="@+id/description_card"
+                    android:id="@+id/diseases_card"
                     layout="@layout/card_info" />
 
             </LinearLayout>
 
             <Button
-                android:id="@+id/btnSaveChanges"
+                android:id="@+id/btnSaveAnimal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="Сохранить изменения"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
             <Button
-                android:id="@+id/btnViewAnimals"
+                android:id="@+id/btnDeleteAnimal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Животные"
+                android:backgroundTint="#F44336"
+                android:text="Удалить животное"
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btnSaveChanges" />
+                app:layout_constraintTop_toBottomOf="@+id/btnSaveAnimal" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
@@ -100,9 +91,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:background="@android:color/transparent"
         android:indeterminate="true"
         android:indeterminateTint="@color/blue"
-        android:visibility="gone"
-        android:background="@android:color/transparent" />
+        android:visibility="gone" />
 
 </FrameLayout>

@@ -42,4 +42,15 @@ class AuthModels {
     data class AuthResponse(
         val token: String
     )
+
+    data class AnimalDTO(
+        val id: String = "",
+        val nickname: String,
+        val species: String = "",
+        val breed: String = "",
+        val age: Int = 0,
+        val diseases: String? = null,
+        val shelterAddress: String? = null,
+        val nurseryAddress: String? = null
+    )
 }

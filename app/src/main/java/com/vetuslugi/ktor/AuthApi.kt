@@ -63,4 +63,19 @@ interface AuthApi {
 
     @POST("getclubby")
     suspend fun getClubBy(@Body request: AuthModels.InfoDTO): List<PlaceDTO>
+
+    @POST("addanimal")
+    suspend fun addAnimal(@Body animal: AuthModels.AnimalDTO): AuthModels.AnimalDTO
+
+    @POST("getanimalsbyshelter")
+    suspend fun getAnimalsByShelter(@Body request: AuthModels.InfoDTO): List<AuthModels.AnimalDTO>
+
+    @POST("getanimalsbynursery")
+    suspend fun getAnimalsByNursery(@Body request: AuthModels.InfoDTO): List<AuthModels.AnimalDTO>
+
+    @POST("updateanimal")
+    suspend fun updateAnimal(@Body animal: AuthModels.AnimalDTO): AuthModels.InfoDTO
+
+    @POST("deleteanimal")
+    suspend fun deleteAnimal(@Body request: AuthModels.InfoDTO): AuthModels.InfoDTO
 }

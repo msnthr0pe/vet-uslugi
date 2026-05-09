@@ -4,9 +4,11 @@ import android.content.Context
 import com.vetuslugi.data.local.SearchHistoryManager
 import com.vetuslugi.data.local.UserSession
 import com.vetuslugi.data.repository.AuthRepositoryImpl
+import com.vetuslugi.data.repository.AnimalRepositoryImpl
 import com.vetuslugi.data.repository.ClubRepositoryImpl
 import com.vetuslugi.data.repository.NewsRepositoryImpl
 import com.vetuslugi.data.repository.PlaceRepositoryImpl
+import com.vetuslugi.domain.repository.AnimalRepository
 import com.vetuslugi.domain.repository.AuthRepository
 import com.vetuslugi.domain.repository.ClubRepository
 import com.vetuslugi.domain.repository.NewsRepository
@@ -17,6 +19,11 @@ import com.vetuslugi.domain.usecase.auth.RegisterUseCase
 import com.vetuslugi.domain.usecase.auth.UpdateUserUseCase
 import com.vetuslugi.domain.usecase.news.AddNewsUseCase
 import com.vetuslugi.domain.usecase.news.GetNewsUseCase
+import com.vetuslugi.domain.usecase.animal.AddAnimalUseCase
+import com.vetuslugi.domain.usecase.animal.DeleteAnimalUseCase
+import com.vetuslugi.domain.usecase.animal.GetAnimalsByNurseryUseCase
+import com.vetuslugi.domain.usecase.animal.GetAnimalsByShelterUseCase
+import com.vetuslugi.domain.usecase.animal.UpdateAnimalUseCase
 import com.vetuslugi.domain.usecase.place.AddClubUseCase
 import com.vetuslugi.domain.usecase.place.AddNurseryUseCase
 import com.vetuslugi.domain.usecase.place.AddShelterUseCase
@@ -30,9 +37,12 @@ import com.vetuslugi.domain.usecase.place.UpdateClubUseCase
 import com.vetuslugi.domain.usecase.place.UpdateNurseryUseCase
 import com.vetuslugi.domain.usecase.place.UpdateShelterUseCase
 import com.vetuslugi.ktor.ApiClient
+import com.vetuslugi.presentation.viewmodel.AddAnimalViewModel
 import com.vetuslugi.presentation.viewmodel.AddClubViewModel
 import com.vetuslugi.presentation.viewmodel.AddNewsViewModel
 import com.vetuslugi.presentation.viewmodel.AddPlaceViewModel
+import com.vetuslugi.presentation.viewmodel.AnimalInfoViewModel
+import com.vetuslugi.presentation.viewmodel.AnimalsViewModel
 import com.vetuslugi.presentation.viewmodel.EditProfileViewModel
 import com.vetuslugi.presentation.viewmodel.InfoViewModel
 import com.vetuslugi.presentation.viewmodel.LoginViewModel
@@ -55,6 +65,7 @@ class AppContainer(context: Context) {
     private val newsRepository: NewsRepository = NewsRepositoryImpl(api)
     private val placeRepository: PlaceRepository = PlaceRepositoryImpl(api)
     private val clubRepository: ClubRepository = ClubRepositoryImpl(api)
+    private val animalRepository: AnimalRepository = AnimalRepositoryImpl(api)
 
     private val loginUseCase = LoginUseCase(authRepository)
     private val getUserUseCase = GetUserUseCase(authRepository)
@@ -71,6 +82,11 @@ class AppContainer(context: Context) {
     private val updateShelterUseCase = UpdateShelterUseCase(placeRepository)
     private val updateNurseryUseCase = UpdateNurseryUseCase(placeRepository)
     private val getClubsUseCase = GetClubsUseCase(clubRepository)
+    private val getAnimalsByShelterUseCase = GetAnimalsByShelterUseCase(animalRepository)
+    private val getAnimalsByNurseryUseCase = GetAnimalsByNurseryUseCase(animalRepository)
+    private val addAnimalUseCase = AddAnimalUseCase(animalRepository)
+    private val updateAnimalUseCase = UpdateAnimalUseCase(animalRepository)
+    private val deleteAnimalUseCase = DeleteAnimalUseCase(animalRepository)
     private val getClubsByOwnerUseCase = GetClubsByOwnerUseCase(clubRepository)
     private val addClubUseCase = AddClubUseCase(clubRepository)
     private val updateClubUseCase = UpdateClubUseCase(clubRepository)
@@ -113,5 +129,14 @@ class AppContainer(context: Context) {
     }
     val addClubViewModelFactory = ViewModelFactory {
         AddClubViewModel(addClubUseCase, userSession)
+    }
+    val animalsViewModelFactory = ViewModelFactory {
+        AnimalsViewModel(getAnimalsByShelterUseCase, getAnimalsByNurseryUseCase)
+    }
+    val animalInfoViewModelFactory = ViewModelFactory {
+        AnimalInfoViewModel(updateAnimalUseCase, deleteAnimalUseCase)
+    }
+    val addAnimalViewModelFactory = ViewModelFactory {
+        AddAnimalViewModel(addAnimalUseCase)
     }
 }
