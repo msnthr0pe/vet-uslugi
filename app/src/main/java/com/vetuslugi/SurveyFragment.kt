@@ -36,8 +36,8 @@ class SurveyFragment : Fragment() {
         binding.toolbar.setNavigationOnClickListener { findNavController().popBackStack() }
 
         binding.btnSubmitSurvey.setOnClickListener {
-            val species = binding.etSpecies.text.toString().trim()
-            val breed = binding.etBreed.text.toString().trim()
+            val species = binding.etSpecies.text.toString().trim().lowercase()
+            val breed = binding.etBreed.text.toString().trim().lowercase()
 
             if (species.isBlank() || breed.isBlank()) {
                 Toast.makeText(requireContext(), "Введите вид и породу", Toast.LENGTH_SHORT).show()
