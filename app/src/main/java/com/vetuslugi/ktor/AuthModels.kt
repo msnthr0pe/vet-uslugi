@@ -53,4 +53,16 @@ class AuthModels {
         val shelterAddress: String? = null,
         val nurseryAddress: String? = null
     )
+
+    data class SurveyRequest(
+        val species: String,
+        val breed: String,
+        val willingToAdoptSick: Boolean,
+        val mostImportant: String
+    )
+
+    data class SurveyResultDTO(
+        val animal: AnimalDTO,
+        val coefficient: Double
+    )
 }

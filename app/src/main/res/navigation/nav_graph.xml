@@ -30,6 +30,9 @@
         <action
             android:id="@+id/action_newsFragment_to_addNewsFragment"
             app:destination="@id/addNewsFragment" />
+        <action
+            android:id="@+id/action_newsFragment_to_surveyHomeFragment"
+            app:destination="@id/surveyHomeFragment" />
     </fragment>
 
     <fragment
@@ -49,6 +52,9 @@
         <action
             android:id="@+id/action_placesFragment_to_addClubFragment"
             app:destination="@id/addClubFragment" />
+        <action
+            android:id="@+id/action_placesFragment_to_surveyHomeFragment"
+            app:destination="@id/surveyHomeFragment" />
     </fragment>
 
     <fragment
@@ -71,6 +77,9 @@
         <action
             android:id="@+id/action_sheltersFragment_to_infoFragment"
             app:destination="@id/infoFragment" />
+        <action
+            android:id="@+id/action_sheltersFragment_to_surveyHomeFragment"
+            app:destination="@id/surveyHomeFragment" />
     </fragment>
 
     <fragment
@@ -93,6 +102,9 @@
         <action
             android:id="@+id/action_nurseriesFragment_to_infoFragment"
             app:destination="@id/infoFragment" />
+        <action
+            android:id="@+id/action_nurseriesFragment_to_surveyHomeFragment"
+            app:destination="@id/surveyHomeFragment" />
     </fragment>
 
     <fragment
@@ -135,6 +147,9 @@
         <action
             android:id="@+id/action_profileFragment_to_newsFragment"
             app:destination="@id/newsFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_surveyHomeFragment"
+            app:destination="@id/surveyHomeFragment" />
     </fragment>
 
     <fragment
@@ -157,6 +172,9 @@
         <action
             android:id="@+id/action_profileInfoFragment_to_titleFragment"
             app:destination="@id/titleFragment" />
+        <action
+            android:id="@+id/action_profileInfoFragment_to_surveyHomeFragment"
+            app:destination="@id/surveyHomeFragment" />
     </fragment>
 
     <fragment
@@ -241,6 +259,44 @@
         <action
             android:id="@+id/action_addClubFragment_to_placesFragment"
             app:destination="@id/placesFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/surveyHomeFragment"
+        android:name="com.vetuslugi.SurveyHomeFragment"
+        android:label="Title"
+        tools:layout="@layout/fragment_survey_home">
+        <action
+            android:id="@+id/action_surveyHomeFragment_to_surveyFragment"
+            app:destination="@id/surveyFragment" />
+        <action
+            android:id="@+id/action_surveyHomeFragment_to_newsFragment"
+            app:destination="@id/newsFragment" />
+        <action
+            android:id="@+id/action_surveyHomeFragment_to_placesFragment"
+            app:destination="@id/placesFragment" />
+        <action
+            android:id="@+id/action_surveyHomeFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_surveyHomeFragment_to_animalPublicDetailFragment"
+            app:destination="@id/animalPublicDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/surveyFragment"
+        android:name="com.vetuslugi.SurveyFragment"
+        android:label="Title"
+        tools:layout="@layout/fragment_survey" />
+
+    <fragment
+        android:id="@+id/animalPublicDetailFragment"
+        android:name="com.vetuslugi.AnimalPublicDetailFragment"
+        android:label="Title"
+        tools:layout="@layout/fragment_animal_public_detail">
+        <action
+            android:id="@+id/action_animalPublicDetailFragment_to_infoFragment"
+            app:destination="@id/infoFragment" />
     </fragment>
 
 </navigation>

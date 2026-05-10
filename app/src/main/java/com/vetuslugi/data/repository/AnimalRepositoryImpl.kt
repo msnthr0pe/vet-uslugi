@@ -7,6 +7,10 @@ import com.vetuslugi.ktor.AuthModels
 
 class AnimalRepositoryImpl(private val api: AuthApi) : AnimalRepository {
 
+    override suspend fun getAllAnimals(): Result<List<Animal>> = runCatching {
+        api.getAnimals().map { it.toDomain() }
+    }
+
     override suspend fun getAnimalsByShelter(shelterAddress: String): Result<List<Animal>> = runCatching {
         api.getAnimalsByShelter(AuthModels.InfoDTO(shelterAddress)).map { it.toDomain() }
     }

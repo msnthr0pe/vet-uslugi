@@ -8,11 +8,17 @@ import com.vetuslugi.data.repository.AnimalRepositoryImpl
 import com.vetuslugi.data.repository.ClubRepositoryImpl
 import com.vetuslugi.data.repository.NewsRepositoryImpl
 import com.vetuslugi.data.repository.PlaceRepositoryImpl
+import com.vetuslugi.data.repository.SurveyRepositoryImpl
 import com.vetuslugi.domain.repository.AnimalRepository
 import com.vetuslugi.domain.repository.AuthRepository
 import com.vetuslugi.domain.repository.ClubRepository
 import com.vetuslugi.domain.repository.NewsRepository
 import com.vetuslugi.domain.repository.PlaceRepository
+import com.vetuslugi.domain.repository.SurveyRepository
+import com.vetuslugi.domain.usecase.survey.GetSurveyBreedsUseCase
+import com.vetuslugi.domain.usecase.survey.GetSurveySpeciesUseCase
+import com.vetuslugi.domain.usecase.survey.SubmitSurveyUseCase
+import com.vetuslugi.presentation.viewmodel.SurveyViewModel
 import com.vetuslugi.domain.usecase.auth.GetUserUseCase
 import com.vetuslugi.domain.usecase.auth.LoginUseCase
 import com.vetuslugi.domain.usecase.auth.RegisterUseCase
@@ -21,6 +27,7 @@ import com.vetuslugi.domain.usecase.news.AddNewsUseCase
 import com.vetuslugi.domain.usecase.news.GetNewsUseCase
 import com.vetuslugi.domain.usecase.animal.AddAnimalUseCase
 import com.vetuslugi.domain.usecase.animal.DeleteAnimalUseCase
+import com.vetuslugi.domain.usecase.animal.GetAllAnimalsUseCase
 import com.vetuslugi.domain.usecase.animal.GetAnimalsByNurseryUseCase
 import com.vetuslugi.domain.usecase.animal.GetAnimalsByShelterUseCase
 import com.vetuslugi.domain.usecase.animal.UpdateAnimalUseCase
@@ -39,6 +46,7 @@ import com.vetuslugi.domain.usecase.place.UpdateShelterUseCase
 import com.vetuslugi.ktor.ApiClient
 import com.vetuslugi.presentation.viewmodel.AddAnimalViewModel
 import com.vetuslugi.presentation.viewmodel.AddClubViewModel
+import com.vetuslugi.presentation.viewmodel.AnimalPublicDetailViewModel
 import com.vetuslugi.presentation.viewmodel.AddNewsViewModel
 import com.vetuslugi.presentation.viewmodel.AddPlaceViewModel
 import com.vetuslugi.presentation.viewmodel.AnimalInfoViewModel
@@ -66,6 +74,7 @@ class AppContainer(context: Context) {
     private val placeRepository: PlaceRepository = PlaceRepositoryImpl(api)
     private val clubRepository: ClubRepository = ClubRepositoryImpl(api)
     private val animalRepository: AnimalRepository = AnimalRepositoryImpl(api)
+    private val surveyRepository: SurveyRepository = SurveyRepositoryImpl(api)
 
     private val loginUseCase = LoginUseCase(authRepository)
     private val getUserUseCase = GetUserUseCase(authRepository)
@@ -82,6 +91,7 @@ class AppContainer(context: Context) {
     private val updateShelterUseCase = UpdateShelterUseCase(placeRepository)
     private val updateNurseryUseCase = UpdateNurseryUseCase(placeRepository)
     private val getClubsUseCase = GetClubsUseCase(clubRepository)
+    private val getAllAnimalsUseCase = GetAllAnimalsUseCase(animalRepository)
     private val getAnimalsByShelterUseCase = GetAnimalsByShelterUseCase(animalRepository)
     private val getAnimalsByNurseryUseCase = GetAnimalsByNurseryUseCase(animalRepository)
     private val addAnimalUseCase = AddAnimalUseCase(animalRepository)
@@ -90,6 +100,9 @@ class AppContainer(context: Context) {
     private val getClubsByOwnerUseCase = GetClubsByOwnerUseCase(clubRepository)
     private val addClubUseCase = AddClubUseCase(clubRepository)
     private val updateClubUseCase = UpdateClubUseCase(clubRepository)
+    private val getSurveySpeciesUseCase = GetSurveySpeciesUseCase(surveyRepository)
+    private val getSurveyBreedsUseCase = GetSurveyBreedsUseCase(surveyRepository)
+    private val submitSurveyUseCase = SubmitSurveyUseCase(surveyRepository)
 
     val loginViewModelFactory = ViewModelFactory {
         LoginViewModel(loginUseCase, getUserUseCase, userSession)
@@ -138,5 +151,11 @@ class AppContainer(context: Context) {
     }
     val addAnimalViewModelFactory = ViewModelFactory {
         AddAnimalViewModel(addAnimalUseCase)
+    }
+    val surveyViewModelFactory = ViewModelFactory {
+        SurveyViewModel(getSurveySpeciesUseCase, getSurveyBreedsUseCase, submitSurveyUseCase, getAllAnimalsUseCase)
+    }
+    val animalPublicDetailViewModelFactory = ViewModelFactory {
+        AnimalPublicDetailViewModel(getSheltersUseCase, getNurseriesUseCase)
     }
 }

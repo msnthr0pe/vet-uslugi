@@ -7,7 +7,7 @@
     android:orientation="horizontal"
     android:background="?android:attr/background"
     android:gravity="center"
-    android:weightSum="3"
+    android:weightSum="4"
     android:elevation="8dp">
 
     <!-- NEWS — unselected -->
@@ -81,6 +81,30 @@
             android:textSize="11sp"
             android:textColor="@color/icon_blue"
             android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- SURVEY — unselected -->
+    <LinearLayout
+        android:id="@+id/nav_survey"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp">
+        <ImageView
+            android:id="@+id/icon_survey"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:src="@drawable/survey" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:text="Животные"
+            android:textSize="11sp"
+            android:textColor="@color/icon_gray" />
     </LinearLayout>
 
 </LinearLayout>

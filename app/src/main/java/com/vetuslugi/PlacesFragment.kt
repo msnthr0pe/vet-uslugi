@@ -97,6 +97,9 @@ class PlacesFragment : Fragment() {
         binding.customBottomBar.iconProfile.setOnClickListener {
             findNavController().navigate(R.id.action_placesFragment_to_profileFragment)
         }
+        binding.customBottomBar.iconSurvey.setOnClickListener {
+            findNavController().navigate(R.id.action_placesFragment_to_surveyHomeFragment)
+        }
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.shelters.collect { shelters ->

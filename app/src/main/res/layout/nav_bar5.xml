@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/customBottomBar"
     android:layout_width="match_parent"
     android:layout_height="72dp"
-    android:orientation="horizontal"
     android:background="?android:attr/background"
+    android:elevation="8dp"
     android:gravity="center"
-    android:weightSum="4"
-    android:elevation="8dp">
+    android:orientation="horizontal"
+    android:weightSum="4">
 
     <!-- NEWS — unselected -->
     <LinearLayout
@@ -20,21 +19,24 @@
         android:orientation="vertical"
         android:paddingTop="8dp"
         android:paddingBottom="8dp">
+
         <ImageView
             android:id="@+id/icon_news"
             android:layout_width="28dp"
             android:layout_height="28dp"
             android:src="@drawable/news" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
             android:text="Новости"
-            android:textSize="11sp"
-            android:textColor="@color/icon_gray" />
+            android:textColor="@color/icon_gray"
+            android:textSize="11sp" />
+
     </LinearLayout>
 
-    <!-- PLACES — selected -->
+    <!-- PLACES — unselected -->
     <LinearLayout
         android:id="@+id/nav_places"
         android:layout_width="0dp"
@@ -44,19 +46,21 @@
         android:orientation="vertical"
         android:paddingTop="8dp"
         android:paddingBottom="8dp">
+
         <ImageView
             android:id="@+id/icon_places"
             android:layout_width="28dp"
             android:layout_height="28dp"
-            android:src="@drawable/placesselected" />
+            android:src="@drawable/places" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
             android:text="Места"
-            android:textSize="11sp"
-            android:textColor="@color/icon_blue"
-            android:textStyle="bold" />
+            android:textColor="@color/icon_gray"
+            android:textSize="11sp" />
+
     </LinearLayout>
 
     <!-- PROFILE — unselected -->
@@ -69,21 +73,24 @@
         android:orientation="vertical"
         android:paddingTop="8dp"
         android:paddingBottom="8dp">
+
         <ImageView
             android:id="@+id/icon_profile"
             android:layout_width="28dp"
             android:layout_height="28dp"
             android:src="@drawable/profile" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
             android:text="Профиль"
-            android:textSize="11sp"
-            android:textColor="@color/icon_gray" />
+            android:textColor="@color/icon_gray"
+            android:textSize="11sp" />
+
     </LinearLayout>
 
-    <!-- SURVEY — unselected -->
+    <!-- SURVEY — selected -->
     <LinearLayout
         android:id="@+id/nav_survey"
         android:layout_width="0dp"
@@ -93,18 +100,22 @@
         android:orientation="vertical"
         android:paddingTop="8dp"
         android:paddingBottom="8dp">
+
         <ImageView
             android:id="@+id/icon_survey"
             android:layout_width="28dp"
             android:layout_height="28dp"
-            android:src="@drawable/survey" />
+            android:src="@drawable/surveyselected" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
             android:text="Животные"
+            android:textColor="@color/icon_blue"
             android:textSize="11sp"
-            android:textColor="@color/icon_gray" />
+            android:textStyle="bold" />
+
     </LinearLayout>
 
 </LinearLayout>

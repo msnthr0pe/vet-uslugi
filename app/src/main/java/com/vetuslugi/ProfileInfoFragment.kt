@@ -47,6 +47,9 @@ class ProfileInfoFragment : Fragment() {
         binding.customBottomBar.iconNews.setOnClickListener {
             findNavController().navigate(R.id.action_profileInfoFragment_to_newsFragment)
         }
+        binding.customBottomBar.iconSurvey.setOnClickListener {
+            findNavController().navigate(R.id.action_profileInfoFragment_to_surveyHomeFragment)
+        }
         binding.customBottomBar.iconPlaces.setOnClickListener {
             findNavController().navigate(R.id.action_profileInfoFragment_to_placesFragment)
         }

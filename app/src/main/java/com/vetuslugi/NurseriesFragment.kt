@@ -61,6 +61,9 @@ class NurseriesFragment : Fragment() {
         binding.customBottomBar.iconProfile.setOnClickListener {
             findNavController().navigate(R.id.action_nurseriesFragment_to_profileFragment)
         }
+        binding.customBottomBar.iconSurvey.setOnClickListener {
+            findNavController().navigate(R.id.action_nurseriesFragment_to_surveyHomeFragment)
+        }
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.nurseries.collect { nurseries ->

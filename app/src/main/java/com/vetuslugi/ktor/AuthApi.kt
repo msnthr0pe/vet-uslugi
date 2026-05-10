@@ -78,4 +78,16 @@ interface AuthApi {
 
     @POST("deleteanimal")
     suspend fun deleteAnimal(@Body request: AuthModels.InfoDTO): AuthModels.InfoDTO
+
+    @GET("surveyspecies")
+    suspend fun getSurveySpecies(): List<String>
+
+    @GET("surveybreeds")
+    suspend fun getSurveyBreeds(): List<String>
+
+    @POST("survey")
+    suspend fun submitSurvey(@Body request: AuthModels.SurveyRequest): List<AuthModels.SurveyResultDTO>
+
+    @GET("getanimals")
+    suspend fun getAnimals(): List<AuthModels.AnimalDTO>
 }

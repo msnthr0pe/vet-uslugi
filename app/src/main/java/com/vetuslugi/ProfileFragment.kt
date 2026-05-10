@@ -92,6 +92,9 @@ class ProfileFragment : Fragment() {
         binding.customBottomBar4.iconPlaces.setOnClickListener {
             findNavController().navigate(R.id.action_profileFragment_to_placesFragment)
         }
+        binding.customBottomBar4.iconSurvey.setOnClickListener {
+            findNavController().navigate(R.id.action_profileFragment_to_surveyHomeFragment)
+        }
 
         viewModel.loadPlaces()
 
