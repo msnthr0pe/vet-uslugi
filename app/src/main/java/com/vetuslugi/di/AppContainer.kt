@@ -38,6 +38,8 @@ import com.vetuslugi.domain.usecase.place.GetClubsByOwnerUseCase
 import com.vetuslugi.domain.usecase.place.GetClubsUseCase
 import com.vetuslugi.domain.usecase.place.GetNurseriesByOwnerUseCase
 import com.vetuslugi.domain.usecase.place.GetNurseriesUseCase
+import com.vetuslugi.domain.usecase.place.GetNurseryByAddressUseCase
+import com.vetuslugi.domain.usecase.place.GetShelterByAddressUseCase
 import com.vetuslugi.domain.usecase.place.GetSheltersByOwnerUseCase
 import com.vetuslugi.domain.usecase.place.GetSheltersUseCase
 import com.vetuslugi.domain.usecase.place.UpdateClubUseCase
@@ -91,6 +93,8 @@ class AppContainer(context: Context) {
     private val updateShelterUseCase = UpdateShelterUseCase(placeRepository)
     private val updateNurseryUseCase = UpdateNurseryUseCase(placeRepository)
     private val getClubsUseCase = GetClubsUseCase(clubRepository)
+    private val getShelterByAddressUseCase = GetShelterByAddressUseCase(placeRepository)
+    private val getNurseryByAddressUseCase = GetNurseryByAddressUseCase(placeRepository)
     private val getAllAnimalsUseCase = GetAllAnimalsUseCase(animalRepository)
     private val getAnimalsByShelterUseCase = GetAnimalsByShelterUseCase(animalRepository)
     private val getAnimalsByNurseryUseCase = GetAnimalsByNurseryUseCase(animalRepository)
@@ -156,6 +160,6 @@ class AppContainer(context: Context) {
         SurveyViewModel(getSurveySpeciesUseCase, getSurveyBreedsUseCase, submitSurveyUseCase, getAllAnimalsUseCase)
     }
     val animalPublicDetailViewModelFactory = ViewModelFactory {
-        AnimalPublicDetailViewModel(getSheltersUseCase, getNurseriesUseCase)
+        AnimalPublicDetailViewModel(getShelterByAddressUseCase, getNurseryByAddressUseCase)
     }
 }

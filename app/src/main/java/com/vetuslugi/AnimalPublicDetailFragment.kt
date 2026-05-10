@@ -67,16 +67,23 @@ class AnimalPublicDetailFragment : Fragment() {
         val isNursery = animal.nurseryAddress != null
 
         if (placeAddress != null) {
-            binding.progressBar.visibility = View.VISIBLE
+            binding.placeCard.visibility = View.GONE
             viewModel.loadPlace(placeAddress, isNursery)
         } else {
             binding.placeCard.visibility = View.GONE
+            binding.progressBar.visibility = View.GONE
+        }
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.placeLoading.collect { loading ->
+                binding.progressBar.visibility = if (loading) View.VISIBLE else View.GONE
+            }
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.place.collect { place ->
-                binding.progressBar.visibility = View.GONE
                 if (place != null) {
+                    binding.placeCard.visibility = View.VISIBLE
                     val typeLabel = if (isNursery) "Питомник" else "Приют"
                     binding.tvPlaceLabel.text = typeLabel.uppercase()
                     binding.tvPlaceName.text = place.name
@@ -89,8 +96,6 @@ class AnimalPublicDetailFragment : Fragment() {
                             R.id.action_animalPublicDetailFragment_to_infoFragment
                         )
                     }
-                } else {
-                    binding.placeCard.visibility = View.GONE
                 }
             }
         }

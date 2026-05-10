@@ -90,4 +90,10 @@ interface AuthApi {
 
     @GET("getanimals")
     suspend fun getAnimals(): List<AuthModels.AnimalDTO>
+
+    @POST("getshelterbyaddress")
+    suspend fun getShelterByAddress(@Body request: AuthModels.InfoDTO): AuthModels.PlaceDTO
+
+    @POST("getnurserybyaddress")
+    suspend fun getNurseryByAddress(@Body request: AuthModels.InfoDTO): AuthModels.PlaceDTO
 }

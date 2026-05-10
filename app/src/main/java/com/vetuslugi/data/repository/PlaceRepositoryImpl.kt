@@ -22,6 +22,12 @@ class PlaceRepositoryImpl(private val api: AuthApi) : PlaceRepository {
     override suspend fun getNurseriesByOwner(owner: String): Result<List<Place>> =
         runCatching { api.getNurseryBy(AuthModels.InfoDTO(owner)).map { it.toDomain() } }
 
+    override suspend fun getShelterByAddress(address: String): Result<Place> =
+        runCatching { api.getShelterByAddress(AuthModels.InfoDTO(address)).toDomain() }
+
+    override suspend fun getNurseryByAddress(address: String): Result<Place> =
+        runCatching { api.getNurseryByAddress(AuthModels.InfoDTO(address)).toDomain() }
+
     override suspend fun addShelter(place: Place): Result<Unit> =
         runCatching { api.addShelter(place.toDto()) }.map {}
 
