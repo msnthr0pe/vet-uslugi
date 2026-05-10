@@ -28,17 +28,17 @@ class AddAnimalFragment : Fragment() {
     }
 
     private var selectedImageBytes: ByteArray? = null
-    private var selectedImageName: String = "image.jpg"
+    private var selectedImageName: String = "photo.jpg"
 
     private val pickImage = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
         uri ?: return@registerForActivityResult
         val b = _binding ?: return@registerForActivityResult
-        selectedImageBytes = requireContext().contentResolver.openInputStream(uri)?.readBytes()
-        selectedImageName = uri.lastPathSegment ?: "image.jpg"
-        Glide.with(this)
-            .load(uri).centerCrop()
-            .placeholder(R.drawable.nursery)
-            .into(b.ivAnimalPhoto)
+        val cr = requireContext().contentResolver
+        selectedImageBytes = cr.openInputStream(uri)?.readBytes()
+        val mimeType = cr.getType(uri) ?: "image/jpeg"
+        val ext = android.webkit.MimeTypeMap.getSingleton().getExtensionFromMimeType(mimeType) ?: "jpg"
+        selectedImageName = "photo_${System.currentTimeMillis()}.$ext"
+        Glide.with(this).load(uri).centerCrop().into(b.ivAnimalPhoto)
     }
 
     override fun onCreateView(

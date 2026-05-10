@@ -27,7 +27,6 @@ class SurveyResultAdapter(
         Glide.with(holder.binding.root.context)
             .load(animal.imageUrl)
             .centerCrop()
-            .placeholder(R.drawable.nursery)
             .into(holder.binding.ivAnimalPhoto)
         holder.binding.tvAnimalNickname.text = animal.nickname
         holder.binding.tvAnimalDetails.text = "${animal.species} · ${animal.breed}"

@@ -1,12 +1,11 @@
 package com.vetuslugi.data.repository
 
+import android.util.Base64
 import com.vetuslugi.domain.model.Animal
 import com.vetuslugi.domain.repository.AnimalRepository
 import com.vetuslugi.ktor.AuthApi
 import com.vetuslugi.ktor.AuthModels
-import okhttp3.MediaType.Companion.toMediaTypeOrNull
-import okhttp3.MultipartBody
-import okhttp3.RequestBody.Companion.toRequestBody
+import com.vetuslugi.ktor.ImgBBClient
 
 class AnimalRepositoryImpl(private val api: AuthApi) : AnimalRepository {
 
@@ -38,9 +37,8 @@ class AnimalRepositoryImpl(private val api: AuthApi) : AnimalRepository {
     }
 
     override suspend fun uploadImage(imageBytes: ByteArray, fileName: String): Result<String> = runCatching {
-        val requestBody = imageBytes.toRequestBody("image/jpeg".toMediaTypeOrNull())
-        val part = MultipartBody.Part.createFormData("image", fileName, requestBody)
-        api.uploadImage(part).imageUrl
+        val base64 = Base64.encodeToString(imageBytes, Base64.NO_WRAP)
+        ImgBBClient.api.uploadImage(ImgBBClient.API_KEY, base64).data.url
     }
 
     private fun AuthModels.AnimalDTO.toDomain() = Animal(

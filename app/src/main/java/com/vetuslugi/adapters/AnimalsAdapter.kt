@@ -41,7 +41,6 @@ class AnimalsAdapter(
         Glide.with(holder.itemView.context)
             .load(item.imageUrl)
             .centerCrop()
-            .placeholder(R.drawable.nursery)
             .into(holder.ivPhoto)
         holder.tvNickname.text = item.nickname
         holder.tvSpecies.text = item.species

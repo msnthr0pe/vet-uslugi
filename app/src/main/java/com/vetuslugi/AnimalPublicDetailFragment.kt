@@ -47,7 +47,6 @@ class AnimalPublicDetailFragment : Fragment() {
         Glide.with(this)
             .load(animal.imageUrl)
             .centerCrop()
-            .placeholder(R.drawable.nursery)
             .into(binding.ivAnimalPhoto)
 
         binding.nicknameCard.tvCardTitle.text = "Кличка"
