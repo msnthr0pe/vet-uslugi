@@ -46,9 +46,9 @@ class SurveyFragment : Fragment() {
 
             val willingToAdoptSick = binding.rbSickYes.isChecked
 
-            val mostImportant = when (binding.rgImportant.checkedRadioButtonId) {
-                R.id.rbImportantBreed -> "breed"
-                R.id.rbImportantHealth -> "health"
+            val mostImportant = when {
+                binding.rbImportantBreed.isChecked -> "breed"
+                binding.rbImportantHealth.isChecked -> "health"
                 else -> "species"
             }
 
