@@ -15,6 +15,7 @@ import com.vetuslugi.adapters.ClubsAdapter
 import com.vetuslugi.adapters.NurseriesAdapter
 import com.vetuslugi.adapters.SheltersAdapter
 import com.vetuslugi.databinding.FragmentPlacesBinding
+import com.vetuslugi.domain.model.Place
 import com.vetuslugi.presentation.viewmodel.PlacesViewModel
 import com.vetuslugi.presentation.viewmodel.PlacesViewModel.Tab
 import com.vetuslugi.presentation.viewmodel.SharedPlaceViewModel
@@ -30,6 +31,10 @@ class PlacesFragment : Fragment() {
     private lateinit var nurseriesAdapter: NurseriesAdapter
     private lateinit var clubsAdapter: ClubsAdapter
     private var isAdmin = false
+
+    private var shelterList: List<Place> = emptyList()
+    private var nurseryList: List<Place> = emptyList()
+    private var clubList: List<Place> = emptyList()
 
     private val viewModel: PlacesViewModel by viewModels {
         (requireActivity().application as VetUslugiApp).container.placesViewModelFactory
@@ -95,22 +100,29 @@ class PlacesFragment : Fragment() {
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.shelters.collect { shelters ->
+                shelterList = shelters
                 sheltersAdapter.updateList(shelters)
+                if (viewModel.activeTab.value == Tab.SHELTERS) updateEmptyState(shelters)
             }
         }
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.nurseries.collect { nurseries ->
+                nurseryList = nurseries
                 nurseriesAdapter.updateList(nurseries)
+                if (viewModel.activeTab.value == Tab.NURSERIES) updateEmptyState(nurseries)
             }
         }
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.clubs.collect { clubs ->
+                clubList = clubs
                 clubsAdapter.updateList(clubs)
+                if (viewModel.activeTab.value == Tab.CLUBS) updateEmptyState(clubs)
             }
         }
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.loading.collect { loading ->
                 binding.progressBar.visibility = if (loading) View.VISIBLE else View.GONE
+                if (loading) binding.tvEmptyState.visibility = View.GONE
             }
         }
     }
@@ -120,8 +132,25 @@ class PlacesFragment : Fragment() {
         binding.sheltersRecycler.visibility = if (tab == Tab.SHELTERS) View.VISIBLE else View.GONE
         binding.nurseriesRecycler.visibility = if (tab == Tab.NURSERIES) View.VISIBLE else View.GONE
         binding.clubsRecycler.visibility = if (tab == Tab.CLUBS) View.VISIBLE else View.GONE
-        binding.btnAddClub.visibility =
-            if (tab == Tab.CLUBS && isAdmin) View.VISIBLE else View.GONE
+        binding.btnAddClub.visibility = if (tab == Tab.CLUBS && isAdmin) View.VISIBLE else View.GONE
+        val currentList = when (tab) {
+            Tab.SHELTERS -> shelterList
+            Tab.NURSERIES -> nurseryList
+            Tab.CLUBS -> clubList
+        }
+        updateEmptyState(currentList)
+    }
+
+    private fun updateEmptyState(list: List<Place>) {
+        val isLoading = viewModel.loading.value
+        val isEmpty = list.isEmpty() && !isLoading
+        val query = viewModel.searchQuery.value
+        binding.tvEmptyState.text = if (query.isNotEmpty()) "Ничего не найдено" else when (viewModel.activeTab.value) {
+            Tab.SHELTERS -> "Приютов пока нет"
+            Tab.NURSERIES -> "Питомников пока нет"
+            Tab.CLUBS -> "Клубов пока нет"
+        }
+        binding.tvEmptyState.visibility = if (isEmpty) View.VISIBLE else View.GONE
     }
 
     override fun onDestroyView() {

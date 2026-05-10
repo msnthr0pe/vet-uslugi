@@ -1,126 +1,187 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="180dp"
-        android:text="Регистрация"
-        android:textColor="@color/blue"
-        android:textSize="40dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/etNameRegister"
-        android:layout_width="334dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="44dp"
-        android:ems="10"
-        android:hint="Имя"
-        android:inputType="text"
-        app:layout_constraintStart_toStartOf="@+id/textView11"
-        app:layout_constraintTop_toBottomOf="@+id/textView11" />
-
-    <EditText
-        android:id="@+id/etSurnameRegister"
-        android:layout_width="334dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="12dp"
-        android:ems="10"
-        android:hint="Фамилия"
-        android:inputType="text"
-        app:layout_constraintStart_toStartOf="@+id/etNameRegister"
-        app:layout_constraintTop_toBottomOf="@+id/etNameRegister" />
-
-    <EditText
-        android:id="@+id/etPhoneRegister"
-        android:layout_width="334dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="12dp"
-        android:ems="10"
-        android:hint="Номер телефона"
-        android:inputType="phone"
-        app:layout_constraintStart_toStartOf="@+id/etSurnameRegister"
-        app:layout_constraintTop_toBottomOf="@+id/etSurnameRegister" />
-
-    <EditText
-        android:id="@+id/etLoginRegister"
-        android:layout_width="334dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="12dp"
-        android:ems="10"
-        android:hint="Логин"
-        android:inputType="textEmailAddress"
-        app:layout_constraintStart_toStartOf="@+id/etPhoneRegister"
-        app:layout_constraintTop_toBottomOf="@+id/etPhoneRegister" />
-
-    <EditText
-        android:id="@+id/etPasswordRegister"
-        android:layout_width="334dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="12dp"
-        android:ems="10"
-        android:hint="Пароль"
-        android:inputType="textPassword"
-        app:layout_constraintStart_toStartOf="@+id/etLoginRegister"
-        app:layout_constraintTop_toBottomOf="@+id/etLoginRegister" />
-
-    <Button
-        android:id="@+id/btnContinueRegister"
-        android:layout_width="334dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="24dp"
-        android:text="Продолжить"
-        app:layout_constraintStart_toStartOf="@+id/textView5"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Вы заводчик?"
-        android:textColor="@color/blue"
-        app:layout_constraintStart_toStartOf="@+id/etPasswordRegister"
-        app:layout_constraintTop_toBottomOf="@+id/etPasswordRegister" />
-
-    <androidx.appcompat.widget.AppCompatCheckBox
-        android:id="@+id/cbIsBreeder"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:text="Да"
-        android:textColor="@color/blue"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView5"
-        app:layout_constraintStart_toEndOf="@+id/textView5"
-        app:layout_constraintTop_toTopOf="@+id/textView5"
-        app:layout_constraintVertical_bias="0.5" />
-
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:indeterminate="true"
-        android:indeterminateTint="@color/blue"
-        android:visibility="gone"
-        android:background="@android:color/transparent"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?android:attr/background"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5" />
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:navigationIconTint="@color/blue" />
 
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="40dp">
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="24dp"
+                android:text="Регистрация"
+                android:textColor="@color/blue"
+                android:textSize="40sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/etNameRegister"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="28dp"
+                android:background="@drawable/rounded_corners"
+                android:hint="Имя"
+                android:inputType="text"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+            <EditText
+                android:id="@+id/etSurnameRegister"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_corners"
+                android:hint="Фамилия"
+                android:inputType="text"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etNameRegister" />
+
+            <EditText
+                android:id="@+id/etPhoneRegister"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_corners"
+                android:hint="Номер телефона"
+                android:inputType="phone"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etSurnameRegister" />
+
+            <EditText
+                android:id="@+id/etLoginRegister"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_corners"
+                android:hint="Логин"
+                android:inputType="textEmailAddress"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etPhoneRegister" />
+
+            <EditText
+                android:id="@+id/etPasswordRegister"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_corners"
+                android:hint="Пароль"
+                android:inputType="textPassword"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etLoginRegister" />
+
+            <LinearLayout
+                android:id="@+id/layoutBreeder"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etPasswordRegister">
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Вы заводчик?"
+                    android:textColor="@color/blue"
+                    android:textSize="16sp" />
+
+                <androidx.appcompat.widget.AppCompatCheckBox
+                    android:id="@+id/cbIsBreeder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="Да"
+                    android:textColor="@color/blue"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnContinueRegister"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="24dp"
+                android:text="Продолжить"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layoutBreeder" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:indeterminate="true"
+                android:indeterminateTint="@color/blue"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

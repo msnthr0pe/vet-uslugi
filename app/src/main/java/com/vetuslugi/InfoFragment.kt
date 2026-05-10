@@ -44,6 +44,8 @@ class InfoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.toolbar.setNavigationOnClickListener { findNavController().popBackStack() }
+
         val selection = sharedPlaceViewModel.selection.value ?: return
         val place = selection.place
 

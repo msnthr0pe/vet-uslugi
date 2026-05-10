@@ -33,6 +33,8 @@ class AddNewsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.toolbar.setNavigationOnClickListener { findNavController().popBackStack() }
+
         binding.btnPublishNews.setOnClickListener {
             val title = binding.etNewsTitle.text.toString()
             val description = binding.etNewsDescription.text.toString()

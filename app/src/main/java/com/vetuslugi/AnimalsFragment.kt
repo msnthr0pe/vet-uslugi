@@ -41,6 +41,8 @@ class AnimalsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.toolbar.setNavigationOnClickListener { findNavController().popBackStack() }
+
         adapter = AnimalsAdapter(emptyList()) { animal ->
             val ctx = sharedAnimalViewModel.context.value ?: return@AnimalsAdapter
             sharedAnimalViewModel.selectAnimal(animal, editable = ctx.editable)
@@ -66,11 +68,17 @@ class AnimalsFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.animals.collect { animals ->
                 adapter.updateList(animals)
+                updateEmptyState(animals.isEmpty())
             }
         }
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.loading.collect { loading ->
                 binding.progressBar.visibility = if (loading) View.VISIBLE else View.GONE
+                if (loading) {
+                    binding.tvEmptyAnimals.visibility = View.GONE
+                } else {
+                    updateEmptyState(viewModel.animals.value.isEmpty())
+                }
             }
         }
         viewLifecycleOwner.lifecycleScope.launch {
@@ -81,6 +89,14 @@ class AnimalsFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun updateEmptyState(isEmpty: Boolean) {
+        if (viewModel.loading.value) return
+        val query = viewModel.searchQuery.value
+        binding.tvEmptyAnimals.text =
+            if (query.isNotEmpty()) "Ничего не найдено" else "Животных пока нет"
+        binding.tvEmptyAnimals.visibility = if (isEmpty) View.VISIBLE else View.GONE
     }
 
     override fun onDestroyView() {

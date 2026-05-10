@@ -4,81 +4,138 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tvAddClubTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="52dp"
-        android:text="Добавить\nклуб"
-        android:textColor="@color/blue"
-        android:textSize="40sp"
-        android:textStyle="bold"
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?android:attr/background"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:navigationIconTint="@color/blue" />
 
-    <EditText
-        android:id="@+id/etClubName"
-        android:layout_width="334dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="32dp"
-        android:hint="Название"
-        android:inputType="text"
-        app:layout_constraintStart_toStartOf="@+id/tvAddClubTitle"
-        app:layout_constraintTop_toBottomOf="@+id/tvAddClubTitle" />
-
-    <EditText
-        android:id="@+id/etClubAddress"
-        android:layout_width="334dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="12dp"
-        android:hint="Адрес"
-        android:inputType="text"
-        app:layout_constraintStart_toStartOf="@+id/etClubName"
-        app:layout_constraintTop_toBottomOf="@+id/etClubName" />
-
-    <EditText
-        android:id="@+id/etClubPhone"
-        android:layout_width="334dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="12dp"
-        android:hint="Контактный телефон"
-        android:inputType="phone"
-        app:layout_constraintStart_toStartOf="@+id/etClubAddress"
-        app:layout_constraintTop_toBottomOf="@+id/etClubAddress" />
-
-    <EditText
-        android:id="@+id/etClubDescription"
-        android:layout_width="334dp"
-        android:layout_height="125dp"
-        android:layout_marginTop="12dp"
-        android:gravity="start|top"
-        android:hint="Описание"
-        android:inputType="textMultiLine"
-        app:layout_constraintStart_toStartOf="@+id/etClubPhone"
-        app:layout_constraintTop_toBottomOf="@+id/etClubPhone" />
-
-    <Button
-        android:id="@+id/btnCreateClub"
-        android:layout_width="334dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="24dp"
-        android:text="Создать клуб"
-        app:layout_constraintStart_toStartOf="@+id/etClubDescription"
-        app:layout_constraintTop_toBottomOf="@+id/etClubDescription" />
-
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:indeterminate="true"
-        android:indeterminateTint="@color/blue"
-        android:visibility="gone"
-        android:background="@android:color/transparent"
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="40dp">
+
+            <TextView
+                android:id="@+id/tvAddClubTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="24dp"
+                android:text="Добавить\nклуб"
+                android:textColor="@color/blue"
+                android:textSize="40sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/etClubName"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/rounded_corners"
+                android:hint="Название"
+                android:inputType="text"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvAddClubTitle" />
+
+            <EditText
+                android:id="@+id/etClubAddress"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_corners"
+                android:hint="Адрес"
+                android:inputType="text"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etClubName" />
+
+            <EditText
+                android:id="@+id/etClubPhone"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_corners"
+                android:hint="Контактный телефон"
+                android:inputType="phone"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etClubAddress" />
+
+            <EditText
+                android:id="@+id/etClubDescription"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_corners"
+                android:gravity="start|top"
+                android:hint="Описание"
+                android:inputType="textMultiLine"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingTop="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etClubPhone" />
+
+            <Button
+                android:id="@+id/btnCreateClub"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="28dp"
+                android:text="Создать клуб"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etClubDescription" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:indeterminate="true"
+                android:indeterminateTint="@color/blue"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

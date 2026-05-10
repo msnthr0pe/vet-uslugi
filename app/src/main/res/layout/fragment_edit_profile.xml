@@ -1,99 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="180dp"
-        android:text="Редактирование \nданных"
-        android:textColor="@color/blue"
-        android:textSize="40dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/etNameEdit"
-        android:layout_width="334dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="36dp"
-        android:ems="10"
-        android:hint="Имя"
-        android:inputType="text"
-        android:textColor="@color/blue"
-        app:layout_constraintStart_toStartOf="@+id/textView11"
-        app:layout_constraintTop_toBottomOf="@+id/textView11" />
-
-    <EditText
-        android:id="@+id/etSurnameEdit"
-        android:layout_width="334dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="12dp"
-        android:ems="10"
-        android:hint="Фамилия"
-        android:inputType="text"
-        android:textColor="@color/blue"
-        app:layout_constraintStart_toStartOf="@+id/etNameEdit"
-        app:layout_constraintTop_toBottomOf="@+id/etNameEdit" />
-
-    <EditText
-        android:id="@+id/etConfirmationPassword"
-        android:layout_width="334dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="96dp"
-        android:ems="10"
-        android:hint="Пароль для подтверждения"
-        android:inputType="textPassword"
-        android:textColor="@color/blue"
-        app:layout_constraintEnd_toEndOf="@+id/etPhoneEdit"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/etPhoneEdit"
-        app:layout_constraintTop_toBottomOf="@+id/etPhoneEdit" />
-
-    <Button
-        android:id="@+id/btnChangeData"
-        android:layout_width="334dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="16dp"
-        android:text="Изменить данные"
-        app:layout_constraintEnd_toEndOf="@+id/etConfirmationPassword"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/etConfirmationPassword"
-        app:layout_constraintTop_toBottomOf="@+id/etConfirmationPassword" />
-
-    <EditText
-        android:id="@+id/etPhoneEdit"
-        android:layout_width="334dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="12dp"
-        android:ems="10"
-        android:enabled="false"
-        android:hint="Номер телефона"
-        android:textColor="@color/blue"
-        app:layout_constraintStart_toStartOf="@+id/etSurnameEdit"
-        app:layout_constraintTop_toBottomOf="@+id/etSurnameEdit" />
-
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:indeterminate="true"
-        android:indeterminateTint="@color/blue"
-        android:visibility="gone"
-        android:background="@android:color/transparent"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?android:attr/background"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5" />
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:navigationIconTint="@color/blue" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="40dp">
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="24dp"
+                android:text="Редактирование \nданных"
+                android:textColor="@color/blue"
+                android:textSize="40sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/etNameEdit"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="28dp"
+                android:background="@drawable/rounded_corners"
+                android:hint="Имя"
+                android:inputType="text"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textColor="?android:attr/colorPrimary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+            <EditText
+                android:id="@+id/etSurnameEdit"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_corners"
+                android:hint="Фамилия"
+                android:inputType="text"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textColor="?android:attr/colorPrimary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etNameEdit" />
+
+            <EditText
+                android:id="@+id/etPhoneEdit"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="16dp"
+                android:alpha="0.5"
+                android:background="@drawable/rounded_corners"
+                android:enabled="false"
+                android:hint="Номер телефона"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textColor="?android:attr/colorPrimary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etSurnameEdit" />
+
+            <EditText
+                android:id="@+id/etConfirmationPassword"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/rounded_corners"
+                android:hint="Пароль для подтверждения"
+                android:inputType="textPassword"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textColor="?android:attr/colorPrimary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etPhoneEdit" />
+
+            <Button
+                android:id="@+id/btnChangeData"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="24dp"
+                android:text="Изменить данные"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etConfirmationPassword" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:indeterminate="true"
+                android:indeterminateTint="@color/blue"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

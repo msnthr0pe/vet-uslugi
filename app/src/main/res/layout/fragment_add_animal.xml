@@ -1,99 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="32dp">
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?android:attr/background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:navigationIconTint="@color/blue" />
 
-        <TextView
-            android:id="@+id/tvAddAnimalTitle"
-            android:layout_width="wrap_content"
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="52dp"
-            android:text="Добавить\nживотное"
-            android:textColor="@color/blue"
-            android:textSize="40sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:paddingBottom="40dp">
 
-        <EditText
-            android:id="@+id/etAnimalNickname"
-            android:layout_width="334dp"
-            android:layout_height="55dp"
-            android:layout_marginTop="24dp"
-            android:hint="Кличка"
-            android:inputType="text"
-            app:layout_constraintStart_toStartOf="@+id/tvAddAnimalTitle"
-            app:layout_constraintTop_toBottomOf="@+id/tvAddAnimalTitle" />
+            <TextView
+                android:id="@+id/tvAddAnimalTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="24dp"
+                android:text="Добавить\nживотное"
+                android:textColor="@color/blue"
+                android:textSize="40sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/etAnimalSpecies"
-            android:layout_width="334dp"
-            android:layout_height="55dp"
-            android:layout_marginTop="12dp"
-            android:hint="Вид (Собака, Кошка...)"
-            android:inputType="text"
-            app:layout_constraintStart_toStartOf="@+id/etAnimalNickname"
-            app:layout_constraintTop_toBottomOf="@+id/etAnimalNickname" />
+            <EditText
+                android:id="@+id/etAnimalNickname"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/rounded_corners"
+                android:hint="Кличка"
+                android:inputType="text"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvAddAnimalTitle" />
 
-        <EditText
-            android:id="@+id/etAnimalBreed"
-            android:layout_width="334dp"
-            android:layout_height="55dp"
-            android:layout_marginTop="12dp"
-            android:hint="Порода"
-            android:inputType="text"
-            app:layout_constraintStart_toStartOf="@+id/etAnimalNickname"
-            app:layout_constraintTop_toBottomOf="@+id/etAnimalSpecies" />
+            <EditText
+                android:id="@+id/etAnimalSpecies"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_corners"
+                android:hint="Вид (Собака, Кошка...)"
+                android:inputType="text"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etAnimalNickname" />
 
-        <EditText
-            android:id="@+id/etAnimalAge"
-            android:layout_width="334dp"
-            android:layout_height="55dp"
-            android:layout_marginTop="12dp"
-            android:hint="Возраст (лет)"
-            android:inputType="number"
-            app:layout_constraintStart_toStartOf="@+id/etAnimalBreed"
-            app:layout_constraintTop_toBottomOf="@+id/etAnimalBreed" />
+            <EditText
+                android:id="@+id/etAnimalBreed"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_corners"
+                android:hint="Порода"
+                android:inputType="text"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etAnimalSpecies" />
 
-        <EditText
-            android:id="@+id/etAnimalDiseases"
-            android:layout_width="334dp"
-            android:layout_height="55dp"
-            android:layout_marginTop="12dp"
-            android:hint="Болезни (необязательно)"
-            android:inputType="text"
-            app:layout_constraintStart_toStartOf="@+id/etAnimalAge"
-            app:layout_constraintTop_toBottomOf="@+id/etAnimalAge" />
+            <EditText
+                android:id="@+id/etAnimalAge"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_corners"
+                android:hint="Возраст (лет)"
+                android:inputType="number"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etAnimalBreed" />
 
-        <Button
-            android:id="@+id/btnAddAnimalSubmit"
-            android:layout_width="334dp"
-            android:layout_height="55dp"
-            android:layout_marginTop="24dp"
-            android:text="Добавить"
-            app:layout_constraintStart_toStartOf="@+id/etAnimalDiseases"
-            app:layout_constraintTop_toBottomOf="@+id/etAnimalDiseases" />
+            <EditText
+                android:id="@+id/etAnimalDiseases"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_corners"
+                android:hint="Болезни (необязательно)"
+                android:inputType="text"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etAnimalAge" />
 
-        <ProgressBar
-            android:id="@+id/progressBar"
-            style="?android:attr/progressBarStyleLarge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:indeterminate="true"
-            android:indeterminateTint="@color/blue"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <Button
+                android:id="@+id/btnAddAnimalSubmit"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="28dp"
+                android:text="Добавить"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etAnimalDiseases" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.core.widget.NestedScrollView>
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:indeterminate="true"
+                android:indeterminateTint="@color/blue"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

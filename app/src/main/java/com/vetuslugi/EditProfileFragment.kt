@@ -33,6 +33,8 @@ class EditProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.toolbar.setNavigationOnClickListener { findNavController().popBackStack() }
+
         val user = viewModel.getCurrentUser()
         binding.etNameEdit.setText(user?.name)
         binding.etSurnameEdit.setText(user?.surname)

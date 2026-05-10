@@ -42,6 +42,8 @@ class AnimalInfoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.toolbar.setNavigationOnClickListener { findNavController().popBackStack() }
+
         val selection = sharedAnimalViewModel.selection.value ?: return
         val animal = selection.animal
 

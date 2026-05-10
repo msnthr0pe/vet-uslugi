@@ -33,6 +33,8 @@ class AddClubFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.toolbar.setNavigationOnClickListener { findNavController().popBackStack() }
+
         binding.btnCreateClub.setOnClickListener {
             val name = binding.etClubName.text.toString().trim()
             val address = binding.etClubAddress.text.toString().trim()

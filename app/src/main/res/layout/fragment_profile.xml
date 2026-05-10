@@ -5,78 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
-    <TextView
-        android:id="@+id/textView15"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Мои места"
-        android:textColor="?android:attr/colorPrimary"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/tvGetInfo"
-        app:layout_constraintTop_toBottomOf="@+id/tvGetInfo" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/shelterRecycler"
-        android:layout_width="334dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="@+id/textView15"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView15"
-        app:layout_constraintTop_toBottomOf="@+id/textView15"
-        tools:itemCount="2"
-        tools:listitem="@layout/item_shelter" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/nurseryRecycler"
-        android:layout_width="334dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="40dp"
-        app:layout_constraintEnd_toEndOf="@+id/shelterRecycler"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/shelterRecycler"
-        app:layout_constraintTop_toBottomOf="@+id/shelterRecycler"
-        tools:itemCount="2"
-        tools:listitem="@layout/item_nursery" />
-
-    <TextView
-        android:id="@+id/tvNameUser"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Имя"
-        android:textColor="?android:attr/colorPrimary"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-    <TextView
-        android:id="@+id/tvSurnameUser"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:text="Фамилия"
-        android:textColor="?android:attr/colorPrimary"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/tvNameUser"
-        app:layout_constraintStart_toEndOf="@+id/tvNameUser"
-        app:layout_constraintTop_toTopOf="@+id/tvNameUser"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/btnAddPlace"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="96dp"
-        android:text="Добавить место"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+    <include
+        android:id="@+id/customBottomBar4"
+        layout="@layout/nav_bar4"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <TextView
         android:id="@+id/textView3"
@@ -91,23 +25,156 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <LinearLayout
+        android:id="@+id/llNameRow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+        <TextView
+            android:id="@+id/tvNameUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Имя"
+            android:textColor="?android:attr/colorPrimary"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvSurnameUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="Фамилия"
+            android:textColor="?android:attr/colorPrimary"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
     <TextView
         android:id="@+id/tvGetInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
         android:text="подробная информация"
         android:textColor="@color/blue"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/tvNameUser"
-        app:layout_constraintTop_toBottomOf="@+id/tvNameUser" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/llNameRow" />
 
-    <include
-        android:id="@+id/customBottomBar4"
-        layout="@layout/nav_bar4"
-        android:layout_width="match_parent"
-        android:layout_height="72dp"
-        android:layout_alignParentBottom="true"
-        app:layout_constraintBottom_toBottomOf="parent" />
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="28dp"
+        android:text="Мои места"
+        android:textColor="?android:attr/colorPrimary"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvGetInfo" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chipGroupProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView15"
+        app:selectionRequired="true"
+        app:singleSelection="true">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipProfileShelters"
+            style="@style/Widget.Material3.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:checked="true"
+            android:text="Приюты"
+            android:textColor="@color/chip_text_color"
+            app:checkedIconVisible="false"
+            app:chipBackgroundColor="@color/chip_background_color"
+            app:chipCornerRadius="20dp"
+            app:chipStrokeColor="@color/blue"
+            app:chipStrokeWidth="1.5dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipProfileNurseries"
+            style="@style/Widget.Material3.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:text="Питомники"
+            android:textColor="@color/chip_text_color"
+            app:checkedIconVisible="false"
+            app:chipBackgroundColor="@color/chip_background_color"
+            app:chipCornerRadius="20dp"
+            app:chipStrokeColor="@color/blue"
+            app:chipStrokeWidth="1.5dp" />
+
+    </com.google.android.material.chip.ChipGroup>
+
+    <Button
+        android:id="@+id/btnAddPlace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:text="Добавить место"
+        app:layout_constraintBottom_toTopOf="@+id/customBottomBar4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/shelterRecycler"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:clipToPadding="false"
+        android:paddingBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnAddPlace"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chipGroupProfile"
+        tools:itemCount="2"
+        tools:listitem="@layout/item_shelter" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/nurseryRecycler"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:clipToPadding="false"
+        android:paddingBottom="8dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/btnAddPlace"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chipGroupProfile"
+        tools:itemCount="2"
+        tools:listitem="@layout/item_nursery" />
+
+    <TextView
+        android:id="@+id/tvEmptyPlaces"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:gravity="center"
+        android:text="Нет мест"
+        android:textColor="@color/blue"
+        android:textSize="16sp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chipGroupProfile" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

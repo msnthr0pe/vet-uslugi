@@ -4,143 +4,210 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="52dp"
-        android:text="Добавление\nместа"
-        android:textColor="@color/blue"
-        android:textSize="40sp"
-        android:textStyle="bold"
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?android:attr/background"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:navigationIconTint="@color/blue" />
 
-    <EditText
-        android:id="@+id/etNameNewPlace"
-        android:layout_width="334dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="24dp"
-        android:hint="Название"
-        android:inputType="text"
-        app:layout_constraintStart_toStartOf="@+id/textView11"
-        app:layout_constraintTop_toBottomOf="@+id/textView11" />
-
-    <EditText
-        android:id="@+id/etAddressNewPlace"
-        android:layout_width="334dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="12dp"
-        android:hint="Адрес"
-        android:inputType="text"
-        app:layout_constraintStart_toStartOf="@+id/etNameNewPlace"
-        app:layout_constraintTop_toBottomOf="@+id/etNameNewPlace" />
-
-    <EditText
-        android:id="@+id/etPhoneNewPlace"
-        android:layout_width="334dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="12dp"
-        android:hint="Контактный телефон"
-        android:inputType="phone"
-        app:layout_constraintStart_toStartOf="@+id/etAddressNewPlace"
-        app:layout_constraintTop_toBottomOf="@+id/etAddressNewPlace" />
-
-    <EditText
-        android:id="@+id/etDescNewPlace"
-        android:layout_width="334dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="12dp"
-        android:gravity="start|top"
-        android:hint="Описание"
-        android:inputType="textMultiLine"
-        app:layout_constraintStart_toStartOf="@+id/etPhoneNewPlace"
-        app:layout_constraintTop_toBottomOf="@+id/etPhoneNewPlace" />
-
-    <!-- Тип места -->
-    <androidx.appcompat.widget.AppCompatCheckBox
-        android:id="@+id/cbShelter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="@+id/etDescNewPlace"
-        app:layout_constraintTop_toBottomOf="@+id/etDescNewPlace" />
-
-    <TextView
-        android:id="@+id/tvIsShelter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:text="Приют"
-        android:textColor="@color/blue"
-        app:layout_constraintBottom_toBottomOf="@+id/cbShelter"
-        app:layout_constraintStart_toEndOf="@+id/cbShelter"
-        app:layout_constraintTop_toTopOf="@+id/cbShelter" />
-
-    <androidx.appcompat.widget.AppCompatCheckBox
-        android:id="@+id/cbNursery"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="@+id/cbShelter"
-        app:layout_constraintTop_toBottomOf="@+id/cbShelter" />
-
-    <TextView
-        android:id="@+id/tvIsNursery"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:text="Питомник"
-        android:textColor="@color/blue"
-        app:layout_constraintBottom_toBottomOf="@+id/cbNursery"
-        app:layout_constraintStart_toEndOf="@+id/cbNursery"
-        app:layout_constraintTop_toTopOf="@+id/cbNursery" />
-
-    <!-- Выбор клуба -->
-    <TextView
-        android:id="@+id/tvClubLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Клуб (необязательно)"
-        android:textColor="@color/blue"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@+id/cbNursery"
-        app:layout_constraintTop_toBottomOf="@+id/cbNursery" />
-
-    <Spinner
-        android:id="@+id/spinnerClub"
-        android:layout_width="334dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="6dp"
-        android:background="@drawable/rounded_corners"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp"
-        app:layout_constraintStart_toStartOf="@+id/tvClubLabel"
-        app:layout_constraintTop_toBottomOf="@+id/tvClubLabel" />
-
-    <Button
-        android:id="@+id/btnAddNewPlace"
-        android:layout_width="334dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="20dp"
-        android:text="Добавить место"
-        app:layout_constraintStart_toStartOf="@+id/spinnerClub"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerClub" />
-
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:indeterminate="true"
-        android:indeterminateTint="@color/blue"
-        android:visibility="gone"
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="40dp">
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="24dp"
+                android:text="Добавление\nместа"
+                android:textColor="@color/blue"
+                android:textSize="40sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/etNameNewPlace"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/rounded_corners"
+                android:hint="Название"
+                android:inputType="text"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+            <EditText
+                android:id="@+id/etAddressNewPlace"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_corners"
+                android:hint="Адрес"
+                android:inputType="text"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etNameNewPlace" />
+
+            <EditText
+                android:id="@+id/etPhoneNewPlace"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_corners"
+                android:hint="Контактный телефон"
+                android:inputType="phone"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etAddressNewPlace" />
+
+            <EditText
+                android:id="@+id/etDescNewPlace"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_corners"
+                android:gravity="start|top"
+                android:hint="Описание"
+                android:inputType="textMultiLine"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingTop="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etPhoneNewPlace" />
+
+            <LinearLayout
+                android:id="@+id/layoutTypeSelect"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etDescNewPlace">
+
+                <androidx.appcompat.widget.AppCompatCheckBox
+                    android:id="@+id/cbShelter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/tvIsShelter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="24dp"
+                    android:text="Приют"
+                    android:textColor="@color/blue"
+                    android:textSize="16sp" />
+
+                <androidx.appcompat.widget.AppCompatCheckBox
+                    android:id="@+id/cbNursery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/tvIsNursery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="Питомник"
+                    android:textColor="@color/blue"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvClubLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="20dp"
+                android:text="Клуб (необязательно)"
+                android:textColor="@color/blue"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layoutTypeSelect" />
+
+            <Spinner
+                android:id="@+id/spinnerClub"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/rounded_corners"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvClubLabel" />
+
+            <Button
+                android:id="@+id/btnAddNewPlace"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="28dp"
+                android:text="Добавить место"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spinnerClub" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:indeterminate="true"
+                android:indeterminateTint="@color/blue"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

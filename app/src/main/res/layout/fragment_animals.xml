@@ -5,18 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tvAnimalsTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="52dp"
-        android:text="Животные"
-        android:textColor="?android:attr/colorPrimary"
-        android:textSize="40sp"
-        android:textStyle="bold"
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?android:attr/background"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:navigationIconTint="@color/blue"
+        app:title="Животные"
+        app:titleTextColor="?android:attr/colorPrimary" />
 
     <EditText
         android:id="@+id/etAnimalSearch"
@@ -24,14 +24,15 @@
         android:layout_height="52dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/rounded_corners"
         android:hint="Поиск"
         android:inputType="text"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvAnimalsTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/animalsRecycler"
@@ -41,6 +42,20 @@
         android:clipToPadding="false"
         android:paddingBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etAnimalSearch" />
+
+    <TextView
+        android:id="@+id/tvEmptyAnimals"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:gravity="center"
+        android:text="Животных пока нет"
+        android:textColor="@color/blue"
+        android:textSize="16sp"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etAnimalSearch" />

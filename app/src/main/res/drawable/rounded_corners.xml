@@ -1,42 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:state_pressed="true" android:state_focused="true">
-        <shape>
-            <solid android:color="?android:attr/background"/>
-            <stroke android:width="2dp" android:color="@color/blue" />
-            <corners android:radius="25dp" />
-            <padding
-                android:left="12dp"
-                android:top="10dp"
-                android:right="12dp"
-                android:bottom="10dp"/>
-        </shape>
-    </item>
-
     <item android:state_focused="true">
         <shape>
-            <solid android:color="?android:attr/background"/>
-            <stroke android:width="2dp" android:color="@color/blue" />
+            <solid android:color="?android:attr/background" />
+            <stroke android:width="2.5dp" android:color="@color/blue" />
             <corners android:radius="25dp" />
             <padding
+                android:bottom="10dp"
                 android:left="12dp"
-                android:top="10dp"
                 android:right="12dp"
-                android:bottom="10dp"/>
+                android:top="10dp" />
         </shape>
     </item>
 
     <item>
         <shape>
-            <solid android:color="?android:attr/background"/>
+            <solid android:color="?android:attr/background" />
             <stroke android:width="2dp" android:color="@color/blue" />
             <corners android:radius="25dp" />
             <padding
+                android:bottom="10dp"
                 android:left="12dp"
-                android:top="10dp"
                 android:right="12dp"
-                android:bottom="10dp"/>
+                android:top="10dp" />
         </shape>
     </item>
 

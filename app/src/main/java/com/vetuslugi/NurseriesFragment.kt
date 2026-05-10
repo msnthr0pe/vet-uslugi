@@ -65,6 +65,10 @@ class NurseriesFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.nurseries.collect { nurseries ->
                 nurseriesAdapter.updateList(nurseries)
+                val isEmpty = nurseries.isEmpty()
+                val isSearching = viewModel.searchQuery.value.isNotEmpty()
+                binding.tvEmptyState.text = if (isSearching) "Ничего не найдено" else "Питомников пока нет"
+                binding.tvEmptyState.visibility = if (isEmpty) View.VISIBLE else View.GONE
             }
         }
     }

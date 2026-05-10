@@ -84,6 +84,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="12dp"
+        android:background="@drawable/rounded_corners"
         android:hint="Поиск"
         android:inputType="text"
         android:paddingStart="16dp"
@@ -129,6 +130,21 @@
         android:paddingBottom="8dp"
         android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/customBottomBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etSearch" />
+
+    <!-- Empty state -->
+    <TextView
+        android:id="@+id/tvEmptyState"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:gravity="center"
+        android:text="Ничего не найдено"
+        android:textColor="@color/blue"
+        android:textSize="16sp"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etSearch" />

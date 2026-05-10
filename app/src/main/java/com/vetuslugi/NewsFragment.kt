@@ -112,6 +112,7 @@ class NewsFragment : Fragment() {
                 when (state) {
                     is NewsViewModel.UiState.Loading -> {
                         binding.layoutError.visibility = View.GONE
+                        binding.tvNoResults.visibility = View.GONE
                         binding.allRequestsRecycler.visibility = View.VISIBLE
                     }
                     is NewsViewModel.UiState.Success -> {
@@ -129,9 +130,16 @@ class NewsFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.filteredNews.collect { news ->
                 newsAdapter.updateList(news)
-                binding.tvNoResults.visibility = if (news.isEmpty() && viewModel.searchQuery.value.isNotEmpty()) View.VISIBLE else View.GONE
-                binding.allRequestsRecycler.visibility = if (news.isEmpty() && viewModel.searchQuery.value.isNotEmpty()) View.GONE else View.VISIBLE
                 binding.progressBar.visibility = View.GONE
+                if (news.isEmpty()) {
+                    val isSearching = viewModel.searchQuery.value.isNotEmpty()
+                    binding.tvNoResults.text = if (isSearching) "Ничего не найдено" else "Новостей пока нет"
+                    binding.tvNoResults.visibility = View.VISIBLE
+                    binding.allRequestsRecycler.visibility = View.GONE
+                } else {
+                    binding.tvNoResults.visibility = View.GONE
+                    binding.allRequestsRecycler.visibility = View.VISIBLE
+                }
             }
         }
     }

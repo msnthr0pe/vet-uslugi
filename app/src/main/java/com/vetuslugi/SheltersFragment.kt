@@ -65,6 +65,10 @@ class SheltersFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.shelters.collect { shelters ->
                 sheltersAdapter.updateList(shelters)
+                val isEmpty = shelters.isEmpty()
+                val isSearching = viewModel.searchQuery.value.isNotEmpty()
+                binding.tvEmptyState.text = if (isSearching) "Ничего не найдено" else "Приютов пока нет"
+                binding.tvEmptyState.visibility = if (isEmpty) View.VISIBLE else View.GONE
             }
         }
     }

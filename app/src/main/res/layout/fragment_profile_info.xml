@@ -1,126 +1,182 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="148dp"
-        android:text="Информация о\nпрофиле"
-        android:textColor="@color/blue"
-        android:textSize="40dp"
-        android:textStyle="bold"
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:paddingBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/customBottomBar"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <EditText
-        android:id="@+id/etName"
-        android:layout_width="334dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="36dp"
-        android:ems="10"
-        android:enabled="false"
-        android:inputType="text"
-        android:text="Имя"
-        android:textColor="@color/blue"
-        app:layout_constraintStart_toStartOf="@+id/textView11"
-        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="32dp">
 
-    <EditText
-        android:id="@+id/etSurname"
-        android:layout_width="334dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="12dp"
-        android:ems="10"
-        android:enabled="false"
-        android:text="Фамилия"
-        android:textColor="@color/blue"
-        android:inputType="text"
-        app:layout_constraintStart_toStartOf="@+id/etName"
-        app:layout_constraintTop_toBottomOf="@+id/etName" />
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="80dp"
+                android:text="Информация о\nпрофиле"
+                android:textColor="@color/blue"
+                android:textSize="40sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/etPhone"
-        android:layout_width="334dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="12dp"
-        android:ems="10"
-        android:enabled="false"
-        android:text="Номер телефона"
-        android:textColor="@color/blue"
-        android:inputType="phone"
-        app:layout_constraintStart_toStartOf="@+id/etSurname"
-        app:layout_constraintTop_toBottomOf="@+id/etSurname" />
+            <EditText
+                android:id="@+id/etName"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="36dp"
+                android:alpha="0.6"
+                android:background="@drawable/rounded_corners"
+                android:enabled="false"
+                android:inputType="text"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:text="Имя"
+                android:textColor="?android:attr/colorPrimary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
-    <EditText
-        android:id="@+id/etLogin"
-        android:layout_width="334dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="12dp"
-        android:ems="10"
-        android:enabled="false"
-        android:text="Логин"
-        android:textColor="@color/blue"
-        android:inputType="textEmailAddress"
-        app:layout_constraintStart_toStartOf="@+id/etPhone"
-        app:layout_constraintTop_toBottomOf="@+id/etPhone" />
+            <EditText
+                android:id="@+id/etSurname"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="16dp"
+                android:alpha="0.6"
+                android:background="@drawable/rounded_corners"
+                android:enabled="false"
+                android:inputType="text"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:text="Фамилия"
+                android:textColor="?android:attr/colorPrimary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etName" />
 
-    <Button
-        android:id="@+id/btnEditInformation"
-        android:layout_width="334dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="72dp"
-        android:text="Редактировать информацию"
-        app:layout_constraintEnd_toEndOf="@+id/etLogin"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/etLogin"
-        app:layout_constraintTop_toBottomOf="@+id/etLogin" />
+            <EditText
+                android:id="@+id/etPhone"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="16dp"
+                android:alpha="0.6"
+                android:background="@drawable/rounded_corners"
+                android:enabled="false"
+                android:inputType="phone"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:text="Номер телефона"
+                android:textColor="?android:attr/colorPrimary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etSurname" />
 
-    <TextView
-        android:id="@+id/role"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="9dp"
-        android:text="Роль:"
-        android:textColor="@color/blue"
-        app:layout_constraintStart_toStartOf="@+id/etLogin"
-        app:layout_constraintTop_toBottomOf="@+id/etLogin" />
+            <EditText
+                android:id="@+id/etLogin"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="16dp"
+                android:alpha="0.6"
+                android:background="@drawable/rounded_corners"
+                android:enabled="false"
+                android:inputType="textEmailAddress"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:text="Логин"
+                android:textColor="?android:attr/colorPrimary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etPhone" />
 
-    <TextView
-        android:id="@+id/tvRole"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="role"
-        android:textColor="@color/blue"
-        app:layout_constraintBottom_toBottomOf="@+id/role"
-        app:layout_constraintStart_toEndOf="@+id/role"
-        app:layout_constraintTop_toTopOf="@+id/role"
-        app:layout_constraintVertical_bias="0.0" />
+            <LinearLayout
+                android:id="@+id/layoutRole"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etLogin">
 
-    <TextView
-        android:id="@+id/btnLogOut"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:text="Выйти"
-        android:textColor="@color/red"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/btnEditInformation"
-        app:layout_constraintHorizontal_bias="0.509"
-        app:layout_constraintStart_toStartOf="@+id/btnEditInformation"
-        app:layout_constraintTop_toBottomOf="@+id/btnEditInformation" />
+                <TextView
+                    android:id="@+id/role"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Роль:"
+                    android:textColor="@color/blue"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvRole"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="role"
+                    android:textColor="@color/blue"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnEditInformation"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="32dp"
+                android:text="Редактировать информацию"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layoutRole" />
+
+            <TextView
+                android:id="@+id/btnLogOut"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Выйти"
+                android:textColor="@color/red"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnEditInformation" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
     <include
         android:id="@+id/customBottomBar"
         layout="@layout/nav_bar4"
         android:layout_width="match_parent"
         android:layout_height="72dp"
-        android:layout_alignParentBottom="true"
         app:layout_constraintBottom_toBottomOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

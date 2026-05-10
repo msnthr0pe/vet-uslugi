@@ -35,6 +35,8 @@ class RegisterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.toolbar.setNavigationOnClickListener { findNavController().popBackStack() }
+
         binding.cbIsBreeder.setOnCheckedChangeListener { _, isBreeder ->
             role = if (isBreeder) "breeder" else "user"
         }
