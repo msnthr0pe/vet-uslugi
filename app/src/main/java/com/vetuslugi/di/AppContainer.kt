@@ -31,6 +31,7 @@ import com.vetuslugi.domain.usecase.animal.GetAllAnimalsUseCase
 import com.vetuslugi.domain.usecase.animal.GetAnimalsByNurseryUseCase
 import com.vetuslugi.domain.usecase.animal.GetAnimalsByShelterUseCase
 import com.vetuslugi.domain.usecase.animal.UpdateAnimalUseCase
+import com.vetuslugi.domain.usecase.animal.UploadAnimalImageUseCase
 import com.vetuslugi.domain.usecase.place.AddClubUseCase
 import com.vetuslugi.domain.usecase.place.AddNurseryUseCase
 import com.vetuslugi.domain.usecase.place.AddShelterUseCase
@@ -101,6 +102,7 @@ class AppContainer(context: Context) {
     private val addAnimalUseCase = AddAnimalUseCase(animalRepository)
     private val updateAnimalUseCase = UpdateAnimalUseCase(animalRepository)
     private val deleteAnimalUseCase = DeleteAnimalUseCase(animalRepository)
+    private val uploadImageUseCase = UploadAnimalImageUseCase(animalRepository)
     private val getClubsByOwnerUseCase = GetClubsByOwnerUseCase(clubRepository)
     private val addClubUseCase = AddClubUseCase(clubRepository)
     private val updateClubUseCase = UpdateClubUseCase(clubRepository)
@@ -151,10 +153,10 @@ class AppContainer(context: Context) {
         AnimalsViewModel(getAnimalsByShelterUseCase, getAnimalsByNurseryUseCase)
     }
     val animalInfoViewModelFactory = ViewModelFactory {
-        AnimalInfoViewModel(updateAnimalUseCase, deleteAnimalUseCase)
+        AnimalInfoViewModel(updateAnimalUseCase, deleteAnimalUseCase, uploadImageUseCase)
     }
     val addAnimalViewModelFactory = ViewModelFactory {
-        AddAnimalViewModel(addAnimalUseCase)
+        AddAnimalViewModel(addAnimalUseCase, uploadImageUseCase)
     }
     val surveyViewModelFactory = ViewModelFactory {
         SurveyViewModel(getSurveySpeciesUseCase, getSurveyBreedsUseCase, submitSurveyUseCase, getAllAnimalsUseCase)

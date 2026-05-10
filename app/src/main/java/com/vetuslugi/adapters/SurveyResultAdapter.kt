@@ -3,6 +3,7 @@ package com.vetuslugi.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.vetuslugi.databinding.ItemSurveyResultBinding
 import com.vetuslugi.domain.model.SurveyResult
 import kotlin.math.roundToInt
@@ -22,6 +23,10 @@ class SurveyResultAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = items[position]
         val animal = item.animal
+        Glide.with(holder.binding.root.context)
+            .load(animal.imageUrl)
+            .centerCrop()
+            .into(holder.binding.ivAnimalPhoto)
         holder.binding.tvAnimalNickname.text = animal.nickname
         holder.binding.tvAnimalDetails.text = "${animal.species} · ${animal.breed}"
         holder.binding.tvAnimalAge.text = "Возраст: ${animal.age} лет"

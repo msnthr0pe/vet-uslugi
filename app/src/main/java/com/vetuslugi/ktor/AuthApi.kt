@@ -5,9 +5,12 @@ import com.vetuslugi.ktor.AuthModels.NewsDTO
 import com.vetuslugi.ktor.AuthModels.PlaceDTO
 import com.vetuslugi.ktor.AuthModels.UserDTO
 import com.vetuslugi.ktor.AuthModels.AuthResponse
+import okhttp3.MultipartBody
 import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.Multipart
 import retrofit2.http.POST
+import retrofit2.http.Part
 
 interface AuthApi {
     @POST("login")
@@ -90,6 +93,10 @@ interface AuthApi {
 
     @GET("getanimals")
     suspend fun getAnimals(): List<AuthModels.AnimalDTO>
+
+    @Multipart
+    @POST("uploadimage")
+    suspend fun uploadImage(@Part image: MultipartBody.Part): AuthModels.UploadResponse
 
     @POST("getshelterbyaddress")
     suspend fun getShelterByAddress(@Body request: AuthModels.InfoDTO): AuthModels.PlaceDTO

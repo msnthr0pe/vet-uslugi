@@ -4,6 +4,9 @@ import com.vetuslugi.domain.model.Animal
 import com.vetuslugi.domain.repository.AnimalRepository
 import com.vetuslugi.ktor.AuthApi
 import com.vetuslugi.ktor.AuthModels
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.toRequestBody
 
 class AnimalRepositoryImpl(private val api: AuthApi) : AnimalRepository {
 
@@ -34,15 +37,21 @@ class AnimalRepositoryImpl(private val api: AuthApi) : AnimalRepository {
         Unit
     }
 
+    override suspend fun uploadImage(imageBytes: ByteArray, fileName: String): Result<String> = runCatching {
+        val requestBody = imageBytes.toRequestBody("image/jpeg".toMediaTypeOrNull())
+        val part = MultipartBody.Part.createFormData("image", fileName, requestBody)
+        api.uploadImage(part).imageUrl
+    }
+
     private fun AuthModels.AnimalDTO.toDomain() = Animal(
         id = id, nickname = nickname, species = species, breed = breed,
-        age = age, diseases = diseases,
+        age = age, diseases = diseases, imageUrl = imageUrl,
         shelterAddress = shelterAddress, nurseryAddress = nurseryAddress
     )
 
     private fun Animal.toDto() = AuthModels.AnimalDTO(
         id = id, nickname = nickname, species = species, breed = breed,
-        age = age, diseases = diseases,
+        age = age, diseases = diseases, imageUrl = imageUrl,
         shelterAddress = shelterAddress, nurseryAddress = nurseryAddress
     )
 }

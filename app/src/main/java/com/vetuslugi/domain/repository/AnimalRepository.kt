@@ -9,4 +9,5 @@ interface AnimalRepository {
     suspend fun addAnimal(animal: Animal): Result<Unit>
     suspend fun updateAnimal(animal: Animal): Result<Unit>
     suspend fun deleteAnimal(id: String): Result<Unit>
+    suspend fun uploadImage(imageBytes: ByteArray, fileName: String): Result<String>
 }

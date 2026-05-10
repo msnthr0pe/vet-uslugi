@@ -9,6 +9,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.vetuslugi.databinding.FragmentAnimalPublicDetailBinding
 import com.vetuslugi.presentation.viewmodel.AnimalPublicDetailViewModel
 import com.vetuslugi.presentation.viewmodel.SharedAnimalViewModel
@@ -42,6 +43,8 @@ class AnimalPublicDetailFragment : Fragment() {
         binding.toolbar.setNavigationOnClickListener { findNavController().popBackStack() }
 
         val animal = sharedAnimalViewModel.selection.value?.animal ?: return
+
+        Glide.with(this).load(animal.imageUrl).centerCrop().into(binding.ivAnimalPhoto)
 
         binding.nicknameCard.tvCardTitle.text = "Кличка"
         binding.nicknameCard.tvDescriptionCard.text = animal.nickname

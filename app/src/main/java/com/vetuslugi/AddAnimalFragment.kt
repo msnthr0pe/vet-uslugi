@@ -5,11 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.vetuslugi.databinding.FragmentAddAnimalBinding
 import com.vetuslugi.presentation.viewmodel.AddAnimalViewModel
 import com.vetuslugi.presentation.viewmodel.SharedAnimalViewModel
@@ -23,6 +25,17 @@ class AddAnimalFragment : Fragment() {
     private val sharedAnimalViewModel: SharedAnimalViewModel by activityViewModels()
     private val viewModel: AddAnimalViewModel by viewModels {
         (requireActivity().application as VetUslugiApp).container.addAnimalViewModelFactory
+    }
+
+    private var selectedImageBytes: ByteArray? = null
+    private var selectedImageName: String = "image.jpg"
+
+    private val pickImage = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
+        uri ?: return@registerForActivityResult
+        val b = _binding ?: return@registerForActivityResult
+        selectedImageBytes = requireContext().contentResolver.openInputStream(uri)?.readBytes()
+        selectedImageName = uri.lastPathSegment ?: "image.jpg"
+        Glide.with(this).load(uri).centerCrop().into(b.ivAnimalPhoto)
     }
 
     override fun onCreateView(
@@ -39,6 +52,8 @@ class AddAnimalFragment : Fragment() {
         binding.toolbar.setNavigationOnClickListener { findNavController().popBackStack() }
 
         val ctx = sharedAnimalViewModel.context.value ?: return
+
+        binding.btnSelectPhoto.setOnClickListener { pickImage.launch("image/*") }
 
         binding.btnAddAnimalSubmit.setOnClickListener {
             val nickname = binding.etAnimalNickname.text.toString().trim()
@@ -60,7 +75,7 @@ class AddAnimalFragment : Fragment() {
             val diseases = diseasesText.ifEmpty { null }
             val shelterAddress = if (!ctx.isNursery) ctx.placeAddress else null
             val nurseryAddress = if (ctx.isNursery) ctx.placeAddress else null
-            viewModel.addAnimal(nickname, species, breed, age, diseases, shelterAddress, nurseryAddress)
+            viewModel.addAnimal(nickname, species, breed, age, diseases, shelterAddress, nurseryAddress, selectedImageBytes, selectedImageName)
         }
 
         viewLifecycleOwner.lifecycleScope.launch {

@@ -50,9 +50,12 @@ class AuthModels {
         val breed: String = "",
         val age: Int = 0,
         val diseases: String? = null,
+        val imageUrl: String? = null,
         val shelterAddress: String? = null,
         val nurseryAddress: String? = null
     )
+
+    data class UploadResponse(val imageUrl: String)
 
     data class SurveyRequest(
         val species: String,

@@ -8,12 +8,14 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.vetuslugi.databinding.CardInfoBinding
 import com.vetuslugi.databinding.FragmentAnimalInfoBinding
 import com.vetuslugi.domain.model.Animal
@@ -31,6 +33,17 @@ class AnimalInfoFragment : Fragment() {
         (requireActivity().application as VetUslugiApp).container.animalInfoViewModelFactory
     }
 
+    private var selectedImageBytes: ByteArray? = null
+    private var selectedImageName: String = "image.jpg"
+
+    private val pickImage = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
+        uri ?: return@registerForActivityResult
+        val b = _binding ?: return@registerForActivityResult
+        selectedImageBytes = requireContext().contentResolver.openInputStream(uri)?.readBytes()
+        selectedImageName = uri.lastPathSegment ?: "image.jpg"
+        Glide.with(this).load(uri).centerCrop().into(b.ivAnimalPhoto)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -46,6 +59,8 @@ class AnimalInfoFragment : Fragment() {
 
         val selection = sharedAnimalViewModel.selection.value ?: return
         val animal = selection.animal
+
+        Glide.with(this).load(animal.imageUrl).centerCrop().into(binding.ivAnimalPhoto)
 
         binding.nicknameCard.tvCardTitle.text = "Кличка"
         binding.nicknameCard.tvDescriptionCard.text = animal.nickname
@@ -65,6 +80,8 @@ class AnimalInfoFragment : Fragment() {
         if (selection.editable) {
             binding.btnSaveAnimal.visibility = View.VISIBLE
             binding.btnDeleteAnimal.visibility = View.VISIBLE
+            binding.btnChangePhoto.visibility = View.VISIBLE
+            binding.btnChangePhoto.setOnClickListener { pickImage.launch("image/*") }
             binding.nicknameCard.tvEditCard.setOnClickListener { showEditDialog(binding.nicknameCard) }
             binding.speciesCard.tvEditCard.setOnClickListener { showEditDialog(binding.speciesCard) }
             binding.breedCard.tvEditCard.setOnClickListener { showEditDialog(binding.breedCard) }
@@ -95,7 +112,11 @@ class AnimalInfoFragment : Fragment() {
                 return@setOnClickListener
             }
             val diseases = if (diseasesText == "—" || diseasesText.isEmpty()) null else diseasesText
-            viewModel.updateAnimal(animal.copy(nickname = nickname, species = species, breed = breed, age = age, diseases = diseases))
+            viewModel.updateAnimal(
+                animal.copy(nickname = nickname, species = species, breed = breed, age = age, diseases = diseases),
+                selectedImageBytes,
+                selectedImageName
+            )
         }
 
         binding.btnDeleteAnimal.setOnClickListener {

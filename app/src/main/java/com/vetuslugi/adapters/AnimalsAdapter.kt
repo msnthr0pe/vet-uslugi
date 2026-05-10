@@ -3,8 +3,10 @@ package com.vetuslugi.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.vetuslugi.R
 import com.vetuslugi.domain.model.Animal
 
@@ -14,6 +16,7 @@ class AnimalsAdapter(
 ) : RecyclerView.Adapter<AnimalsAdapter.AnimalViewHolder>() {
 
     inner class AnimalViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val ivPhoto: ImageView = itemView.findViewById(R.id.ivAnimalPhoto)
         val tvNickname: TextView = itemView.findViewById(R.id.tvAnimalNickname)
         val tvSpecies: TextView = itemView.findViewById(R.id.tvAnimalSpecies)
         val tvBreed: TextView = itemView.findViewById(R.id.tvAnimalBreed)
@@ -35,6 +38,10 @@ class AnimalsAdapter(
 
     override fun onBindViewHolder(holder: AnimalViewHolder, position: Int) {
         val item = animals[position]
+        Glide.with(holder.itemView.context)
+            .load(item.imageUrl)
+            .centerCrop()
+            .into(holder.ivPhoto)
         holder.tvNickname.text = item.nickname
         holder.tvSpecies.text = item.species
         holder.tvBreed.text = item.breed
