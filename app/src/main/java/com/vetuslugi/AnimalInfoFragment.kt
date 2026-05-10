@@ -41,7 +41,10 @@ class AnimalInfoFragment : Fragment() {
         val b = _binding ?: return@registerForActivityResult
         selectedImageBytes = requireContext().contentResolver.openInputStream(uri)?.readBytes()
         selectedImageName = uri.lastPathSegment ?: "image.jpg"
-        Glide.with(this).load(uri).centerCrop().into(b.ivAnimalPhoto)
+        Glide.with(this)
+            .load(uri).centerCrop()
+            .placeholder(R.drawable.nursery)
+            .into(b.ivAnimalPhoto)
     }
 
     override fun onCreateView(
@@ -60,7 +63,11 @@ class AnimalInfoFragment : Fragment() {
         val selection = sharedAnimalViewModel.selection.value ?: return
         val animal = selection.animal
 
-        Glide.with(this).load(animal.imageUrl).centerCrop().into(binding.ivAnimalPhoto)
+        Glide.with(this)
+            .load(animal.imageUrl)
+            .centerCrop()
+            .placeholder(R.drawable.nursery)
+            .into(binding.ivAnimalPhoto)
 
         binding.nicknameCard.tvCardTitle.text = "Кличка"
         binding.nicknameCard.tvDescriptionCard.text = animal.nickname

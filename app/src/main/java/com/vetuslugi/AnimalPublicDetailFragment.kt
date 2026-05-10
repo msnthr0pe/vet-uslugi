@@ -44,7 +44,11 @@ class AnimalPublicDetailFragment : Fragment() {
 
         val animal = sharedAnimalViewModel.selection.value?.animal ?: return
 
-        Glide.with(this).load(animal.imageUrl).centerCrop().into(binding.ivAnimalPhoto)
+        Glide.with(this)
+            .load(animal.imageUrl)
+            .centerCrop()
+            .placeholder(R.drawable.nursery)
+            .into(binding.ivAnimalPhoto)
 
         binding.nicknameCard.tvCardTitle.text = "Кличка"
         binding.nicknameCard.tvDescriptionCard.text = animal.nickname

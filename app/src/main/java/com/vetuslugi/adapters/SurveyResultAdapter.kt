@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.vetuslugi.R
 import com.vetuslugi.databinding.ItemSurveyResultBinding
 import com.vetuslugi.domain.model.SurveyResult
 import kotlin.math.roundToInt
@@ -26,6 +27,7 @@ class SurveyResultAdapter(
         Glide.with(holder.binding.root.context)
             .load(animal.imageUrl)
             .centerCrop()
+            .placeholder(R.drawable.nursery)
             .into(holder.binding.ivAnimalPhoto)
         holder.binding.tvAnimalNickname.text = animal.nickname
         holder.binding.tvAnimalDetails.text = "${animal.species} · ${animal.breed}"

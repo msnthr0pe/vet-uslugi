@@ -35,7 +35,10 @@ class AddAnimalFragment : Fragment() {
         val b = _binding ?: return@registerForActivityResult
         selectedImageBytes = requireContext().contentResolver.openInputStream(uri)?.readBytes()
         selectedImageName = uri.lastPathSegment ?: "image.jpg"
-        Glide.with(this).load(uri).centerCrop().into(b.ivAnimalPhoto)
+        Glide.with(this)
+            .load(uri).centerCrop()
+            .placeholder(R.drawable.nursery)
+            .into(b.ivAnimalPhoto)
     }
 
     override fun onCreateView(
