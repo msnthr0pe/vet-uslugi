@@ -56,10 +56,18 @@ class AnimalsFragment : Fragment() {
         val ctx = sharedAnimalViewModel.context.value ?: return
         animalCtx = ctx
 
+        viewModel.startObserving(ctx.placeAddress, ctx.isNursery)
+
         if (ctx.editable) binding.btnAddAnimal.visibility = View.VISIBLE
 
         binding.btnAddAnimal.setOnClickListener {
             findNavController().navigate(R.id.action_animalsFragment_to_addAnimalFragment)
+        }
+
+        binding.swipeRefresh.setColorSchemeResources(R.color.blue)
+        binding.swipeRefresh.setOnRefreshListener {
+            val c = animalCtx ?: run { binding.swipeRefresh.isRefreshing = false; return@setOnRefreshListener }
+            viewModel.syncFromApi(c.placeAddress, c.isNursery)
         }
 
         viewModel.searchQuery.value = ""
@@ -75,12 +83,8 @@ class AnimalsFragment : Fragment() {
         }
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.loading.collect { loading ->
-                binding.progressBar.visibility = if (loading) View.VISIBLE else View.GONE
-                if (loading) {
-                    binding.tvEmptyAnimals.visibility = View.GONE
-                } else {
-                    updateEmptyState(viewModel.animals.value.isEmpty())
-                }
+                binding.swipeRefresh.isRefreshing = loading
+                if (!loading) updateEmptyState(viewModel.animals.value.isEmpty())
             }
         }
         viewLifecycleOwner.lifecycleScope.launch {
@@ -95,8 +99,12 @@ class AnimalsFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        val ctx = animalCtx ?: return
-        viewModel.loadAnimals(ctx.placeAddress, ctx.isNursery)
+        val ctx = animalCtx ?: sharedAnimalViewModel.context.value ?: return
+        if (animalCtx == null) {
+            animalCtx = ctx
+            viewModel.startObserving(ctx.placeAddress, ctx.isNursery)
+        }
+        viewModel.syncFromApi(ctx.placeAddress, ctx.isNursery)
     }
 
     private fun updateEmptyState(isEmpty: Boolean) {

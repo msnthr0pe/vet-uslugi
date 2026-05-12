@@ -117,6 +117,11 @@ class SurveyHomeFragment : Fragment() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        surveyViewModel.loadAllAnimals()
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

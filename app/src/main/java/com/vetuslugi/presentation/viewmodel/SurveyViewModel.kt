@@ -41,10 +41,6 @@ class SurveyViewModel(
     private val _allAnimals = MutableStateFlow<List<Animal>>(emptyList())
     val allAnimals: StateFlow<List<Animal>> = _allAnimals
 
-    init {
-        loadAllAnimals()
-    }
-
     fun loadAllAnimals() {
         viewModelScope.launch {
             getAllAnimalsUseCase().onSuccess { _allAnimals.value = it }

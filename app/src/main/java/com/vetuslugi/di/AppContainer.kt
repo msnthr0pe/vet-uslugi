@@ -1,6 +1,7 @@
 package com.vetuslugi.di
 
 import android.content.Context
+import com.vetuslugi.data.local.AppDatabase
 import com.vetuslugi.data.local.SearchHistoryManager
 import com.vetuslugi.data.local.UserSession
 import com.vetuslugi.data.repository.AuthRepositoryImpl
@@ -28,7 +29,9 @@ import com.vetuslugi.domain.usecase.news.GetNewsUseCase
 import com.vetuslugi.domain.usecase.animal.AddAnimalUseCase
 import com.vetuslugi.domain.usecase.animal.DeleteAnimalUseCase
 import com.vetuslugi.domain.usecase.animal.GetAllAnimalsUseCase
+import com.vetuslugi.domain.usecase.animal.GetAnimalsByNurseryStreamUseCase
 import com.vetuslugi.domain.usecase.animal.GetAnimalsByNurseryUseCase
+import com.vetuslugi.domain.usecase.animal.GetAnimalsByShelterStreamUseCase
 import com.vetuslugi.domain.usecase.animal.GetAnimalsByShelterUseCase
 import com.vetuslugi.domain.usecase.animal.UpdateAnimalUseCase
 import com.vetuslugi.domain.usecase.animal.UploadAnimalImageUseCase
@@ -68,6 +71,7 @@ import com.vetuslugi.presentation.viewmodel.SheltersViewModel
 class AppContainer(context: Context) {
 
     private val api = ApiClient.authApi
+    private val database = AppDatabase.getInstance(context)
 
     val userSession = UserSession(context)
     val searchHistoryManager = SearchHistoryManager(context)
@@ -76,7 +80,7 @@ class AppContainer(context: Context) {
     private val newsRepository: NewsRepository = NewsRepositoryImpl(api)
     private val placeRepository: PlaceRepository = PlaceRepositoryImpl(api)
     private val clubRepository: ClubRepository = ClubRepositoryImpl(api)
-    private val animalRepository: AnimalRepository = AnimalRepositoryImpl(api)
+    private val animalRepository: AnimalRepository = AnimalRepositoryImpl(api, database.animalDao())
     private val surveyRepository: SurveyRepository = SurveyRepositoryImpl(api)
 
     private val loginUseCase = LoginUseCase(authRepository)
@@ -99,6 +103,8 @@ class AppContainer(context: Context) {
     private val getAllAnimalsUseCase = GetAllAnimalsUseCase(animalRepository)
     private val getAnimalsByShelterUseCase = GetAnimalsByShelterUseCase(animalRepository)
     private val getAnimalsByNurseryUseCase = GetAnimalsByNurseryUseCase(animalRepository)
+    private val getAnimalsByShelterStreamUseCase = GetAnimalsByShelterStreamUseCase(animalRepository)
+    private val getAnimalsByNurseryStreamUseCase = GetAnimalsByNurseryStreamUseCase(animalRepository)
     private val addAnimalUseCase = AddAnimalUseCase(animalRepository)
     private val updateAnimalUseCase = UpdateAnimalUseCase(animalRepository)
     private val deleteAnimalUseCase = DeleteAnimalUseCase(animalRepository)
@@ -150,7 +156,12 @@ class AppContainer(context: Context) {
         AddClubViewModel(addClubUseCase, userSession)
     }
     val animalsViewModelFactory = ViewModelFactory {
-        AnimalsViewModel(getAnimalsByShelterUseCase, getAnimalsByNurseryUseCase)
+        AnimalsViewModel(
+            getAnimalsByShelterStreamUseCase,
+            getAnimalsByNurseryStreamUseCase,
+            getAnimalsByShelterUseCase,
+            getAnimalsByNurseryUseCase
+        )
     }
     val animalInfoViewModelFactory = ViewModelFactory {
         AnimalInfoViewModel(updateAnimalUseCase, deleteAnimalUseCase, uploadImageUseCase)
