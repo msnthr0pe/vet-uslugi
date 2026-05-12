@@ -33,6 +33,7 @@ class SurveyRepositoryImpl(private val api: AuthApi) : SurveyRepository {
                     breed = dto.animal.breed,
                     age = dto.animal.age,
                     diseases = dto.animal.diseases,
+                    imageUrl = dto.animal.imageUrl,
                     shelterAddress = dto.animal.shelterAddress,
                     nurseryAddress = dto.animal.nurseryAddress
                 ),
