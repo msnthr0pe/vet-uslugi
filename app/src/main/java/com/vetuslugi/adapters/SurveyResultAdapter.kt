@@ -26,6 +26,8 @@ class SurveyResultAdapter(
         val animal = item.animal
         Glide.with(holder.binding.root.context)
             .load(animal.imageUrl)
+            .placeholder(R.drawable.nursery)
+            .error(R.drawable.nursery)
             .centerCrop()
             .into(holder.binding.ivAnimalPhoto)
         holder.binding.tvAnimalNickname.text = animal.nickname

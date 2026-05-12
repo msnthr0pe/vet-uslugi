@@ -46,6 +46,8 @@ class AnimalPublicDetailFragment : Fragment() {
 
         Glide.with(this)
             .load(animal.imageUrl)
+            .placeholder(R.drawable.nursery)
+            .error(R.drawable.nursery)
             .centerCrop()
             .into(binding.ivAnimalPhoto)
 

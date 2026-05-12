@@ -40,6 +40,8 @@ class AnimalsAdapter(
         val item = animals[position]
         Glide.with(holder.itemView.context)
             .load(item.imageUrl)
+            .placeholder(R.drawable.nursery)
+            .error(R.drawable.nursery)
             .centerCrop()
             .into(holder.ivPhoto)
         holder.tvNickname.text = item.nickname
