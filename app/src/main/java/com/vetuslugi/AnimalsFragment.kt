@@ -30,6 +30,8 @@ class AnimalsFragment : Fragment() {
         (requireActivity().application as VetUslugiApp).container.animalsViewModelFactory
     }
 
+    private var animalCtx: SharedAnimalViewModel.AnimalContext? = null
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -52,6 +54,7 @@ class AnimalsFragment : Fragment() {
         binding.animalsRecycler.adapter = adapter
 
         val ctx = sharedAnimalViewModel.context.value ?: return
+        animalCtx = ctx
 
         if (ctx.editable) binding.btnAddAnimal.visibility = View.VISIBLE
 
@@ -59,11 +62,10 @@ class AnimalsFragment : Fragment() {
             findNavController().navigate(R.id.action_animalsFragment_to_addAnimalFragment)
         }
 
+        viewModel.searchQuery.value = ""
         binding.etAnimalSearch.addTextChangedListener {
             viewModel.searchQuery.value = it.toString()
         }
-
-        viewModel.loadAnimals(ctx.placeAddress, ctx.isNursery)
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.animals.collect { animals ->
@@ -89,6 +91,12 @@ class AnimalsFragment : Fragment() {
                 }
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val ctx = animalCtx ?: return
+        viewModel.loadAnimals(ctx.placeAddress, ctx.isNursery)
     }
 
     private fun updateEmptyState(isEmpty: Boolean) {
