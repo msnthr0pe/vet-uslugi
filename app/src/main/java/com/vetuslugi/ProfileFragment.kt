@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
@@ -77,6 +78,15 @@ class ProfileFragment : Fragment() {
                 checkedIds.contains(R.id.chipProfileShelters) -> switchTab(Tab.SHELTERS)
                 checkedIds.contains(R.id.chipProfileNurseries) -> switchTab(Tab.NURSERIES)
             }
+        }
+
+        val userSession = (requireActivity().application as VetUslugiApp).container.userSession
+        binding.switchTheme.isChecked = userSession.isDarkTheme()
+        binding.switchTheme.setOnCheckedChangeListener { _, isChecked ->
+            userSession.saveTheme(isChecked)
+            AppCompatDelegate.setDefaultNightMode(
+                if (isChecked) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO
+            )
         }
 
         binding.tvGetInfo.setOnClickListener {

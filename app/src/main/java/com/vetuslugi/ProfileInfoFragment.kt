@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -37,10 +38,20 @@ class ProfileInfoFragment : Fragment() {
         binding.etLogin.setText(user?.login)
         binding.tvRole.text = user?.role
 
+        val userSession = (requireActivity().application as VetUslugiApp).container.userSession
+        binding.switchTheme.isChecked = userSession.isDarkTheme()
+        binding.switchTheme.setOnCheckedChangeListener { _, isChecked ->
+            userSession.saveTheme(isChecked)
+            AppCompatDelegate.setDefaultNightMode(
+                if (isChecked) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO
+            )
+        }
+
         binding.btnEditInformation.setOnClickListener {
             findNavController().navigate(R.id.action_profileInfoFragment_to_editProfileFragment)
         }
         binding.btnLogOut.setOnClickListener {
+            userSession.clearSession()
             findNavController().navigate(R.id.action_profileInfoFragment_to_titleFragment)
         }
 

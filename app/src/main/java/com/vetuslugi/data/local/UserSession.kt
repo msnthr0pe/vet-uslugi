@@ -34,4 +34,16 @@ class UserSession(context: Context) {
 
     fun getLogin(): String? = prefs.getString("login", null)
     fun getRole(): String = prefs.getString("role", "-") ?: "-"
+
+    fun clearSession() {
+        val isDark = isDarkTheme()
+        prefs.edit { clear() }
+        saveTheme(isDark)
+    }
+
+    fun saveTheme(isDark: Boolean) {
+        prefs.edit { putBoolean("isDarkTheme", isDark) }
+    }
+
+    fun isDarkTheme(): Boolean = prefs.getBoolean("isDarkTheme", false)
 }
