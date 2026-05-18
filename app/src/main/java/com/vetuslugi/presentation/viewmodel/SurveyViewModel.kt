@@ -76,4 +76,8 @@ class SurveyViewModel(
     fun resetState() {
         _uiState.value = UiState.Idle
     }
+
+    fun resetResults() {
+        _results.value = emptyList()
+    }
 }

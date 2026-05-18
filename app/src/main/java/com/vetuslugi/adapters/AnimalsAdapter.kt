@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.vetuslugi.R
@@ -51,6 +52,7 @@ class AnimalsAdapter(
         if (item.diseases != null) {
             holder.tvDiseases.visibility = View.VISIBLE
             holder.tvDiseases.text = item.diseases
+            holder.tvDiseases.setTextColor(severityColor(holder.itemView, item.diseaseSeverity))
         } else {
             holder.tvDiseases.visibility = View.GONE
         }
@@ -61,5 +63,14 @@ class AnimalsAdapter(
     fun updateList(newList: List<Animal>) {
         animals = newList
         notifyDataSetChanged()
+    }
+
+    private fun severityColor(view: View, severity: Int): Int {
+        val colorRes = when (severity) {
+            1 -> R.color.disease_yellow
+            2 -> R.color.disease_orange
+            else -> R.color.red
+        }
+        return ContextCompat.getColor(view.context, colorRes)
     }
 }

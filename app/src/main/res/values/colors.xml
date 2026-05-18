@@ -4,6 +4,8 @@
     <color name="blue">#0066B3</color>
     <color name="icon_blue">#0D4CD3</color>
     <color name="red">#EE2F53</color>
+    <color name="disease_yellow">#E6A817</color>
+    <color name="disease_orange">#E87020</color>
     <color name="icon_gray">#808B9F</color>
     <color name="white">#FFFFFF</color>
     <color name="dark_gray">#434343</color>

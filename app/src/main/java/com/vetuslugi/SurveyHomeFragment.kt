@@ -56,6 +56,10 @@ class SurveyHomeFragment : Fragment() {
             findNavController().navigate(R.id.action_surveyHomeFragment_to_surveyFragment)
         }
 
+        binding.btnResetResults.setOnClickListener {
+            surveyViewModel.resetResults()
+        }
+
         binding.customBottomBar5.iconNews.setOnClickListener {
             findNavController().navigate(R.id.action_surveyHomeFragment_to_newsFragment)
         }
@@ -85,7 +89,9 @@ class SurveyHomeFragment : Fragment() {
                     binding.surveyResultsRecycler.adapter = surveyResultAdapter
                     binding.surveyResultsRecycler.visibility = View.VISIBLE
                     binding.tvSurveyEmpty.visibility = View.GONE
+                    binding.btnResetResults.visibility = View.VISIBLE
                 } else {
+                    binding.btnResetResults.visibility = View.GONE
                     binding.surveyResultsRecycler.adapter = allAnimalsAdapter
                     val animals = surveyViewModel.allAnimals.value
                     allAnimalsAdapter.updateList(animals)

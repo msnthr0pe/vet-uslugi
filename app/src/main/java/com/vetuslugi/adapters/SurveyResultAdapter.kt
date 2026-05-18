@@ -1,7 +1,9 @@
 package com.vetuslugi.adapters
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.vetuslugi.R
@@ -35,6 +37,20 @@ class SurveyResultAdapter(
         holder.binding.tvAnimalAge.text = "Возраст: ${animal.age} лет"
         val percent = (item.coefficient * 100).roundToInt()
         holder.binding.tvCoefficient.text = "$percent%"
+        if (animal.diseases != null) {
+            holder.binding.tvAnimalDiseases.visibility = View.VISIBLE
+            holder.binding.tvAnimalDiseases.text = animal.diseases
+            val colorRes = when (animal.diseaseSeverity) {
+                1 -> R.color.disease_yellow
+                2 -> R.color.disease_orange
+                else -> R.color.red
+            }
+            holder.binding.tvAnimalDiseases.setTextColor(
+                ContextCompat.getColor(holder.binding.root.context, colorRes)
+            )
+        } else {
+            holder.binding.tvAnimalDiseases.visibility = View.GONE
+        }
         holder.binding.root.setOnClickListener { onClick(item) }
     }
 

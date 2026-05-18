@@ -40,12 +40,28 @@
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
-            <Button
-                android:id="@+id/btnStartSurvey"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:text="Пройти тест" />
+                android:orientation="horizontal"
+                android:gravity="start">
+
+                <Button
+                    android:id="@+id/btnStartSurvey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:text="Пройти тест" />
+
+                <Button
+                    android:id="@+id/btnResetResults"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:text="Сбросить"
+                    android:visibility="gone"
+                    style="@style/Widget.Material3.Button.OutlinedButton" />
+
+            </LinearLayout>
 
         </LinearLayout>
 
