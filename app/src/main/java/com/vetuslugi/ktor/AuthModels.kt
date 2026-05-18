@@ -50,6 +50,7 @@ class AuthModels {
         val breed: String = "",
         val age: Int = 0,
         val diseases: String? = null,
+        val diseaseSeverity: Int = 0,
         val imageUrl: String? = null,
         val shelterAddress: String? = null,
         val nurseryAddress: String? = null

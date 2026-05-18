@@ -2,4 +2,10 @@
     <string name="app_name">VetUslugi</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="disease_severity_items">
+        <item>Нет болезни</item>
+        <item>Незначительное</item>
+        <item>Среднее</item>
+        <item>Тяжёлое</item>
+    </string-array>
 </resources>

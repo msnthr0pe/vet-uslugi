@@ -30,6 +30,7 @@ class AddAnimalViewModel(
         breed: String,
         age: Int,
         diseases: String?,
+        diseaseSeverity: Int = 0,
         shelterAddress: String?,
         nurseryAddress: String?,
         imageBytes: ByteArray? = null,
@@ -48,7 +49,7 @@ class AddAnimalViewModel(
             }
             val animal = Animal(
                 nickname = nickname, species = species, breed = breed, age = age,
-                diseases = diseases, imageUrl = imageUrl,
+                diseases = diseases, diseaseSeverity = diseaseSeverity, imageUrl = imageUrl,
                 shelterAddress = shelterAddress, nurseryAddress = nurseryAddress
             )
             addAnimalUseCase(animal)

@@ -1,5 +1,6 @@
 package com.vetuslugi.data.local
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.vetuslugi.domain.model.Animal
@@ -12,6 +13,7 @@ data class AnimalEntity(
     val breed: String,
     val age: Int,
     val diseases: String?,
+    @ColumnInfo(defaultValue = "0") val diseaseSeverity: Int = 0,
     val imageUrl: String?,
     val shelterAddress: String?,
     val nurseryAddress: String?
@@ -23,6 +25,7 @@ data class AnimalEntity(
         breed = breed,
         age = age,
         diseases = diseases,
+        diseaseSeverity = diseaseSeverity,
         imageUrl = imageUrl,
         shelterAddress = shelterAddress,
         nurseryAddress = nurseryAddress
@@ -36,6 +39,7 @@ fun Animal.toEntity() = AnimalEntity(
     breed = breed,
     age = age,
     diseases = diseases,
+    diseaseSeverity = diseaseSeverity,
     imageUrl = imageUrl,
     shelterAddress = shelterAddress,
     nurseryAddress = nurseryAddress

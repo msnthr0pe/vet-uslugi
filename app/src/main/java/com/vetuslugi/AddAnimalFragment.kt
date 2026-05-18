@@ -76,9 +76,10 @@ class AddAnimalFragment : Fragment() {
             }
 
             val diseases = diseasesText.ifEmpty { null }
+            val diseaseSeverity = binding.spinnerDiseaseSeverity.selectedItemPosition
             val shelterAddress = if (!ctx.isNursery) ctx.placeAddress else null
             val nurseryAddress = if (ctx.isNursery) ctx.placeAddress else null
-            viewModel.addAnimal(nickname, species, breed, age, diseases, shelterAddress, nurseryAddress, selectedImageBytes, selectedImageName)
+            viewModel.addAnimal(nickname, species, breed, age, diseases, diseaseSeverity, shelterAddress, nurseryAddress, selectedImageBytes, selectedImageName)
         }
 
         viewLifecycleOwner.lifecycleScope.launch {

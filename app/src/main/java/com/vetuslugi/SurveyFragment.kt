@@ -47,9 +47,8 @@ class SurveyFragment : Fragment() {
             val willingToAdoptSick = binding.rbSickYes.isChecked
 
             val mostImportant = when {
-                binding.rbImportantBreed.isChecked -> "breed"
                 binding.rbImportantHealth.isChecked -> "health"
-                else -> "species"
+                else -> "breed"
             }
 
             surveyViewModel.submitSurvey(species, breed, willingToAdoptSick, mostImportant)

@@ -147,6 +147,34 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/etAnimalAge" />
 
+            <TextView
+                android:id="@+id/tvDiseaseSeverityLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="16dp"
+                android:text="Тяжесть болезни"
+                android:textColor="?android:attr/colorPrimary"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etAnimalDiseases" />
+
+            <Spinner
+                android:id="@+id/spinnerDiseaseSeverity"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/rounded_corners"
+                android:entries="@array/disease_severity_items"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvDiseaseSeverityLabel" />
+
             <Button
                 android:id="@+id/btnAddAnimalSubmit"
                 android:layout_width="0dp"
@@ -157,7 +185,7 @@
                 android:text="Добавить"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/etAnimalDiseases" />
+                app:layout_constraintTop_toBottomOf="@+id/spinnerDiseaseSeverity" />
 
             <ProgressBar
                 android:id="@+id/progressBar"

@@ -151,20 +151,11 @@
                 app:layout_constraintTop_toBottomOf="@+id/tvLabelImportant">
 
                 <RadioButton
-                    android:id="@+id/rbImportantSpecies"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:buttonTint="@color/blue"
-                    android:checked="true"
-                    android:text="Вид"
-                    android:textColor="?android:attr/colorPrimary"
-                    android:textSize="15sp" />
-
-                <RadioButton
                     android:id="@+id/rbImportantBreed"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:buttonTint="@color/blue"
+                    android:checked="true"
                     android:text="Порода"
                     android:textColor="?android:attr/colorPrimary"
                     android:textSize="15sp" />

@@ -72,13 +72,13 @@ class AnimalRepositoryImpl(
 
     private fun AuthModels.AnimalDTO.toDomain() = Animal(
         id = id, nickname = nickname, species = species, breed = breed,
-        age = age, diseases = diseases, imageUrl = imageUrl,
-        shelterAddress = shelterAddress, nurseryAddress = nurseryAddress
+        age = age, diseases = diseases, diseaseSeverity = diseaseSeverity,
+        imageUrl = imageUrl, shelterAddress = shelterAddress, nurseryAddress = nurseryAddress
     )
 
     private fun Animal.toDto() = AuthModels.AnimalDTO(
         id = id, nickname = nickname, species = species, breed = breed,
-        age = age, diseases = diseases, imageUrl = imageUrl,
-        shelterAddress = shelterAddress, nurseryAddress = nurseryAddress
+        age = age, diseases = diseases, diseaseSeverity = diseaseSeverity,
+        imageUrl = imageUrl, shelterAddress = shelterAddress, nurseryAddress = nurseryAddress
     )
 }
