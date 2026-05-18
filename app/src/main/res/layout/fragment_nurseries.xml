@@ -64,7 +64,7 @@
 
     <include
         android:id="@+id/customBottomBar"
-        layout="@layout/nav_bar3"
+        layout="@layout/nav_bar2"
         android:layout_width="match_parent"
         android:layout_height="72dp"
         app:layout_constraintBottom_toBottomOf="parent" />
