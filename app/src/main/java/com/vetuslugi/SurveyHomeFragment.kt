@@ -126,6 +126,8 @@ class SurveyHomeFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         surveyViewModel.loadAllAnimals()
+        binding.btnResetResults.visibility =
+            if (surveyViewModel.results.value.isNotEmpty()) View.VISIBLE else View.GONE
     }
 
     override fun onDestroyView() {
