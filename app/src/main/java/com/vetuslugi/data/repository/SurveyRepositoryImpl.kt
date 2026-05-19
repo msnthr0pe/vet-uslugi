@@ -19,11 +19,12 @@ class SurveyRepositoryImpl(private val api: AuthApi) : SurveyRepository {
     override suspend fun submitSurvey(
         species: String,
         breed: String,
+        age: Int,
         willingToAdoptSick: Boolean,
         mostImportant: String
     ): Result<List<SurveyResult>> = runCatching {
         api.submitSurvey(
-            AuthModels.SurveyRequest(species, breed, willingToAdoptSick, mostImportant)
+            AuthModels.SurveyRequest(species, breed, age, willingToAdoptSick, mostImportant)
         ).map { dto ->
             SurveyResult(
                 animal = Animal(
@@ -33,6 +34,7 @@ class SurveyRepositoryImpl(private val api: AuthApi) : SurveyRepository {
                     breed = dto.animal.breed,
                     age = dto.animal.age,
                     diseases = dto.animal.diseases,
+                    diseaseSeverity = dto.animal.diseaseSeverity,
                     imageUrl = dto.animal.imageUrl,
                     shelterAddress = dto.animal.shelterAddress,
                     nurseryAddress = dto.animal.nurseryAddress

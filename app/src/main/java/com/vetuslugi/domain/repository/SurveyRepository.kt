@@ -8,6 +8,7 @@ interface SurveyRepository {
     suspend fun submitSurvey(
         species: String,
         breed: String,
+        age: Int,
         willingToAdoptSick: Boolean,
         mostImportant: String
     ): Result<List<SurveyResult>>

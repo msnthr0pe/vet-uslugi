@@ -38,9 +38,15 @@ class SurveyFragment : Fragment() {
         binding.btnSubmitSurvey.setOnClickListener {
             val species = binding.etSpecies.text.toString().trim().lowercase()
             val breed = binding.etBreed.text.toString().trim().lowercase()
+            val ageText = binding.etAge.text.toString().trim()
 
             if (species.isBlank() || breed.isBlank()) {
                 Toast.makeText(requireContext(), "Введите вид и породу", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            val age = ageText.toIntOrNull()
+            if (age == null) {
+                Toast.makeText(requireContext(), "Введите возраст животного", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
@@ -48,10 +54,11 @@ class SurveyFragment : Fragment() {
 
             val mostImportant = when {
                 binding.rbImportantHealth.isChecked -> "health"
+                binding.rbImportantAge.isChecked -> "age"
                 else -> "breed"
             }
 
-            surveyViewModel.submitSurvey(species, breed, willingToAdoptSick, mostImportant)
+            surveyViewModel.submitSurvey(species, breed, age, willingToAdoptSick, mostImportant)
         }
 
         viewLifecycleOwner.lifecycleScope.launch {

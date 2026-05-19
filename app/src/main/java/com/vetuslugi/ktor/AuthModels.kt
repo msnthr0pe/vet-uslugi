@@ -61,6 +61,7 @@ class AuthModels {
     data class SurveyRequest(
         val species: String,
         val breed: String,
+        val age: Int,
         val willingToAdoptSick: Boolean,
         val mostImportant: String
     )

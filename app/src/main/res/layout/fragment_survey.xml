@@ -78,6 +78,23 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/etSpecies" />
 
+            <EditText
+                android:id="@+id/etAge"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_corners"
+                android:hint="Возраст животного (лет)"
+                android:inputType="number"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textColor="?android:attr/colorPrimary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etBreed" />
+
             <TextView
                 android:id="@+id/tvLabelSick"
                 android:layout_width="0dp"
@@ -90,7 +107,7 @@
                 android:textSize="15sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/etBreed" />
+                app:layout_constraintTop_toBottomOf="@+id/etAge" />
 
             <RadioGroup
                 android:id="@+id/rgSick"
@@ -166,6 +183,15 @@
                     android:layout_height="wrap_content"
                     android:buttonTint="@color/blue"
                     android:text="Здоровье"
+                    android:textColor="?android:attr/colorPrimary"
+                    android:textSize="15sp" />
+
+                <RadioButton
+                    android:id="@+id/rbImportantAge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/blue"
+                    android:text="Возраст"
                     android:textColor="?android:attr/colorPrimary"
                     android:textSize="15sp" />
 

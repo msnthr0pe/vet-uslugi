@@ -57,12 +57,13 @@ class SurveyViewModel(
     fun submitSurvey(
         species: String,
         breed: String,
+        age: Int,
         willingToAdoptSick: Boolean,
         mostImportant: String
     ) {
         viewModelScope.launch {
             _uiState.value = UiState.Loading
-            submitSurveyUseCase(species, breed, willingToAdoptSick, mostImportant)
+            submitSurveyUseCase(species, breed, age, willingToAdoptSick, mostImportant)
                 .onSuccess { results ->
                     _results.value = results
                     _uiState.value = UiState.Submitted
